@@ -1,0 +1,22 @@
+{
+  "name": "pnge",
+  "version": "0.1.0",
+  "description": "Petroleum engineering research data skills for lithium/magnesium recovery, produced water geochemistry, and energy data analysis. Built for WVU PNGE.",
+  "author": {
+    "name": "WVU PNGE Research"
+  },
+  "repository": "https://github.com/OWNER/claude-pnge",
+  "license": "Apache-2.0",
+  "keywords": [
+    "petroleum-engineering",
+    "lithium",
+    "magnesium",
+    "produced-water",
+    "geochemistry",
+    "energy-data",
+    "usgs",
+    "eia",
+    "netl",
+    "wvu"
+  ]
+}

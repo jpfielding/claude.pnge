@@ -37,10 +37,10 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ```bash
 # Direct from GitHub
-claude plugin install pnge@OWNER/claude-pnge
+claude plugin install pnge@jpfielding/claude.pnge
 
 # Or clone and install locally
-git clone https://github.com/OWNER/claude-pnge.git
+git clone https://github.com/jpfielding/claude.pnge.git
 claude --plugin-dir ./claude-pnge
 ```
 

@@ -1,8 +1,9 @@
 # API Token Acquisition Guide
 
 This guide covers every credential needed by the claude-pnge plugin.
-Three of the ten data skills require API keys. The remaining seven use
-public endpoints with no authentication.
+Four of the twenty data skills require API keys. Two more accept optional
+keys for higher rate limits. The remaining fourteen use public endpoints
+with no authentication.
 
 ---
 
@@ -11,7 +12,10 @@ public endpoints with no authentication.
 - [Quick Setup](#quick-setup)
 - [1. EIA Open Data API](#1-eia-open-data-api)
 - [2. NETL Energy Data eXchange (EDX)](#2-netl-energy-data-exchange-edx)
-- [3. EPA api.data.gov](#3-epa-apidatagov)
+- [3. FRED (Federal Reserve Economic Data)](#3-fred-federal-reserve-economic-data)
+- [4. OpenEI (DOE Geothermal Data Repository)](#4-openei-doe-geothermal-data-repository)
+- [5. EPA api.data.gov (optional)](#5-epa-apidatagov-optional)
+- [6. UN Comtrade (optional)](#6-un-comtrade-optional)
 - [Services With No Key Required](#services-with-no-key-required)
 - [Verification](#verification)
 - [Troubleshooting](#troubleshooting)
@@ -20,19 +24,28 @@ public endpoints with no authentication.
 
 ## Quick Setup
 
-After obtaining all three keys, run this block to store them. Replace
+After obtaining all keys, run this block to store them. Replace
 each `YOUR_*_KEY` placeholder with the actual key value.
 
 ```bash
 # Create all credential directories
-mkdir -p ~/.config/eia ~/.config/netl-edx ~/.config/epa
-chmod 700 ~/.config/eia ~/.config/netl-edx ~/.config/epa
+mkdir -p ~/.config/eia ~/.config/netl-edx ~/.config/fred ~/.config/openei
+chmod 700 ~/.config/eia ~/.config/netl-edx ~/.config/fred ~/.config/openei
 
-# Store keys (replace YOUR_KEY_HERE with actual values)
+# Store required keys (replace YOUR_KEY_HERE with actual values)
 echo "api_key=YOUR_EIA_KEY" > ~/.config/eia/credentials
 echo "api_key=YOUR_NETL_KEY" > ~/.config/netl-edx/credentials
+echo "api_key=YOUR_FRED_KEY" > ~/.config/fred/credentials
+echo "api_key=YOUR_OPENEI_KEY" > ~/.config/openei/credentials
+chmod 600 ~/.config/eia/credentials ~/.config/netl-edx/credentials \
+         ~/.config/fred/credentials ~/.config/openei/credentials
+
+# Optional keys (higher rate limits)
+mkdir -p ~/.config/epa ~/.config/comtrade
+chmod 700 ~/.config/epa ~/.config/comtrade
 echo "api_key=YOUR_EPA_KEY" > ~/.config/epa/credentials
-chmod 600 ~/.config/eia/credentials ~/.config/netl-edx/credentials ~/.config/epa/credentials
+echo "api_key=YOUR_COMTRADE_KEY" > ~/.config/comtrade/credentials
+chmod 600 ~/.config/epa/credentials ~/.config/comtrade/credentials
 ```
 
 Each skill resolves credentials in this order:
@@ -45,7 +58,7 @@ Each skill resolves credentials in this order:
 
 ## 1. EIA Open Data API
 
-**Skill:** `eia-data`
+**Skill:** `eia-data`, `opec-data`
 **Cost:** Free, no limits on non-commercial use
 
 ### Get the key
@@ -69,6 +82,9 @@ chmod 600 ~/.config/eia/credentials
 ```bash
 export EIA_API_KEY="YOUR_EIA_KEY"
 ```
+
+**Note:** The `opec-data` skill also uses this key since it sources
+OPEC production data through the EIA STEO API.
 
 ---
 
@@ -115,10 +131,79 @@ The `netl-edx` skill uses `EDX-API-Key` by default.
 
 ---
 
-## 3. EPA api.data.gov
+## 3. FRED (Federal Reserve Economic Data)
 
-**Skill:** `epa-enviro`
+**Skill:** `fred-prices`
+**Cost:** Free, 120 requests per minute
+
+### Get the key
+
+1. Go to <https://fred.stlouisfed.org/docs/api/api_key.html>
+2. Click **Request API Key** (you will need to create a FRED account first)
+3. Provide your name, email, organization, and reason (use "academic research")
+4. The key is displayed on screen immediately
+
+### Store the key
+
+```bash
+mkdir -p ~/.config/fred
+chmod 700 ~/.config/fred
+echo "api_key=YOUR_FRED_KEY" > ~/.config/fred/credentials
+chmod 600 ~/.config/fred/credentials
+```
+
+**Environment variable (alternative):** `FRED_API_KEY`
+
+```bash
+export FRED_API_KEY="YOUR_FRED_KEY"
+```
+
+**Key FRED series for PNGE research:**
+
+| Series ID | Description |
+|-----------|-------------|
+| `DCOILWTICO` | WTI Crude Oil Price (daily) |
+| `DCOILBRENTEU` | Brent Crude Oil Price (daily) |
+| `DHHNGSP` | Henry Hub Natural Gas Spot Price (daily) |
+| `PNGASEUUSDM` | Natural Gas Price, EU (monthly) |
+| `GASREGW` | US Regular Gasoline Price (weekly) |
+| `PCU211111211111` | PPI Crude Petroleum (monthly) |
+
+---
+
+## 4. OpenEI (DOE Geothermal Data Repository)
+
+**Skill:** `doe-geothermal`
+**Cost:** Free
+
+### Get the key
+
+1. Go to <https://openei.org/services/api/signup/>
+2. Create an OpenEI account (or log in with an existing one)
+3. Request an API key -- it is displayed on screen immediately
+
+### Store the key
+
+```bash
+mkdir -p ~/.config/openei
+chmod 700 ~/.config/openei
+echo "api_key=YOUR_OPENEI_KEY" > ~/.config/openei/credentials
+chmod 600 ~/.config/openei/credentials
+```
+
+**Environment variable (alternative):** `OPENEI_API_KEY`
+
+```bash
+export OPENEI_API_KEY="YOUR_OPENEI_KEY"
+```
+
+---
+
+## 5. EPA api.data.gov (optional)
+
+**Skills:** `epa-enviro`, `epa-ghg`
 **Cost:** Free, rate limited to 1000 requests/hour by default
+**Required:** No -- both skills work without a key as of early 2026
 
 ### Get the key
 
@@ -142,26 +227,65 @@ export EPA_API_KEY="YOUR_EPA_KEY"
 ```
 
 **Note:** The same api.data.gov key works for all EPA APIs routed through
-that gateway. However, testing shows that Envirofacts (`enviro.epa.gov`)
+that gateway. Testing shows that Envirofacts (`data.epa.gov/efservice`)
 and ECHO (`echodata.epa.gov`) both work without a key as of early 2026.
 The skill will still attempt to send the key if available, but queries
-should succeed either way.
+should succeed either way. Having a key raises the rate limit.
+
+---
+
+## 6. UN Comtrade (optional)
+
+**Skill:** `comtrade-minerals`
+**Cost:** Free, 500 requests/day without key
+**Required:** No -- the public preview API works without a key
+
+### Get the key
+
+1. Go to <https://comtradeapi.un.org/>
+2. Click **Subscribe** to create a free account
+3. After account creation, find your subscription key in your profile
+
+### Store the key
+
+```bash
+mkdir -p ~/.config/comtrade
+chmod 700 ~/.config/comtrade
+echo "api_key=YOUR_COMTRADE_KEY" > ~/.config/comtrade/credentials
+chmod 600 ~/.config/comtrade/credentials
+```
+
+**Environment variable (alternative):** `COMTRADE_API_KEY`
+
+```bash
+export COMTRADE_API_KEY="YOUR_COMTRADE_KEY"
+```
+
+**Note:** Without a key, the public preview endpoint works with a limit of
+500 requests per day, which is sufficient for research queries.
 
 ---
 
 ## Services With No Key Required
 
-Seven of the ten skills access public data with no authentication.
+Fourteen of the twenty data skills access public data with no authentication.
 
 | Service | Skill Name | Access Method | Notes |
 |---------|-----------|---------------|-------|
-| USGS Produced Waters DB | `usgs-produced-waters` | ScienceBase public download | CSV from ScienceBase item `65b6d616d34e46cd33b3690e` |
+| USGS Produced Waters DB | `usgs-produced-waters` | ScienceBase public download | CSV from ScienceBase item `64fa1e71d34ed30c2054ea11` |
 | USGS Mineral Commodities | `usgs-minerals` | data.usgs.gov / ScienceBase | CSV/Excel per commodity per year |
-| WVGES Well Data | `wvges-wells` | ArcGIS REST public MapServer | 145,000+ wells, no auth |
+| WVGES Well Data | `wvges-wells` | ArcGIS REST public MapServer | 145,000+ wells via WVDEP, no auth |
 | BOEM Offshore Data | `boem-offshore` | data.boem.gov public downloads | Bulk delimited text + ArcGIS REST |
 | FracFocus | `fracfocus` | Public API + bulk CSV download | 200k+ disclosures, no auth |
-| USGS Publications | `usgs-pubs` | pubs.er.usgs.gov REST API | Covers all USGS report series |
+| USGS Publications | `usgs-pubs` | pubs.usgs.gov REST API | Covers all USGS report series |
 | DOE OSTI | `doe-osti` | osti.gov REST API | Public DOE-funded research records |
+| USGS Earthquakes | `usgs-earthquakes` | earthquake.usgs.gov FDSN API | ComCat catalog, GeoJSON output |
+| USGS Water Data | `usgs-waterdata` | waterservices.usgs.gov + WQP | NWIS instantaneous/daily + Water Quality Portal |
+| EPA GHG Reporting | `epa-ghg` | data.epa.gov/efservice | GHGRP Subpart W (petroleum & NG) |
+| World Bank Energy | `worldbank-energy` | api.worldbank.org/v2 | 200+ energy indicators by country |
+| CrossRef DOI | `crossref-doi` | api.crossref.org | DOI resolution + citation metadata |
+| IEA Open Data | `iea-open` | api.iea.org (free subset) | EV tracker, energy prices, GHG, NZE, CCUS, SDG7 |
+| EPA Envirofacts | `epa-enviro` | data.epa.gov + ECHO | Works without key (key optional for rate limits) |
 
 No setup is needed for these skills. They work immediately after plugin
 installation.
@@ -170,8 +294,7 @@ installation.
 
 ## Verification
 
-Run these commands to confirm each key is working. All three should
-produce valid JSON output.
+Run these commands to confirm each required key is working.
 
 ### Test EIA key
 
@@ -193,7 +316,25 @@ curl -s "https://edx.netl.doe.gov/api/3/action/package_search?q=test&rows=1" \
 
 Expected: `true`
 
-### Test EPA key (may work without key)
+### Test FRED key
+
+```bash
+curl -s "https://api.stlouisfed.org/fred/series?series_id=DCOILWTICO&api_key=$(grep '^api_key=' ~/.config/fred/credentials | cut -d= -f2)&file_type=json" \
+  | jq '.seriess[0].title'
+```
+
+Expected: `"Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma"`
+
+### Test OpenEI key
+
+```bash
+curl -s "https://openei.org/w/api.php?action=ask&query=[[Category:Geothermal%20Resource%20Area]]&format=json&api_key=$(grep '^api_key=' ~/.config/openei/credentials | cut -d= -f2)" \
+  | jq '.query.meta.count'
+```
+
+Expected: a number (count of geothermal resource area pages).
+
+### Test EPA key (optional, may work without key)
 
 ```bash
 curl -s "https://data.epa.gov/efservice/TRI_FACILITY/STATE_ABBR/WV/rows/0:1/JSON" \
@@ -240,7 +381,22 @@ chmod 600 ~/.config/eia/credentials
 curl -s "https://api.eia.gov/v2/?api_key=PASTE_KEY_HERE" | jq .response
 ```
 
+**FRED returns `"error_code": 1`**
+- FRED error code 1 means "Bad request: invalid API key". Verify the key
+  value in your credentials file matches what FRED issued.
+- Check that the file has no leading/trailing whitespace around the key.
+
+**OpenEI returns empty results**
+- The Semantic MediaWiki API sometimes returns empty for malformed queries.
+  Test with a simple category query first (see verification above).
+- Ensure your key is valid by checking your OpenEI profile.
+
 **EPA rate limit exceeded (HTTP 429)**
 - The default limit is 1000 requests per hour. Wait and retry, or request
   a higher rate limit at <https://api.data.gov/signup/> by contacting
   their support.
+
+**Comtrade returns HTTP 403**
+- Without a key, you are limited to 500 requests per day on the public
+  preview endpoint. If you hit the limit, wait 24 hours or register for
+  a free key.

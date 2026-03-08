@@ -1,8 +1,8 @@
 # API Token Acquisition Guide
 
 This guide covers every credential needed by the claude-pnge plugin.
-Four of the twenty data skills require API keys. Two more accept optional
-keys for higher rate limits. The remaining fourteen use public endpoints
+Four of the twenty-eight data skills require API keys. Two more accept optional
+keys for higher rate limits. The remaining twenty-two use public endpoints
 with no authentication.
 
 ---
@@ -268,23 +268,31 @@ export COMTRADE_API_KEY="YOUR_COMTRADE_KEY"
 
 ## Services With No Key Required
 
-Fourteen of the twenty data skills access public data with no authentication.
+Twenty-two of the twenty-eight data skills access public data with no authentication.
 
 | Service | Skill Name | Access Method | Notes |
 |---------|-----------|---------------|-------|
-| USGS Produced Waters DB | `usgs-produced-waters` | ScienceBase public download | CSV from ScienceBase item `64fa1e71d34ed30c2054ea11` |
+| USGS Produced Waters DB | `usgs-produced-waters` | ScienceBase public download | CSV from ScienceBase item `65b6d616d34e46cd33b3690e` |
 | USGS Mineral Commodities | `usgs-minerals` | data.usgs.gov / ScienceBase | CSV/Excel per commodity per year |
-| WVGES Well Data | `wvges-wells` | ArcGIS REST public MapServer | 145,000+ wells via WVDEP, no auth |
+| WVGES Well Data | `wvges-wells` | ArcGIS REST public MapServer | 153,000+ wells via WVDEP, no auth |
+| PA DEP Unconventional Wells | `padep-wells` | Socrata open data API | Marcellus/Utica permits, production, compliance |
+| Ohio DNR Wells | `odnr-wells` | ODNR public data portal | Utica/Point Pleasant well data |
 | BOEM Offshore Data | `boem-offshore` | data.boem.gov public downloads | Bulk delimited text + ArcGIS REST |
 | FracFocus | `fracfocus` | Public API + bulk CSV download | 200k+ disclosures, no auth |
+| EPA GHG Facility Emissions | `epa-ghg` | data.epa.gov/efservice | GHGRP facility-level emissions, all subparts |
+| EPA GHGRP Subpart W | `epa-ghgrp-subpartw` | data.epa.gov/efservice | Subpart W oilfield methane only |
 | USGS Publications | `usgs-pubs` | pubs.usgs.gov REST API | Covers all USGS report series |
 | DOE OSTI | `doe-osti` | osti.gov REST API | Public DOE-funded research records |
+| KGS Well Logs | `kggs-well-logs` | KGS public LAS repository | LAS 2.0 wireline logs, Kansas focus |
+| Macrostrat Stratigraphy | `macrostrat` | macrostrat.org REST API | Formation stratigraphy, lithology, age |
+| OpenAlex Literature | `openalex` | api.openalex.org | 250M+ open-access research works |
 | USGS Earthquakes | `usgs-earthquakes` | earthquake.usgs.gov FDSN API | ComCat catalog, GeoJSON output |
 | USGS Water Data | `usgs-waterdata` | waterservices.usgs.gov + WQP | NWIS instantaneous/daily + Water Quality Portal |
-| EPA GHG Reporting | `epa-ghg` | data.epa.gov/efservice | GHGRP Subpart W (petroleum & NG) |
 | World Bank Energy | `worldbank-energy` | api.worldbank.org/v2 | 200+ energy indicators by country |
 | CrossRef DOI | `crossref-doi` | api.crossref.org | DOI resolution + citation metadata |
 | IEA Open Data | `iea-open` | api.iea.org (free subset) | EV tracker, energy prices, GHG, NZE, CCUS, SDG7 |
+| WRI Aqueduct | `wri-aqueduct` | api.wri.org/aqueduct | Water risk scores by basin and facility |
+| NETL Carbon Storage | `netl-carbon-storage` | NATCARB Atlas v5 | CCS capacity estimates, storage projects |
 | EPA Envirofacts | `epa-enviro` | data.epa.gov + ECHO | Works without key (key optional for rate limits) |
 
 No setup is needed for these skills. They work immediately after plugin

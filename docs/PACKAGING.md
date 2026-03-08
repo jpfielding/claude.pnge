@@ -25,53 +25,94 @@ Validation rules enforced at packaging time:
 
 ---
 
-## Recommended Repository Structure
+## Actual Repository Structure (v0.4.0)
 
 ```
-pnge-research-skills/
+claude.pnge/
 ├── README.md                    # Overview, install instructions, WVU-specific notes
-├── LICENSE                      # Apache 2.0 or MIT
-├── Makefile                     # package-all, validate-all, test targets
+├── LICENSE                      # Apache-2.0
 ├── .env.example                 # Template for API keys (never commit real keys)
+├── .gitignore
 │
-├── skills/
-│   ├── eia-data/                # Phase 0 — already exists
-│   │   ├── SKILL.md
-│   │   └── references/
-│   ├── usgs-produced-waters/    # Phase 1
-│   │   ├── SKILL.md
-│   │   └── references/
-│   ├── usgs-minerals/           # Phase 1
-│   ├── netl-edx/                # Phase 1
-│   ├── wvges-wells/             # Phase 2
-│   ├── boem-offshore/           # Phase 2
-│   ├── fracfocus/               # Phase 2
-│   ├── epa-enviro/              # Phase 2
-│   ├── usgs-pubs/               # Phase 3
-│   ├── doe-osti/                # Phase 3
-│   ├── li-mg-prospector/        # Phase 4 (agent)
-│   └── pnge-research-assistant/ # Phase 4 (agent)
+├── .claude-plugin/
+│   └── plugin.json              # Plugin manifest (name: pnge, v0.4.0)
 │
-├── dist/                        # Built .skill files (gitignored)
-│   ├── eia-data.skill
-│   ├── usgs-produced-waters.skill
-│   └── ...
+├── skills/                      # 50 skills total
+│   │
+│   ├── -- Data Access (28) --
+│   ├── eia-data/                # EIA Open Data API v2
+│   ├── usgs-produced-waters/    # USGS Produced Waters Geochemical DB v3.0
+│   ├── usgs-minerals/           # USGS Mineral Commodity Summaries
+│   ├── netl-edx/                # DOE NETL Energy Data eXchange (CKAN)
+│   ├── netl-carbon-storage/     # NATCARB Atlas v5 CCS capacity
+│   ├── doe-geothermal/          # DOE GDR / OpenEI Geothermal
+│   ├── doe-osti/                # DOE OSTI Technical Reports
+│   ├── wvges-wells/             # WV Geological & Economic Survey
+│   ├── padep-wells/             # PA DEP Unconventional Well Registry (Socrata)
+│   ├── odnr-wells/              # Ohio DNR Oil and Gas Wells (Utica/Point Pleasant)
+│   ├── boem-offshore/           # BOEM Federal Offshore Data
+│   ├── fracfocus/               # FracFocus Chemical Disclosure
+│   ├── epa-enviro/              # EPA Envirofacts & ECHO
+│   ├── epa-ghg/                 # EPA GHGRP Facility Emissions
+│   ├── epa-ghgrp-subpartw/      # Subpart W Oilfield Methane
+│   ├── usgs-pubs/               # USGS Publications Warehouse
+│   ├── kggs-well-logs/          # KGS Wireline Log Repository (LAS 2.0)
+│   ├── macrostrat/              # Macrostrat Formation Stratigraphy
+│   ├── openalex/                # OpenAlex Open-Access Literature
+│   ├── usgs-earthquakes/        # USGS ComCat Earthquake Catalog
+│   ├── usgs-waterdata/          # USGS NWIS + Water Quality Portal
+│   ├── fred-prices/             # Federal Reserve FRED
+│   ├── worldbank-energy/        # World Bank Open Data
+│   ├── comtrade-minerals/       # UN Comtrade Trade Data
+│   ├── crossref-doi/            # CrossRef DOI/Citation API
+│   ├── opec-data/               # OPEC Production via EIA STEO
+│   ├── iea-open/                # IEA Free Datasets
+│   └── wri-aqueduct/            # WRI Aqueduct Water Risk
 │
-├── shared/                      # Common code/config shared across skills
-│   ├── credential_resolver.go   # Shared credential pattern
-│   ├── credential_resolver.sh
-│   └── api_patterns.md          # Common REST/JSON patterns
+│   ├── -- Computational (22) --
+│   ├── pnge-mechanics/          # Statics, Lamé cylinders, Mohr's circle
+│   ├── frac-design/             # PKN/KGD fracture models, proppant transport
+│   ├── wellbore-stability/      # Kirsch equations, mud weight window
+│   ├── petrophysics/            # Log interpretation, Archie, brittleness
+│   ├── artificial-lift/         # Rod pump, ESP, gas lift, plunger lift
+│   ├── flow-assurance/          # Hydrates, CO2 corrosion, H2S, wax/scale
+│   ├── tubing-design/           # Lubinski buckling, seal assembly
+│   ├── perforation-design/      # Karakas-Tariq skin, limited entry
+│   ├── surface-facilities/      # Separator, TEG dehy, compression
+│   ├── rta-production/          # Arps DCA, EUR, Blasingame FMB
+│   ├── well-test-analysis/      # Horner, skin, Bourdet derivative
+│   ├── matrix-acidizing/        # HCl/HF design, Hawkins skin, Damkohler
+│   ├── mass-energy-balance/     # Material/energy balance, flash calc
+│   ├── nist-webbook/            # NIST thermodynamic properties
+│   ├── tnav/                    # Reservoir simulation emulation
+│   ├── pnge-visual-explainer/   # HTML visualization generator
+│   ├── fluid-mechanics/         # Reynolds, Darcy-Weisbach, Bernoulli (ChBE 311)
+│   ├── reaction-engineering/    # CSTR/PFR/batch, Arrhenius (ChBE 321)
+│   ├── thermo-eos/              # PR/SRK EOS, fugacity, VLE (ChBE 231)
+│   ├── physics-mechanics/       # Kinematics, Newton, SHM (PHYS 111)
+│   ├── physics-em/              # Circuits, E&M, induction (PHYS 112)
+│   └── diff-equations/          # ODEs, Laplace, RK4 (MATH 261)
 │
-├── evals/                       # Test cases for all skills
-│   ├── usgs-produced-waters/
-│   │   └── evals.json
-│   └── ...
+├── agents/                      # 6 research and engineering agents
+│   ├── li-mg-prospector.md      # Li/Mg recovery assessment
+│   ├── pnge-tutor.md            # Socratic PNGE/ChBE tutor
+│   ├── pnge-pw-treatment.md     # Produced water treatment assessment
+│   ├── api-well-standards.md    # API casing/cementing standards
+│   ├── pnge-geopolitics.md      # Energy geopolitics analysis
+│   └── pnge-gis-mapper.md       # Interactive map generation
+│
+├── commands/                    # 6 slash commands
+│   ├── prospect.md
+│   ├── formation-profile.md
+│   ├── literature-review.md
+│   ├── well-economics.md
+│   ├── completions-design.md
+│   └── sustainability-profile.md
 │
 └── docs/
-    ├── SETUP.md                 # First-time setup (keys, accounts)
-    ├── CONTRIBUTING.md          # How to add a new skill
-    ├── DATA_SOURCES.md          # ← the plan doc we already built
-    └── WVU_ACCESS.md            # WVU-specific: library proxy, Enverus, IHS
+    ├── TOKENS.md                # API key acquisition guide (this session)
+    ├── DATA_SOURCES.md          # Data sources reference (all 50 skills)
+    └── PACKAGING.md             # Distribution and packaging guide
 ```
 
 ---
@@ -209,21 +250,46 @@ clean:
 
 ---
 
-## Recommended Approach for This Project
+## Installing the Plugin
 
-Given the context (WVU undergrad, research lab, Li/Mg focus):
+```bash
+# Install directly from GitHub into Claude Code
+claude plugin install pnge@jpfielding/claude.pnge
 
-1. **Start with a GitHub repo** — it's the most flexible and version-controlled
-2. **Build `.skill` files via Makefile** for easy Claude.ai upload
-3. **Use `shared/` for DRY credential management** across all skills
-4. **Write a SETUP.md** that walks a new WVU student through:
-   - Cloning the repo
-   - Getting free API keys (EIA, NETL EDX, EPA)
-   - Checking WVU library access (Enverus, IHS, OnePetro)
-   - Installing skills to their preferred surface
-5. **Consider a Claude Code Plugin** later if the skills prove useful
-   beyond your immediate lab group
+# Or clone and point Claude Code at the local directory
+git clone https://github.com/jpfielding/claude.pnge.git
+claude --plugin-dir ./claude.pnge
 
-The key insight: **build each skill as a standalone directory that works
-independently**, but package the collection as a cohesive repo with shared
-infrastructure. A consumer can grab one skill or the whole set.
+# Validate all skill frontmatter
+claude plugin validate .
+```
+
+## Packaging Individual Skills for Claude.ai
+
+Each skill directory can be zipped into a `.skill` file and uploaded at
+Settings > Customize > Skills in Claude.ai:
+
+```bash
+# Package one skill
+cd claude.pnge
+zip -r dist/eia-data.skill skills/eia-data/
+
+# Package all skills
+mkdir -p dist
+for d in skills/*/; do
+  name=$(basename "$d")
+  zip -r "dist/${name}.skill" "$d"
+done
+```
+
+## Adding a New Skill
+
+1. Create `skills/<name>/SKILL.md` with valid YAML frontmatter:
+   - `name`: kebab-case, ≤64 chars
+   - `description`: ≤1024 chars, no `<` or `>`, include trigger phrases
+2. Add reference files under `skills/<name>/references/` for anything
+   over ~30 lines of detail (schema docs, Go client examples, API tables)
+3. Follow the credential resolution pattern in `docs/TOKENS.md`
+4. Run `claude plugin validate .` to check frontmatter
+5. Update `README.md` skill count and tables
+6. Update `docs/DATA_SOURCES.md` with the new skill entry

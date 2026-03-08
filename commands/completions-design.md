@@ -1,6 +1,6 @@
 ---
 name: completions-design
-description: Assist with hydraulic fracture completions design for a target formation — stage spacing, fluid selection, proppant, and chemical context — using FracFocus disclosures, formation data, and engineering calculations. Trigger: /completions-design Marcellus horizontal Monongalia County WV
+description: Assist with hydraulic fracture completions design for a target formation — stage spacing, fluid selection, proppant, diagnostics, and chemistry context — using FracFocus disclosures, formation data, and engineering calculations. Trigger: /completions-design Marcellus horizontal Monongalia County WV
 ---
 
 Assist with completions design for: $ARGUMENTS
@@ -13,6 +13,8 @@ Use the following skills to gather data and context:
 2. **pnge:wvges-wells** — well depths, formations, and operators for offset wells
 3. **pnge:usgs-produced-waters** — formation water chemistry (TDS, hardness, scaling ions Ba/Sr/Ca) that affects fluid selection
 4. **pnge:frac-design** — engineering calculations: net pressure, fracture geometry estimates, proppant scheduling
+5. **pnge:completion-diagnostics** — DFIT / minifrac / ISIP / closure-pressure context and treatment-pressure interpretation
+6. **pnge:production-chemistry** — cleanup, additive compatibility, and DLE-interference screening
 
 Structure the output as:
 
@@ -33,8 +35,19 @@ Using the pnge:frac-design skill:
 - Recommended stage spacing range based on formation brittleness
 - Proppant concentration guidance
 
+### Diagnostic Context
+Using `pnge:completion-diagnostics`:
+- If available, summarize offset closure pressure / ISIP / step-rate evidence
+- Note whether limited-entry assumptions are realistic
+- Identify what stage data would materially improve design confidence
+
 ### Chemical Considerations for DLE
 If produced water mineral recovery is a goal, note which completion chemicals may interfere with DLE sorbents or membranes.
+
+### Chemistry Risks
+Using `pnge:production-chemistry`:
+- Flag likely emulsion, iron, scale, residual polymer, surfactant, or biocide concerns
+- Note compatibility issues for reuse, treatment, or produced-water valorization
 
 ### Data Gaps
 What site-specific data (ISIP, closure pressure, core data) would improve this design.

@@ -79,9 +79,18 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 | `pnge:rta-production` | Arps decline curves, EUR estimation, flowing material balance, production forecasting | PNGE 321, PNGE 411 |
 | `pnge:well-test-analysis` | Ei solution, Horner plot, skin factor, Bourdet derivative, wellbore storage | PNGE 321, PNGE 361 |
 | `pnge:matrix-acidizing` | HCl carbonate design, HF sandstone design, Hawkins skin, wormhole Damkohler | PNGE 341, PNGE 361 |
+| `pnge:completion-diagnostics` | DFIT/minifrac closure, ISIP, step-rate, cluster efficiency, pressure diagnostics | PNGE 341, PNGE 361 |
+| `pnge:nodal-analysis-multiphase` | IPR/VLP matching, tubing/choke sensitivity, multiphase nodal optimization | PNGE 361, PNGE 411 |
+| `pnge:production-chemistry` | Emulsions, squeeze design, cleanup, incompatibility, corrosion program surveillance | PNGE 341, PNGE 361, ChBE 411 |
+| `pnge:well-integrity-barriers` | SCP triage, MIT interpretation, barrier review, leak-path screening | PNGE 351, PNGE 361 |
+| `pnge:petroleum-pvt` | Bubble point, Rs, Bo, Bg, separator shrinkage, condensate dropout screening | PNGE 321, PNGE 361 |
 | `pnge:fluid-mechanics` | Reynolds number, Darcy-Weisbach, Colebrook-White, Bernoulli, pump power | ChBE 311, MAE 244 |
 | `pnge:reaction-engineering` | CSTR/PFR/batch design, Arrhenius, Damkohler, Levenspiel plot, adiabatic T rise | ChBE 321 |
 | `pnge:thermo-eos` | Peng-Robinson/SRK EOS, Z-factor, fugacity, VLE, Rachford-Rice flash | ChBE 231, ChBE 311 |
+| `pnge:heat-transfer` | Conduction, convection, overall U, LMTD, NTU, transient heating and cooling | ChBE heat transfer / transport |
+| `pnge:mass-transfer-separations` | Diffusion, mass-transfer coefficients, HTU/NTU, absorption, stripping, distillation screening | ChBE separations |
+| `pnge:aqueous-chemistry-electrochem` | pH, buffers, alkalinity, hardness, Nernst, Faraday, water chemistry | ChBE / water treatment |
+| `pnge:materials-fracture-mechanics` | Fracture toughness, stress intensity, Paris law, fatigue, brittle-vs-ductile failure | MAE materials / integrity |
 | `pnge:physics-mechanics` | Kinematics, Newton laws, energy, momentum, rotation, SHM | PHYS 111, MAE 201 |
 | `pnge:physics-em` | Coulomb law, circuits, RC/RL, Faraday, magnetic force, LC oscillation | PHYS 112 |
 | `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, Euler, RK4 | MATH 261 |
@@ -100,7 +109,8 @@ Skills: `pnge:eia-data` (production context), `pnge:wvges-wells` (WV wells),
 Topics: Darcy's law, material balance, pressure transient analysis, decline
 curves, drive mechanisms, EOR basics
 Skills: `pnge:tnav-reservoir-sim` Modules 1, 2, 3, 4; `pnge:usgs-produced-waters`
-(formation fluid properties); `pnge:wvges-wells` (offset well depths/pressures)
+(formation fluid properties); `pnge:wvges-wells` (offset well depths/pressures);
+`pnge:petroleum-pvt` (black-oil properties and fluid classification)
 
 ### PNGE 331 — Formation Evaluation
 Topics: Well logging (resistivity, gamma ray, density, neutron), Archie
@@ -113,21 +123,28 @@ Topics: Hydraulic fracturing design, proppant selection, completion optimization
 produced water management, stimulation economics
 Skills: `pnge:frac-design`, `pnge:wellbore-stability` (fracture orientation),
 `pnge:usgs-produced-waters` (brine chemistry), `pnge:wri-aqueduct` (water risk),
-`pnge:fracfocus` (chemical disclosures)
+`pnge:fracfocus` (chemical disclosures), `pnge:completion-diagnostics`
+(closure pressure, ISIP, step-rate), `pnge:production-chemistry`
+(fluid compatibility, cleanup, chemical interference)
 
 ### PNGE 351 — Drilling Engineering
 Topics: Bit selection, drilling hydraulics, well control, casing design, MWD/LWD,
 torque and drag, wellbore stability
 Skills: `pnge:pnge-mechanics` (casing design, hook load), `pnge:wellbore-stability`
 (mud weight window, formation fracture gradient), `pnge:wvges-wells` (offset
-well depths for casing program design)
+well depths for casing program design), `pnge:well-integrity-barriers`
+(barrier review, annulus pressure, leak-path triage)
 
 ### PNGE 361 — Production Engineering
 Topics: Inflow performance, tubing design, artificial lift, surface equipment,
 nodal analysis, gas lift, ESP, rod pump
 Skills: `pnge:tnav-reservoir-sim` Module 4 (IPR, VFP, nodal analysis);
 `pnge:pnge-mechanics` (tubing stress); `pnge:eia-data` (gas prices for
-production optimization); `pnge:usgs-produced-waters` (fluid properties)
+production optimization); `pnge:usgs-produced-waters` (fluid properties);
+`pnge:nodal-analysis-multiphase` (production system optimization);
+`pnge:petroleum-pvt` (black-oil inputs); `pnge:well-integrity-barriers`
+(SCP and barrier troubleshooting); `pnge:production-chemistry`
+(emulsions, corrosion, cleanup)
 
 ### PNGE 411 — Petroleum Economics
 Topics: Time value of money, NPV, IRR, payout, risk analysis, decision trees,
@@ -147,11 +164,35 @@ coefficients, Gibbs energy, phase diagrams
 Skills: `pnge:nist-webbook` (equation of state data), `pnge:mass-energy-balance`
 Module 5 (flash calculation, Raoult's law)
 
+### ChBE Heat Transfer / Transport
+Topics: Conduction, convection, thermal resistance, overall heat-transfer
+coefficient, heat exchangers, transient cooling and heating
+Skills: `pnge:heat-transfer` (all modules); `pnge:fluid-mechanics`
+(flow-side transport context)
+
+### ChBE Separations / Mass Transfer
+Topics: Molecular diffusion, film theory, absorption, stripping, packed towers,
+HTU and NTU, distillation stage estimates, extraction
+Skills: `pnge:mass-transfer-separations` (all modules); `pnge:thermo-eos`
+(equilibrium support)
+
+### Aqueous Chemistry / Electrochemistry
+Topics: pH and buffers, alkalinity and hardness, ionic strength, redox,
+electrochemical cells, Faraday law, corrosion-cell fundamentals
+Skills: `pnge:aqueous-chemistry-electrochem` (all modules);
+`pnge:production-chemistry` (applied oilfield chemistry context)
+
 ### MAE 201 — Statics / MAE 243 — Mechanics of Materials
 Topics: Free body diagrams, stress-strain, bending, Mohr's circle, thin/thick
 walled vessels
 Skills: `pnge:pnge-mechanics` (thick-walled cylinder, Mohr's circle);
 `pnge:wellbore-stability` (in-situ stress)
+
+### Materials / Fracture Mechanics
+Topics: Elastic versus plastic response, fracture toughness, stress intensity,
+critical flaw size, fatigue crack growth, brittle versus ductile failure
+Skills: `pnge:materials-fracture-mechanics` (KIC, Paris law, fatigue);
+`pnge:well-integrity-barriers` (applied failure triage)
 
 ### PNGE 321 Advanced Topics — Rate Transient Analysis and Well Testing
 Topics: Decline curve analysis (Arps DCA), EUR estimation, flowing material

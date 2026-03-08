@@ -4,7 +4,7 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**50 skills** · **6 agents** · **6 commands**
+**59 skills** · **6 agents** · **6 commands**
 
 ### Data Access Skills (28)
 
@@ -39,9 +39,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | 27 | `pnge:iea-open` | IEA Free Datasets | No |
 | 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
 
-### Computational & Simulation Skills (22)
+### Computational & Simulation Skills (31)
 
-#### Production & Completions Engineering (12)
+#### Production & Completions Engineering (17)
 | Skill | Purpose |
 |-------|---------|
 | `pnge:pnge-mechanics` | Statics, axial/beam stress, Lamé thick-wall cylinders, Mohr's circle |
@@ -56,6 +56,11 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `pnge:rta-production` | Arps decline curves, EUR estimation, flowing material balance (Blasingame) |
 | `pnge:well-test-analysis` | Horner plot, skin factor, Bourdet derivative, wellbore storage, Ei solution |
 | `pnge:matrix-acidizing` | HCl carbonate design, HF/HCl sandstone design, Hawkins skin, Damkohler |
+| `pnge:completion-diagnostics` | DFIT/minifrac, ISIP/closure picking, step-rate, cluster efficiency, pressure diagnostics |
+| `pnge:nodal-analysis-multiphase` | IPR/VLP matching, tubing/choke sensitivity, compression impact, multiphase nodal analysis |
+| `pnge:production-chemistry` | Emulsions, incompatibility, squeeze design, cleanup, corrosion program surveillance |
+| `pnge:well-integrity-barriers` | SCP/annulus pressure triage, MIT interpretation, leak-path screening, barrier review |
+| `pnge:petroleum-pvt` | Bubble point, Rs, Bo, Bg, separator shrinkage, condensate dropout screening |
 
 #### Simulation & Reference Tools (4)
 | Skill | Purpose |
@@ -65,12 +70,16 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `pnge:tnav` | tNavigator-style reservoir simulation emulation (black oil, PVT, decline) |
 | `pnge:pnge-visual-explainer` | Generate self-contained HTML visualizations of PNGE concepts and data |
 
-#### Engineering Science Tutoring (6)
+#### Engineering Science Tutoring (10)
 | Skill | Purpose | WVU Course |
 |-------|---------|-----------|
 | `pnge:fluid-mechanics` | Reynolds number, Darcy-Weisbach, Bernoulli, Colebrook-White, pump sizing | ChBE 311 |
 | `pnge:reaction-engineering` | CSTR/PFR/batch design, Arrhenius, Levenspiel plot, adiabatic T rise | ChBE 321 |
 | `pnge:thermo-eos` | Peng-Robinson/SRK EOS, Z-factor, fugacity, VLE, Rachford-Rice flash | ChBE 231 |
+| `pnge:heat-transfer` | Conduction, convection, overall U, LMTD, NTU, transient heating/cooling | ChBE transport / heat transfer |
+| `pnge:mass-transfer-separations` | Diffusion, mass-transfer coefficients, HTU/NTU, absorption, distillation screening | ChBE separations |
+| `pnge:aqueous-chemistry-electrochem` | pH, buffers, alkalinity, hardness, Nernst, Faraday, water chemistry | ChBE / water treatment |
+| `pnge:materials-fracture-mechanics` | Stress intensity, fracture toughness, fatigue, Paris law, failure screening | MAE materials / integrity |
 | `pnge:physics-mechanics` | Kinematics, Newton laws, energy, momentum, rotation, SHM | PHYS 111 |
 | `pnge:physics-em` | Coulomb law, circuits, RC/RL/LC, Faraday induction, magnetic force | PHYS 112 |
 | `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, RK4 | MATH 261 |
@@ -183,6 +192,9 @@ Check with your PNGE department for access to:
 # --- Completions & Well Engineering ---
 "What casing grade should I use for a 9,000 ft Marcellus well?"
 "Design a frac job for a Utica well with 3,000 ft lateral"
+"Estimate closure pressure and net pressure from this DFIT falloff"
+"Run a nodal analysis for a 7,500 ft gas well with 900 psi WHP"
+"Diagnose sustained casing pressure on the A-annulus"
 "What is the mud weight window for a Marcellus vertical well at 7,500 ft?"
 "Calculate burst pressure for 4.5 in P-110 casing at 8,000 psi"
 
@@ -190,12 +202,16 @@ Check with your PNGE department for access to:
 "Evaluate treatment options for Marcellus brine with 180,000 mg/L TDS"
 "Is DLE economically viable for a Marcellus water disposal operation?"
 "What are the scale risks for mixing Marcellus PW with sulfate-rich water?"
+"Will residual frac chemicals interfere with DLE sorbents or membranes?"
 
 # --- Engineering Calculations ---
 "Calculate the stress on a rod with 50 kips axial load and 2 in diameter"
 "What is the bending stress at midspan of a 20 ft beam with 10 kip load?"
 "Flash a gas at 1000 psia, 150°F using given component compositions"
 "What are the thermodynamic properties of CO2 at 2000 psia and 120°F?"
+"Estimate bubble point and Bo for a 42 API oil with 650 scf/STB gas"
+"Size a heat exchanger from U, A, and LMTD"
+"Estimate fatigue life from Paris law between two crack sizes"
 
 # --- Data Access ---
 "Search NETL EDX for produced water treatment datasets"
@@ -235,8 +251,8 @@ claude plugin validate .
 ```
 claude-pnge/
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (name: pnge, v0.2.0)
-├── skills/                      # 34 skills total
+│   └── plugin.json              # Plugin manifest (name: pnge, v0.5.0)
+├── skills/                      # 59 skills total
 │   │
 │   ├── -- Data Access (28) --
 │   ├── eia-data/                # EIA Open Data API v2
@@ -268,7 +284,7 @@ claude-pnge/
 │   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
 │   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
 │   │
-│   └── -- Computational (22) --
+│   └── -- Computational (31) --
 │       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
 │       ├── frac-design/         # PKN/KGD fracture models, proppant transport
 │       ├── wellbore-stability/  # Kirsch equations, mud weight window
@@ -281,6 +297,11 @@ claude-pnge/
 │       ├── rta-production/      # Arps DCA, EUR, flowing material balance
 │       ├── well-test-analysis/  # Horner plot, skin, Bourdet derivative
 │       ├── matrix-acidizing/    # HCl/HF design, Hawkins skin, Damkohler
+│       ├── completion-diagnostics/ # DFIT, ISIP, closure, step-rate
+│       ├── nodal-analysis-multiphase/ # IPR/VLP, tubing/choke sensitivity
+│       ├── production-chemistry/ # Emulsions, squeeze jobs, cleanup
+│       ├── well-integrity-barriers/ # SCP, MIT, barrier diagnostics
+│       ├── petroleum-pvt/       # Bubble point, Rs, Bo, Bg, shrinkage
 │       ├── mass-energy-balance/ # Material/energy balance, flash calc
 │       ├── nist-webbook/        # NIST thermodynamic properties
 │       ├── tnav/                # Reservoir simulation emulation
@@ -288,6 +309,10 @@ claude-pnge/
 │       ├── fluid-mechanics/     # Reynolds, Darcy-Weisbach, Bernoulli (ChBE 311)
 │       ├── reaction-engineering/ # CSTR/PFR/batch, Arrhenius (ChBE 321)
 │       ├── thermo-eos/          # PR/SRK EOS, fugacity, VLE (ChBE 231)
+│       ├── heat-transfer/       # Conduction, convection, exchangers
+│       ├── mass-transfer-separations/ # Diffusion, HTU/NTU, distillation
+│       ├── aqueous-chemistry-electrochem/ # pH, alkalinity, Nernst, Faraday
+│       ├── materials-fracture-mechanics/ # KIC, Paris law, fatigue
 │       ├── physics-mechanics/   # Kinematics, Newton, SHM (PHYS 111)
 │       ├── physics-em/          # Circuits, E&M, induction (PHYS 112)
 │       └── diff-equations/      # ODEs, Laplace, RK4 (MATH 261)
@@ -316,8 +341,8 @@ claude-pnge/
 
 ```
                     ┌──────────────────────────────────────────┐
-                    │          claude-pnge Plugin v0.4.0       │
-                    │   50 Skills · 6 Agents · 6 Commands      │
+                    │          claude-pnge Plugin v0.5.0       │
+                    │   59 Skills · 6 Agents · 6 Commands      │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐
@@ -339,7 +364,16 @@ claude-pnge/
                                                          · RTA / Decline Curves
                                                          · Well Test Analysis
                                                          · Matrix Acidizing
+                                                         · Completion Diagnostics
+                                                         · Nodal Analysis
+                                                         · Production Chemistry
+                                                         · Well Integrity
+                                                         · Petroleum PVT
                                                          · Fluid Mechanics
+                                                         · Heat Transfer
+                                                         · Mass Transfer / Separations
+                                                         · Aqueous Chem / Electrochem
+                                                         · Fracture Mechanics
                                                          · Reaction Engineering
                                                          · Thermo EOS / VLE
                                                          · Physics I & II

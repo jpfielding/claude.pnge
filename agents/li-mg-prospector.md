@@ -26,7 +26,11 @@ the target formation and the data available:
 | `pnge:fred-prices` | Real-time Li carbonate and commodity pricing |
 | `pnge:eia-data` | U.S. production volumes, water-cut context |
 | `pnge:wvges-wells` | WV well data (Marcellus, Utica targets) |
+| `pnge:wv-tax-minerals` | WV delinquent mineral parcels near active wells |
 | `pnge:padep-wells` | PA well data (Marcellus, Utica in Pennsylvania) |
+| `pnge:pa-tax-minerals` | PA mineral parcels near active Marcellus/Utica wells |
+| `pnge:odnr-wells` | OH well data (Utica, Point Pleasant targets) |
+| `pnge:oh-tax-minerals` | OH mineral parcels (200-series LUC) near active wells |
 | `pnge:boem-offshore` | Offshore production data (GoM targets) |
 | `pnge:fracfocus` | Frac chemical disclosures for target wells |
 | `pnge:epa-enviro` | UIC permits, NPDES, environmental compliance |

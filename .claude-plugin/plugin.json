@@ -1,7 +1,7 @@
 {
   "name": "pnge",
-  "version": "0.2.0",
-  "description": "Petroleum engineering research data skills for lithium/magnesium recovery, produced water geochemistry, well completions, wellbore stability, geomechanics, carbon storage, and energy data analysis. Built for WVU PNGE undergraduates.",
+  "version": "0.3.0",
+  "description": "Petroleum engineering research data skills for lithium/magnesium recovery, produced water geochemistry, well completions, wellbore stability, petrophysics, artificial lift, flow assurance, surface facilities, and energy data analysis. Built for WVU PNGE undergraduates.",
   "author": {
     "name": "WVU PNGE Research"
   },
@@ -38,6 +38,27 @@
     "sustainability",
     "water-risk",
     "methane-emissions",
-    "open-access"
+    "open-access",
+    "petrophysics",
+    "log-interpretation",
+    "artificial-lift",
+    "esp",
+    "rod-pump",
+    "gas-lift",
+    "flow-assurance",
+    "hydrates",
+    "corrosion",
+    "tubing-design",
+    "buckling",
+    "perforation-design",
+    "limited-entry",
+    "surface-facilities",
+    "separator-design",
+    "glycol-dehydration",
+    "compression",
+    "ohio",
+    "utica",
+    "odnr",
+    "production-engineering"
   ]
 }

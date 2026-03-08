@@ -68,6 +68,12 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 | `pnge:wvges-wells` | WV well data, Marcellus/Utica formation depths and locations | PNGE 321, PNGE 331 |
 | `pnge:wri-aqueduct` | Water risk context for produced water management | PNGE 341, senior design |
 | `pnge:fred-prices` | Commodity prices, interest rates for economic analysis | PNGE 411 |
+| `pnge:petrophysics` | Log interpretation, Archie Sw, porosity crossplots, brittleness index | PNGE 331, PNGE 361, PNGE 341 |
+| `pnge:artificial-lift` | Rod pump, ESP sizing, gas lift, plunger lift, liquid loading criteria | PNGE 361, PNGE 411 |
+| `pnge:flow-assurance` | Hydrate prediction, CO2 corrosion, H2S sour service, wax/scale | PNGE 341, PNGE 361, ChBE 411 |
+| `pnge:tubing-design` | Tubing force analysis, Lubinski buckling, seal assembly, velocity strings | PNGE 341, PNGE 351 |
+| `pnge:perforation-design` | Perforation skin, phasing, limited entry, underbalanced criteria | PNGE 341 |
+| `pnge:surface-facilities` | Separator sizing, TEG dehy, compression HP, backpressure effects | PNGE 361, ChBE 311 |
 | `pnge:usgs-pubs` | USGS technical reports on formations | Research, capstone |
 | `pnge:doe-osti` | DOE research reports for advanced topics | Research, capstone |
 

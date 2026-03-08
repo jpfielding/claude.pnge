@@ -4,9 +4,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**34 skills** · **6 agents** · **6 commands**
+**41 skills** · **6 agents** · **6 commands**
 
-### Data Access Skills (27)
+### Data Access Skills (28)
 
 | # | Skill | Source | Key? |
 |---|-------|--------|------|
@@ -16,35 +16,42 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | 4 | `pnge:netl-edx` | DOE NETL Energy Data eXchange (CKAN) | Yes (free) |
 | 5 | `pnge:wvges-wells` | WV Geological & Economic Survey | No |
 | 6 | `pnge:padep-wells` | PA DEP Unconventional Well Registry (Socrata) | No |
-| 7 | `pnge:boem-offshore` | BOEM Federal Offshore Data | No |
-| 8 | `pnge:fracfocus` | FracFocus Chemical Disclosure | No |
-| 9 | `pnge:epa-enviro` | EPA Envirofacts & ECHO | No |
-| 10 | `pnge:epa-ghg` | EPA GHGRP Facility Emissions | No |
-| 11 | `pnge:epa-ghgrp-subpartw` | EPA GHGRP Subpart W Oilfield Methane | No |
-| 12 | `pnge:usgs-pubs` | USGS Publications Warehouse | No |
-| 13 | `pnge:doe-osti` | DOE OSTI Technical Reports | No |
-| 14 | `pnge:netl-carbon-storage` | NETL NATCARB Atlas / CCS Projects | Yes (free, optional) |
-| 15 | `pnge:kggs-well-logs` | KGS Wireline Log Repository (LAS 2.0) | No |
-| 16 | `pnge:macrostrat` | Macrostrat Formation Stratigraphy | No |
-| 17 | `pnge:openalex` | OpenAlex Open-Access Literature | No |
-| 18 | `pnge:usgs-earthquakes` | USGS ComCat (FDSN) | No |
-| 19 | `pnge:usgs-waterdata` | USGS NWIS + Water Quality Portal | No |
-| 20 | `pnge:fred-prices` | Federal Reserve FRED | Yes (free) |
-| 21 | `pnge:worldbank-energy` | World Bank Open Data | No |
-| 22 | `pnge:comtrade-minerals` | UN Comtrade | Optional (free) |
-| 23 | `pnge:doe-geothermal` | DOE GDR / OpenEI | Yes (free) |
-| 24 | `pnge:crossref-doi` | CrossRef REST API | No |
-| 25 | `pnge:opec-data` | OPEC Production via EIA STEO | Yes (free) |
-| 26 | `pnge:iea-open` | IEA Free Datasets | No |
-| 27 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
+| 7 | `pnge:odnr-wells` | Ohio DNR Oil and Gas Wells (Utica/Point Pleasant) | No |
+| 8 | `pnge:boem-offshore` | BOEM Federal Offshore Data | No |
+| 9 | `pnge:fracfocus` | FracFocus Chemical Disclosure | No |
+| 10 | `pnge:epa-enviro` | EPA Envirofacts & ECHO | No |
+| 11 | `pnge:epa-ghg` | EPA GHGRP Facility Emissions | No |
+| 12 | `pnge:epa-ghgrp-subpartw` | EPA GHGRP Subpart W Oilfield Methane | No |
+| 13 | `pnge:usgs-pubs` | USGS Publications Warehouse | No |
+| 14 | `pnge:doe-osti` | DOE OSTI Technical Reports | No |
+| 15 | `pnge:netl-carbon-storage` | NETL NATCARB Atlas / CCS Projects | Yes (free, optional) |
+| 16 | `pnge:kggs-well-logs` | KGS Wireline Log Repository (LAS 2.0) | No |
+| 17 | `pnge:macrostrat` | Macrostrat Formation Stratigraphy | No |
+| 18 | `pnge:openalex` | OpenAlex Open-Access Literature | No |
+| 19 | `pnge:usgs-earthquakes` | USGS ComCat (FDSN) | No |
+| 20 | `pnge:usgs-waterdata` | USGS NWIS + Water Quality Portal | No |
+| 21 | `pnge:fred-prices` | Federal Reserve FRED | Yes (free) |
+| 22 | `pnge:worldbank-energy` | World Bank Open Data | No |
+| 23 | `pnge:comtrade-minerals` | UN Comtrade | Optional (free) |
+| 24 | `pnge:doe-geothermal` | DOE GDR / OpenEI | Yes (free) |
+| 25 | `pnge:crossref-doi` | CrossRef REST API | No |
+| 26 | `pnge:opec-data` | OPEC Production via EIA STEO | Yes (free) |
+| 27 | `pnge:iea-open` | IEA Free Datasets | No |
+| 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
 
-### Computational & Simulation Skills (7)
+### Computational & Simulation Skills (13)
 
 | Skill | Purpose |
 |-------|---------|
 | `pnge:pnge-mechanics` | Statics, axial/beam stress, Lamé thick-wall cylinders, Mohr's circle |
 | `pnge:frac-design` | PKN/KGD fracture models, Nolte-Smith analysis, proppant transport |
 | `pnge:wellbore-stability` | Kirsch equations, mud weight window, breakout and fracture prediction |
+| `pnge:petrophysics` | Log interpretation: Vsh, porosity, Sw (Archie/Simandoux), brittleness index |
+| `pnge:artificial-lift` | Rod pump, ESP sizing, gas lift design, plunger lift, liquid loading |
+| `pnge:flow-assurance` | Hydrates (Katz/Hammerschmidt), CO2 corrosion, H2S sour service, wax/scale |
+| `pnge:tubing-design` | Lubinski four-effect force analysis, buckling, seal assembly, velocity strings |
+| `pnge:perforation-design` | Karakas-Tariq skin, phasing, underbalance criteria, limited entry diversion |
+| `pnge:surface-facilities` | Separator sizing, TEG dehy, compression HP, backpressure effects |
 | `pnge:mass-energy-balance` | Material/energy balances, combustion, flash calculation (Rachford-Rice) |
 | `pnge:nist-webbook` | NIST thermodynamic properties for oil/gas fluids |
 | `pnge:tnav` | tNavigator-style reservoir simulation emulation (black oil, PVT, decline) |
@@ -213,7 +220,7 @@ claude-pnge/
 │   └── plugin.json              # Plugin manifest (name: pnge, v0.2.0)
 ├── skills/                      # 34 skills total
 │   │
-│   ├── -- Data Access (27) --
+│   ├── -- Data Access (28) --
 │   ├── eia-data/                # EIA Open Data API v2
 │   ├── usgs-produced-waters/    # USGS Produced Waters Geochemical DB v3.0
 │   ├── usgs-minerals/           # USGS Mineral Commodity Summaries
@@ -240,12 +247,19 @@ claude-pnge/
 │   ├── crossref-doi/            # CrossRef DOI/Citation API
 │   ├── opec-data/               # OPEC Production via EIA STEO
 │   ├── iea-open/                # IEA Free Datasets
+│   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
 │   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
 │   │
-│   └── -- Computational (7) --
+│   └── -- Computational (13) --
 │       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
 │       ├── frac-design/         # PKN/KGD fracture models, proppant transport
 │       ├── wellbore-stability/  # Kirsch equations, mud weight window
+│       ├── petrophysics/        # Log interpretation, Archie, brittleness
+│       ├── artificial-lift/     # Rod pump, ESP, gas lift, plunger lift
+│       ├── flow-assurance/      # Hydrates, CO2 corrosion, H2S, wax/scale
+│       ├── tubing-design/       # Lubinski four-effect, buckling, seal assy
+│       ├── perforation-design/  # Karakas-Tariq skin, limited entry
+│       ├── surface-facilities/  # Separator, TEG dehy, compression
 │       ├── mass-energy-balance/ # Material/energy balance, flash calc
 │       ├── nist-webbook/        # NIST thermodynamic properties
 │       ├── tnav/                # Reservoir simulation emulation
@@ -276,7 +290,7 @@ claude-pnge/
 ```
                     ┌──────────────────────────────────────────┐
                     │          claude-pnge Plugin v0.2.0       │
-                    │   34 Skills · 6 Agents · 6 Commands      │
+                    │   41 Skills · 6 Agents · 6 Commands      │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐
@@ -289,9 +303,13 @@ claude-pnge/
    · EPA (3 skills)             · OPEC (via EIA)         · Mass/Energy Balance
    · BOEM / BSEE               · CrossRef / OpenAlex    · NIST Thermodynamics
    · FracFocus                  · FRED                   · tNavigator Sim
-   · WVGES / PA DEP             · WRI Aqueduct           · Visual Explainer
-   · Macrostrat                 · Comtrade               · 6 Agents
-   · KGS Well Logs                                       · 6 Commands
+   · WVGES / PA DEP / ODNR      · WRI Aqueduct           · Petrophysics
+   · Macrostrat                 · Comtrade               · Artificial Lift
+   · KGS Well Logs                                       · Flow Assurance
+                                                         · Tubing Design
+                                                         · Perf Design
+                                                         · Surface Facilities
+                                                         · 6 Agents · 6 Cmds
 ```
 
 ## License

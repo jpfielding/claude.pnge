@@ -4,9 +4,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**63 skills** · **6 agents** · **6 commands**
+**66 skills** · **6 agents** · **6 commands**
 
-### Data Access Skills (28)
+### Data Access Skills (31)
 
 | # | Skill | Source | Key? |
 |---|-------|--------|------|
@@ -38,6 +38,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | 26 | `pnge:opec-data` | OPEC Production via EIA STEO | Yes (free) |
 | 27 | `pnge:iea-open` | IEA Free Datasets | No |
 | 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
+| 29 | `pnge:wv-tax-minerals` | WV Delinquent Mineral Properties (ArcGIS) | No |
+| 30 | `pnge:pa-tax-minerals` | PA Mineral Parcels Near Active Wells (ArcGIS) | No |
+| 31 | `pnge:oh-tax-minerals` | OH Mineral Parcels via OGRIP Land Use Codes (ArcGIS) | No |
 
 ### Computational & Simulation Skills (35)
 
@@ -132,7 +135,7 @@ Settings > Customize > Skills > Upload
 
 ### API Keys
 
-Only 4 of the 27 data skills require an API key (all free). Two more accept optional keys for higher rate limits. The remaining 21 data skills work with no authentication at all.
+Only 4 of the 31 data skills require an API key (all free). Two more accept optional keys for higher rate limits. The remaining 25 data skills work with no authentication at all.
 
 See [`docs/TOKENS.md`](docs/TOKENS.md) for detailed step-by-step signup instructions for each service.
 
@@ -226,6 +229,11 @@ Check with your PNGE department for access to:
 "Extract the usable PVT inputs from this lab report"
 "Compare annulus pressure tests and log evidence across this integrity package"
 
+# --- Tax-Delinquent Mineral Screening ---
+"Find delinquent mineral properties in Tyler County WV near active wells"
+"Screen Ohio mineral parcels in Belmont County for dormant mineral rights"
+"Show parcels near active unconventional wells in Greene County PA"
+
 # --- Data Access ---
 "Search NETL EDX for produced water treatment datasets"
 "Show me USGS mineral commodity data for lithium production 2020-2024"
@@ -265,9 +273,9 @@ claude plugin validate .
 claude-pnge/
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest (name: pnge, v0.6.0)
-├── skills/                      # 63 skills total
+├── skills/                      # 66 skills total
 │   │
-│   ├── -- Data Access (28) --
+│   ├── -- Data Access (31) --
 │   ├── eia-data/                # EIA Open Data API v2
 │   ├── usgs-produced-waters/    # USGS Produced Waters Geochemical DB v3.0
 │   ├── usgs-minerals/           # USGS Mineral Commodity Summaries
@@ -296,6 +304,9 @@ claude-pnge/
 │   ├── iea-open/                # IEA Free Datasets
 │   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
 │   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
+│   ├── wv-tax-minerals/         # WV Delinquent Mineral Properties
+│   ├── pa-tax-minerals/         # PA Mineral Parcels Near Active Wells
+│   ├── oh-tax-minerals/         # OH Mineral Parcels (OGRIP 200-series LUC)
 │   │
 │   └── -- Computational (35) --
 │       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
@@ -358,8 +369,8 @@ claude-pnge/
 
 ```
                     ┌──────────────────────────────────────────┐
-                    │          claude-pnge Plugin v0.6.0       │
-                    │   63 Skills · 6 Agents · 6 Commands      │
+                    │          claude-pnge Plugin v0.7.0       │
+                    │   66 Skills · 6 Agents · 6 Commands      │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐

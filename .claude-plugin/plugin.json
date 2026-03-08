@@ -1,7 +1,7 @@
 {
   "name": "pnge",
-  "version": "0.6.0",
-  "description": "Petroleum and chemical engineering skills for WVU PNGE undergraduates. Covers Li/Mg recovery, produced water geochemistry, well completions, completion diagnostics, local stage treatment analysis, nodal analysis, production surveillance, production chemistry, well integrity, PVT report review, petroleum PVT, petrophysics, artificial lift, flow assurance, surface facilities, rate transient analysis, well testing, matrix acidizing, heat and mass transfer, aqueous chemistry and electrochemistry, fracture mechanics, thermodynamics EOS, classical mechanics, electricity and magnetism, and differential equations.",
+  "version": "0.7.0",
+  "description": "Petroleum and chemical engineering skills for WVU PNGE undergraduates. Covers Li/Mg recovery, produced water geochemistry, tax-delinquent mineral property screening (WV/PA/OH), well completions, completion diagnostics, local stage treatment analysis, nodal analysis, production surveillance, production chemistry, well integrity, PVT report review, petroleum PVT, petrophysics, artificial lift, flow assurance, surface facilities, rate transient analysis, well testing, matrix acidizing, heat and mass transfer, aqueous chemistry and electrochemistry, fracture mechanics, thermodynamics EOS, classical mechanics, electricity and magnetism, and differential equations.",
   "author": {
     "name": "WVU PNGE Research"
   },
@@ -59,6 +59,12 @@
     "ohio",
     "utica",
     "odnr",
+    "mineral-rights",
+    "tax-delinquent",
+    "severed-mineral-estate",
+    "dormant-mineral-act",
+    "tax-sale",
+    "delinquent-properties",
     "production-engineering",
     "decline-curve-analysis",
     "rate-transient-analysis",

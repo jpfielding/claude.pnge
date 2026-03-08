@@ -76,6 +76,15 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 | `pnge:surface-facilities` | Separator sizing, TEG dehy, compression HP, backpressure effects | PNGE 361, ChBE 311 |
 | `pnge:usgs-pubs` | USGS technical reports on formations | Research, capstone |
 | `pnge:doe-osti` | DOE research reports for advanced topics | Research, capstone |
+| `pnge:rta-production` | Arps decline curves, EUR estimation, flowing material balance, production forecasting | PNGE 321, PNGE 411 |
+| `pnge:well-test-analysis` | Ei solution, Horner plot, skin factor, Bourdet derivative, wellbore storage | PNGE 321, PNGE 361 |
+| `pnge:matrix-acidizing` | HCl carbonate design, HF sandstone design, Hawkins skin, wormhole Damkohler | PNGE 341, PNGE 361 |
+| `pnge:fluid-mechanics` | Reynolds number, Darcy-Weisbach, Colebrook-White, Bernoulli, pump power | ChBE 311, MAE 244 |
+| `pnge:reaction-engineering` | CSTR/PFR/batch design, Arrhenius, Damkohler, Levenspiel plot, adiabatic T rise | ChBE 321 |
+| `pnge:thermo-eos` | Peng-Robinson/SRK EOS, Z-factor, fugacity, VLE, Rachford-Rice flash | ChBE 231, ChBE 311 |
+| `pnge:physics-mechanics` | Kinematics, Newton laws, energy, momentum, rotation, SHM | PHYS 111, MAE 201 |
+| `pnge:physics-em` | Coulomb law, circuits, RC/RL, Faraday, magnetic force, LC oscillation | PHYS 112 |
+| `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, Euler, RK4 | MATH 261 |
 
 ---
 
@@ -143,6 +152,59 @@ Topics: Free body diagrams, stress-strain, bending, Mohr's circle, thin/thick
 walled vessels
 Skills: `pnge:pnge-mechanics` (thick-walled cylinder, Mohr's circle);
 `pnge:wellbore-stability` (in-situ stress)
+
+### PNGE 321 Advanced Topics — Rate Transient Analysis and Well Testing
+Topics: Decline curve analysis (Arps DCA), EUR estimation, flowing material
+balance (Blasingame), pressure transient analysis, Horner plot, skin factor,
+Bourdet derivative, wellbore storage, flow regime identification
+Skills: `pnge:rta-production` (Arps, EUR, FMB); `pnge:well-test-analysis`
+(Horner, skin, derivative); `pnge:tnav` (decline curves, nodal analysis)
+
+### PNGE 341 Advanced Topics — Matrix Acidizing
+Topics: Acid stimulation for carbonates (HCl wormholing) and sandstones
+(HF/HCl), Paccaloni design, Damkohler number, Hawkins skin, injection rate
+limits below fracture pressure
+Skills: `pnge:matrix-acidizing` (full design workflow);
+`pnge:wellbore-stability` (fracture gradient for injection limit)
+
+### ChBE 311 — Fluid Mechanics
+Topics: Fluid statics, continuity equation, Reynolds number, laminar/turbulent
+flow, Darcy-Weisbach, Moody diagram, Colebrook-White, Bernoulli equation,
+mechanical energy balance, pump sizing and power, flow measurement
+Skills: `pnge:fluid-mechanics` (all pipe flow and pump modules)
+
+### ChBE 321 — Chemical Reaction Engineering
+Topics: Mole balance design equations (CSTR, PFR, batch), rate law and
+stoichiometry, Arrhenius temperature dependence, Damkohler number, Levenspiel
+plot, multiple reactors, adiabatic temperature rise, equilibrium conversion
+Skills: `pnge:reaction-engineering` (all reactor design modules);
+`pnge:thermo-eos` (thermodynamic equilibrium context)
+
+### PHYS 111 — Physics for Engineers I (Classical Mechanics)
+Topics: Kinematics (constant acceleration, projectile motion, circular),
+Newton's laws and force analysis, work-energy theorem, conservation of energy,
+momentum and collisions, rotational dynamics (torque, moment of inertia),
+simple harmonic motion (spring, pendulum)
+Skills: `pnge:physics-mechanics` (all modules);
+`pnge:pnge-mechanics` (applied mechanics in wellbore context)
+Free resources: Walter Lewin MIT 8.01 YouTube; OpenStax University Physics Vol 1
+
+### PHYS 112 — Physics for Engineers II (Electricity and Magnetism)
+Topics: Electrostatics (Coulomb, E field, potential), DC circuits (Ohm, KVL,
+KCL, power), capacitors and RC circuits, magnetic force (Lorentz), Biot-Savart
+for long wire, Faraday induction, RL circuits, LC oscillation frequency
+Skills: `pnge:physics-em` (all E&M modules)
+Free resources: Walter Lewin MIT 8.02 YouTube; OpenStax University Physics Vol 2
+
+### MATH 261 — Differential Equations
+Topics: First-order ODEs (separable, integrating factor), second-order linear
+constant-coefficient ODEs (characteristic equation, undetermined coefficients,
+variation of parameters), Laplace transforms (with tables and partial
+fractions), systems of ODEs (eigenvalue method, phase plane), numerical methods
+(Euler, Runge-Kutta RK4)
+Skills: `pnge:diff-equations` (all ODE modules)
+Free resources: Professor Leonard ODE YouTube; Paul's Online Math Notes
+(tutorial.math.lamar.edu); MIT OCW 18.03SC
 
 ---
 

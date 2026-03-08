@@ -4,7 +4,7 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**41 skills** · **6 agents** · **6 commands**
+**50 skills** · **6 agents** · **6 commands**
 
 ### Data Access Skills (28)
 
@@ -39,8 +39,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | 27 | `pnge:iea-open` | IEA Free Datasets | No |
 | 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
 
-### Computational & Simulation Skills (13)
+### Computational & Simulation Skills (22)
 
+#### Production & Completions Engineering (12)
 | Skill | Purpose |
 |-------|---------|
 | `pnge:pnge-mechanics` | Statics, axial/beam stress, Lamé thick-wall cylinders, Mohr's circle |
@@ -52,10 +53,27 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `pnge:tubing-design` | Lubinski four-effect force analysis, buckling, seal assembly, velocity strings |
 | `pnge:perforation-design` | Karakas-Tariq skin, phasing, underbalance criteria, limited entry diversion |
 | `pnge:surface-facilities` | Separator sizing, TEG dehy, compression HP, backpressure effects |
+| `pnge:rta-production` | Arps decline curves, EUR estimation, flowing material balance (Blasingame) |
+| `pnge:well-test-analysis` | Horner plot, skin factor, Bourdet derivative, wellbore storage, Ei solution |
+| `pnge:matrix-acidizing` | HCl carbonate design, HF/HCl sandstone design, Hawkins skin, Damkohler |
+
+#### Simulation & Reference Tools (4)
+| Skill | Purpose |
+|-------|---------|
 | `pnge:mass-energy-balance` | Material/energy balances, combustion, flash calculation (Rachford-Rice) |
 | `pnge:nist-webbook` | NIST thermodynamic properties for oil/gas fluids |
 | `pnge:tnav` | tNavigator-style reservoir simulation emulation (black oil, PVT, decline) |
 | `pnge:pnge-visual-explainer` | Generate self-contained HTML visualizations of PNGE concepts and data |
+
+#### Engineering Science Tutoring (6)
+| Skill | Purpose | WVU Course |
+|-------|---------|-----------|
+| `pnge:fluid-mechanics` | Reynolds number, Darcy-Weisbach, Bernoulli, Colebrook-White, pump sizing | ChBE 311 |
+| `pnge:reaction-engineering` | CSTR/PFR/batch design, Arrhenius, Levenspiel plot, adiabatic T rise | ChBE 321 |
+| `pnge:thermo-eos` | Peng-Robinson/SRK EOS, Z-factor, fugacity, VLE, Rachford-Rice flash | ChBE 231 |
+| `pnge:physics-mechanics` | Kinematics, Newton laws, energy, momentum, rotation, SHM | PHYS 111 |
+| `pnge:physics-em` | Coulomb law, circuits, RC/RL/LC, Faraday induction, magnetic force | PHYS 112 |
+| `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, RK4 | MATH 261 |
 
 ### Agents (6)
 
@@ -250,7 +268,7 @@ claude-pnge/
 │   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
 │   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
 │   │
-│   └── -- Computational (13) --
+│   └── -- Computational (22) --
 │       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
 │       ├── frac-design/         # PKN/KGD fracture models, proppant transport
 │       ├── wellbore-stability/  # Kirsch equations, mud weight window
@@ -260,10 +278,19 @@ claude-pnge/
 │       ├── tubing-design/       # Lubinski four-effect, buckling, seal assy
 │       ├── perforation-design/  # Karakas-Tariq skin, limited entry
 │       ├── surface-facilities/  # Separator, TEG dehy, compression
+│       ├── rta-production/      # Arps DCA, EUR, flowing material balance
+│       ├── well-test-analysis/  # Horner plot, skin, Bourdet derivative
+│       ├── matrix-acidizing/    # HCl/HF design, Hawkins skin, Damkohler
 │       ├── mass-energy-balance/ # Material/energy balance, flash calc
 │       ├── nist-webbook/        # NIST thermodynamic properties
 │       ├── tnav/                # Reservoir simulation emulation
-│       └── pnge-visual-explainer/ # HTML visualization generator
+│       ├── pnge-visual-explainer/ # HTML visualization generator
+│       ├── fluid-mechanics/     # Reynolds, Darcy-Weisbach, Bernoulli (ChBE 311)
+│       ├── reaction-engineering/ # CSTR/PFR/batch, Arrhenius (ChBE 321)
+│       ├── thermo-eos/          # PR/SRK EOS, fugacity, VLE (ChBE 231)
+│       ├── physics-mechanics/   # Kinematics, Newton, SHM (PHYS 111)
+│       ├── physics-em/          # Circuits, E&M, induction (PHYS 112)
+│       └── diff-equations/      # ODEs, Laplace, RK4 (MATH 261)
 │
 ├── agents/                      # 6 research and engineering agents
 │   ├── li-mg-prospector.md      # Li/Mg recovery assessment
@@ -289,8 +316,8 @@ claude-pnge/
 
 ```
                     ┌──────────────────────────────────────────┐
-                    │          claude-pnge Plugin v0.2.0       │
-                    │   41 Skills · 6 Agents · 6 Commands      │
+                    │          claude-pnge Plugin v0.4.0       │
+                    │   50 Skills · 6 Agents · 6 Commands      │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐
@@ -309,6 +336,14 @@ claude-pnge/
                                                          · Tubing Design
                                                          · Perf Design
                                                          · Surface Facilities
+                                                         · RTA / Decline Curves
+                                                         · Well Test Analysis
+                                                         · Matrix Acidizing
+                                                         · Fluid Mechanics
+                                                         · Reaction Engineering
+                                                         · Thermo EOS / VLE
+                                                         · Physics I & II
+                                                         · Diff Equations
                                                          · 6 Agents · 6 Cmds
 ```
 

@@ -26,17 +26,23 @@ the target formation and the data available:
 | `pnge:fred-prices` | Real-time Li carbonate and commodity pricing |
 | `pnge:eia-data` | U.S. production volumes, water-cut context |
 | `pnge:wvges-wells` | WV well data (Marcellus, Utica targets) |
+| `pnge:padep-wells` | PA well data (Marcellus, Utica in Pennsylvania) |
 | `pnge:boem-offshore` | Offshore production data (GoM targets) |
 | `pnge:fracfocus` | Frac chemical disclosures for target wells |
 | `pnge:epa-enviro` | UIC permits, NPDES, environmental compliance |
 | `pnge:epa-ghg` | GHG emissions context for target facilities |
+| `pnge:epa-ghgrp-subpartw` | Oilfield methane emissions (Subpart W) |
 | `pnge:usgs-earthquakes` | Induced seismicity risk near disposal wells |
 | `pnge:usgs-waterdata` | Surface/groundwater quality baselines |
+| `pnge:wri-aqueduct` | Water stress index for operating areas |
 | `pnge:netl-edx` | DOE datasets (ClaiMM, NEWTS collections) |
+| `pnge:netl-carbon-storage` | CO2 storage capacity and CCS project data |
 | `pnge:doe-geothermal` | Geothermal co-production opportunities |
 | `pnge:usgs-pubs` | USGS reports on target formations |
 | `pnge:doe-osti` | DOE-funded research on Li extraction tech |
+| `pnge:openalex` | Peer-reviewed academic literature search |
 | `pnge:crossref-doi` | Citation metadata and DOI resolution |
+| `pnge:macrostrat` | Formation stratigraphy, age, and lithology |
 | `pnge:worldbank-energy` | Global energy context for Li demand drivers |
 | `pnge:comtrade-minerals` | International Li/Mg trade flows |
 | `pnge:iea-open` | IEA EV tracker (Li demand driver) |

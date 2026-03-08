@@ -4,7 +4,7 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**59 skills** · **6 agents** · **6 commands**
+**63 skills** · **6 agents** · **6 commands**
 
 ### Data Access Skills (28)
 
@@ -39,9 +39,9 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | 27 | `pnge:iea-open` | IEA Free Datasets | No |
 | 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
 
-### Computational & Simulation Skills (31)
+### Computational & Simulation Skills (35)
 
-#### Production & Completions Engineering (17)
+#### Production & Completions Engineering (21)
 | Skill | Purpose |
 |-------|---------|
 | `pnge:pnge-mechanics` | Statics, axial/beam stress, Lamé thick-wall cylinders, Mohr's circle |
@@ -61,6 +61,10 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `pnge:production-chemistry` | Emulsions, incompatibility, squeeze design, cleanup, corrosion program surveillance |
 | `pnge:well-integrity-barriers` | SCP/annulus pressure triage, MIT interpretation, leak-path screening, barrier review |
 | `pnge:petroleum-pvt` | Bubble point, Rs, Bo, Bg, separator shrinkage, condensate dropout screening |
+| `pnge:stage-treatment-analysis` | Local frac stage export parsing, stage normalization, ISIP/screenout screening, cross-stage comparison |
+| `pnge:production-surveillance` | SCADA/historian/test-separator trend analysis, anomaly detection, candidate ranking |
+| `pnge:pvt-report-review` | PVT lab report extraction, QC, and black-oil input packaging |
+| `pnge:integrity-log-review` | MIT, CBL/VDL, noise, temperature, and annulus report review for leak-path evidence |
 
 #### Simulation & Reference Tools (4)
 | Skill | Purpose |
@@ -193,8 +197,10 @@ Check with your PNGE department for access to:
 "What casing grade should I use for a 9,000 ft Marcellus well?"
 "Design a frac job for a Utica well with 3,000 ft lateral"
 "Estimate closure pressure and net pressure from this DFIT falloff"
+"Analyze this stage treatment CSV for ISIP and likely screenout behavior"
 "Run a nodal analysis for a 7,500 ft gas well with 900 psi WHP"
 "Diagnose sustained casing pressure on the A-annulus"
+"Review this MIT and noise log package for the most likely leak path"
 "What is the mud weight window for a Marcellus vertical well at 7,500 ft?"
 "Calculate burst pressure for 4.5 in P-110 casing at 8,000 psi"
 
@@ -210,8 +216,15 @@ Check with your PNGE department for access to:
 "Flash a gas at 1000 psia, 150°F using given component compositions"
 "What are the thermodynamic properties of CO2 at 2000 psia and 120°F?"
 "Estimate bubble point and Bo for a 42 API oil with 650 scf/STB gas"
+"Review this PVT report PDF and extract black-oil inputs"
 "Size a heat exchanger from U, A, and LMTD"
 "Estimate fatigue life from Paris law between two crack sizes"
+
+# --- Local File And Surveillance Workflows ---
+"Rank these wells from a SCADA export by likely optimization value"
+"Review this stage-by-stage frac spreadsheet for outlier stages"
+"Extract the usable PVT inputs from this lab report"
+"Compare annulus pressure tests and log evidence across this integrity package"
 
 # --- Data Access ---
 "Search NETL EDX for produced water treatment datasets"
@@ -251,8 +264,8 @@ claude plugin validate .
 ```
 claude-pnge/
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (name: pnge, v0.5.0)
-├── skills/                      # 59 skills total
+│   └── plugin.json              # Plugin manifest (name: pnge, v0.6.0)
+├── skills/                      # 63 skills total
 │   │
 │   ├── -- Data Access (28) --
 │   ├── eia-data/                # EIA Open Data API v2
@@ -284,7 +297,7 @@ claude-pnge/
 │   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
 │   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
 │   │
-│   └── -- Computational (31) --
+│   └── -- Computational (35) --
 │       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
 │       ├── frac-design/         # PKN/KGD fracture models, proppant transport
 │       ├── wellbore-stability/  # Kirsch equations, mud weight window
@@ -302,6 +315,10 @@ claude-pnge/
 │       ├── production-chemistry/ # Emulsions, squeeze jobs, cleanup
 │       ├── well-integrity-barriers/ # SCP, MIT, barrier diagnostics
 │       ├── petroleum-pvt/       # Bubble point, Rs, Bo, Bg, shrinkage
+│       ├── stage-treatment-analysis/ # Stage CSV parsing and stage diagnostics
+│       ├── production-surveillance/ # SCADA/test-separator surveillance
+│       ├── pvt-report-review/   # PVT lab report extraction and QC
+│       ├── integrity-log-review/ # MIT/log package review
 │       ├── mass-energy-balance/ # Material/energy balance, flash calc
 │       ├── nist-webbook/        # NIST thermodynamic properties
 │       ├── tnav/                # Reservoir simulation emulation
@@ -341,8 +358,8 @@ claude-pnge/
 
 ```
                     ┌──────────────────────────────────────────┐
-                    │          claude-pnge Plugin v0.5.0       │
-                    │   59 Skills · 6 Agents · 6 Commands      │
+                    │          claude-pnge Plugin v0.6.0       │
+                    │   63 Skills · 6 Agents · 6 Commands      │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐
@@ -369,6 +386,10 @@ claude-pnge/
                                                          · Production Chemistry
                                                          · Well Integrity
                                                          · Petroleum PVT
+                                                         · Stage Data Analysis
+                                                         · Production Surveillance
+                                                         · PVT Report Review
+                                                         · Integrity Log Review
                                                          · Fluid Mechanics
                                                          · Heat Transfer
                                                          · Mass Transfer / Separations

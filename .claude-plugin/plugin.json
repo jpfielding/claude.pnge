@@ -1,7 +1,7 @@
 {
   "name": "pnge",
-  "version": "0.5.0",
-  "description": "Petroleum and chemical engineering skills for WVU PNGE undergraduates. Covers Li/Mg recovery, produced water geochemistry, well completions, completion diagnostics, nodal analysis, production chemistry, well integrity, petroleum PVT, petrophysics, artificial lift, flow assurance, surface facilities, rate transient analysis, well testing, matrix acidizing, heat and mass transfer, aqueous chemistry and electrochemistry, fracture mechanics, thermodynamics EOS, classical mechanics, electricity and magnetism, and differential equations.",
+  "version": "0.6.0",
+  "description": "Petroleum and chemical engineering skills for WVU PNGE undergraduates. Covers Li/Mg recovery, produced water geochemistry, well completions, completion diagnostics, local stage treatment analysis, nodal analysis, production surveillance, production chemistry, well integrity, PVT report review, petroleum PVT, petrophysics, artificial lift, flow assurance, surface facilities, rate transient analysis, well testing, matrix acidizing, heat and mass transfer, aqueous chemistry and electrochemistry, fracture mechanics, thermodynamics EOS, classical mechanics, electricity and magnetism, and differential equations.",
   "author": {
     "name": "WVU PNGE Research"
   },
@@ -86,6 +86,16 @@
     "barrier-envelope",
     "petroleum-pvt",
     "bubble-point",
+    "stage-treatment-data",
+    "frac-van",
+    "production-surveillance",
+    "scada",
+    "historian",
+    "pvt-report",
+    "black-oil-table",
+    "integrity-log",
+    "noise-log",
+    "temperature-log",
     "fluid-mechanics",
     "reynolds-number",
     "darcy-weisbach",

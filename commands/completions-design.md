@@ -15,6 +15,7 @@ Use the following skills to gather data and context:
 4. **pnge:frac-design** — engineering calculations: net pressure, fracture geometry estimates, proppant scheduling
 5. **pnge:completion-diagnostics** — DFIT / minifrac / ISIP / closure-pressure context and treatment-pressure interpretation
 6. **pnge:production-chemistry** — cleanup, additive compatibility, and DLE-interference screening
+7. **pnge:stage-treatment-analysis** — if local stage exports are available, normalize and compare actual treatment execution
 
 Structure the output as:
 
@@ -40,6 +41,11 @@ Using `pnge:completion-diagnostics`:
 - If available, summarize offset closure pressure / ISIP / step-rate evidence
 - Note whether limited-entry assumptions are realistic
 - Identify what stage data would materially improve design confidence
+
+### Stage Execution Context
+Using `pnge:stage-treatment-analysis` when local files are provided:
+- Summarize stage totals, outliers, and likely screenout or execution issues
+- Separate data-quality problems from real treatment behavior
 
 ### Chemical Considerations for DLE
 If produced water mineral recovery is a goal, note which completion chemicals may interfere with DLE sorbents or membranes.

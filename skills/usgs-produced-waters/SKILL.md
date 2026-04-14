@@ -203,9 +203,13 @@ Map the user's question to a filtering strategy:
 
 2. If not cached, download from ScienceBase:
    ```bash
-   # Prefer v2.3 CSV for scripted analysis (v3.0 requires openpyxl for Excel)
-   curl -L -o /tmp/USGSPWDBv2.3c.csv \
-     "https://www.sciencebase.gov/catalog/file/get/59d25d63e4b05fe04cc235f9?f=__disk__11%2F1e%2F8e%2F111e8e3952b1637289254fd398af95a81f937389"
+   # Prefer v3.0 — has FORMSIMPLE, PLAYTYPE, 23 new Li-brine datasets, standardized units
+   # v3.0 is Excel-only; use openpyxl or convert to CSV after download
+   curl -L -o /tmp/USGS_NPWGDv3_excel.xlsx \
+     "https://www.sciencebase.gov/catalog/file/get/64fa1e71d34ed30c2054ea11?f=__disk__e7%2Fef%2F17%2Fe7ef17fcb71c49e2241da4139ed775f8e328bdab"
+   # Fallback: v2.3 CSV if openpyxl unavailable
+   # curl -L -o /tmp/USGSPWDBv2.3c.csv \
+   #   "https://www.sciencebase.gov/catalog/file/get/59d25d63e4b05fe04cc235f9?f=__disk__11%2F1e%2F8e%2F111e8e3952b1637289254fd398af95a81f937389"
    ```
 
 3. Warn the user about file size (~66 MB for v2.3 CSV, ~80 MB for v3.0 Excel).
@@ -388,8 +392,8 @@ Marcellus (n=312) reflecting modern shale gas development.
 ## Implementation Notes
 
 - **Prefer `bash_tool` or `python`** in Claude's environment to download and analyze
-- **Use v2.3 CSV** for scripted analysis (no dependencies beyond stdlib)
-- **Use v3.0 Excel** when `openpyxl` is available and you need FORMSIMPLE/PLAYTYPE columns
+- **Prefer v3.0 Excel** — it has FORMSIMPLE, PLAYTYPE, 23 new high-Li datasets, and standardized mg/L units
+- **Fall back to v2.3 CSV** only if openpyxl is unavailable and you cannot install it
 - **Cache downloads** to `/tmp/` to avoid re-downloading the 66-80 MB file
 - **Python client** — see `references/python_example.py` for ready-made filtering and statistics
 - **Full column schema** — see `references/schema.md` for all 150+ column definitions

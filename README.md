@@ -4,50 +4,78 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 
 ## What's Inside
 
-**66 skills** · **6 agents** · **6 commands**
+**81 skills** · **12 agents** · **12 commands**
 
-### Data Access Skills (31)
+### Data Access Skills (46)
 
+#### Federal Agency Data (20)
 | # | Skill | Source | Key? |
 |---|-------|--------|------|
 | 1 | `pnge:eia-data` | EIA Open Data API v2 | Yes (free) |
 | 2 | `pnge:usgs-produced-waters` | USGS Produced Waters Geochemical DB v3.0 | No |
 | 3 | `pnge:usgs-minerals` | USGS Mineral Commodity Summaries | No |
-| 4 | `pnge:netl-edx` | DOE NETL Energy Data eXchange (CKAN) | Yes (free) |
-| 5 | `pnge:wvges-wells` | WV Geological & Economic Survey | No |
-| 6 | `pnge:padep-wells` | PA DEP Unconventional Well Registry (Socrata) | No |
-| 7 | `pnge:odnr-wells` | Ohio DNR Oil and Gas Wells (Utica/Point Pleasant) | No |
-| 8 | `pnge:boem-offshore` | BOEM Federal Offshore Data | No |
-| 9 | `pnge:fracfocus` | FracFocus Chemical Disclosure | No |
-| 10 | `pnge:epa-enviro` | EPA Envirofacts & ECHO | No |
-| 11 | `pnge:epa-ghg` | EPA GHGRP Facility Emissions | No |
-| 12 | `pnge:epa-ghgrp-subpartw` | EPA GHGRP Subpart W Oilfield Methane | No |
-| 13 | `pnge:usgs-pubs` | USGS Publications Warehouse | No |
-| 14 | `pnge:doe-osti` | DOE OSTI Technical Reports | No |
-| 15 | `pnge:netl-carbon-storage` | NETL NATCARB Atlas / CCS Projects | Yes (free, optional) |
-| 16 | `pnge:kggs-well-logs` | KGS Wireline Log Repository (LAS 2.0) | No |
-| 17 | `pnge:macrostrat` | Macrostrat Formation Stratigraphy | No |
-| 18 | `pnge:openalex` | OpenAlex Open-Access Literature | No |
-| 19 | `pnge:usgs-earthquakes` | USGS ComCat (FDSN) | No |
-| 20 | `pnge:usgs-waterdata` | USGS NWIS + Water Quality Portal | No |
-| 21 | `pnge:fred-prices` | Federal Reserve FRED | Yes (free) |
-| 22 | `pnge:worldbank-energy` | World Bank Open Data | No |
-| 23 | `pnge:comtrade-minerals` | UN Comtrade | Optional (free) |
-| 24 | `pnge:doe-geothermal` | DOE GDR / OpenEI | Yes (free) |
-| 25 | `pnge:crossref-doi` | CrossRef REST API | No |
-| 26 | `pnge:opec-data` | OPEC Production via EIA STEO | Yes (free) |
-| 27 | `pnge:iea-open` | IEA Free Datasets | No |
-| 28 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
+| 4 | `pnge:usgs-pubs` | USGS Publications Warehouse | No |
+| 5 | `pnge:usgs-earthquakes` | USGS ComCat (FDSN) | No |
+| 6 | `pnge:usgs-waterdata` | USGS NWIS + Water Quality Portal | No |
+| 7 | `pnge:usgs-core-center` | USGS Core Research Center (ScienceBase) | No |
+| 8 | `pnge:usgs-tnm` | USGS The National Map (DEM, geologic maps) | No |
+| 9 | `pnge:netl-edx` | DOE NETL Energy Data eXchange (CKAN) | Yes (free) |
+| 10 | `pnge:netl-carbon-storage` | NETL NATCARB Atlas / CCS Projects | Yes (free, optional) |
+| 11 | `pnge:doe-osti` | DOE OSTI Technical Reports | No |
+| 12 | `pnge:doe-geothermal` | DOE GDR / OpenEI | Yes (free) |
+| 13 | `pnge:epa-enviro` | EPA Envirofacts & ECHO | No |
+| 14 | `pnge:epa-ghg` | EPA GHGRP Facility Emissions | No |
+| 15 | `pnge:epa-ghgrp-subpartw` | EPA GHGRP Subpart W Oilfield Methane | No |
+| 16 | `pnge:epa-treatability` | EPA Treatability Database (water treatment) | No |
+| 17 | `pnge:boem-offshore` | BOEM Federal Offshore Data | No |
+| 18 | `pnge:blm-mineral-records` | BLM Mineral & Land Records (GIS) | No |
+| 19 | `pnge:fracfocus` | FracFocus Chemical Disclosure | No |
+| 20 | `pnge:nasa-earthdata` | NASA Earthdata CMR (Landsat, Sentinel) | No (login for download) |
+
+#### State Regulatory Data (11)
+| # | Skill | Source | Key? |
+|---|-------|--------|------|
+| 21 | `pnge:wvges-wells` | WV Geological & Economic Survey | No |
+| 22 | `pnge:padep-wells` | PA DEP Unconventional Well Registry (Socrata) | No |
+| 23 | `pnge:odnr-wells` | Ohio DNR Oil and Gas Wells (Utica/Point Pleasant) | No |
+| 24 | `pnge:tx-rrc` | Texas Railroad Commission (production, injection, permits) | No |
+| 25 | `pnge:nm-ocd` | New Mexico Oil Conservation Division | No |
+| 26 | `pnge:nd-dmr` | North Dakota Dept of Mineral Resources (Bakken) | No |
+| 27 | `pnge:la-sonris` | Louisiana SONRIS (Smackover) | No |
+| 28 | `pnge:ar-aogc` | Arkansas Oil and Gas Commission (Smackover DLE) | No |
 | 29 | `pnge:wv-tax-minerals` | WV Delinquent Mineral Properties (ArcGIS) | No |
 | 30 | `pnge:pa-tax-minerals` | PA Mineral Parcels Near Active Wells (ArcGIS) | No |
 | 31 | `pnge:oh-tax-minerals` | OH Mineral Parcels via OGRIP Land Use Codes (ArcGIS) | No |
+
+#### Global & Economic Data (12)
+| # | Skill | Source | Key? |
+|---|-------|--------|------|
+| 32 | `pnge:fred-prices` | Federal Reserve FRED | Yes (free) |
+| 33 | `pnge:bls-data` | Bureau of Labor Statistics (PPI, CPI, employment) | Optional (free) |
+| 34 | `pnge:bea-data` | Bureau of Economic Analysis (GDP, regional income) | Yes (free) |
+| 35 | `pnge:census-data` | U.S. Census Bureau (ACS demographics, EJ) | Yes (free) |
+| 36 | `pnge:worldbank-energy` | World Bank Open Data | No |
+| 37 | `pnge:comtrade-minerals` | UN Comtrade | Optional (free) |
+| 38 | `pnge:opec-data` | OPEC Production via EIA STEO | Yes (free) |
+| 39 | `pnge:iea-open` | IEA Free Datasets | No |
+| 40 | `pnge:wri-aqueduct` | WRI Aqueduct Water Risk | No |
+| 41 | `pnge:ospar-discharges` | OSPAR Offshore Produced Water Discharges | No |
+
+#### Literature & Patent Search (5)
+| # | Skill | Source | Key? |
+|---|-------|--------|------|
+| 42 | `pnge:openalex` | OpenAlex Open-Access Literature | No |
+| 43 | `pnge:crossref-doi` | CrossRef REST API | No |
+| 44 | `pnge:kggs-well-logs` | KGS Wireline Log Repository (LAS 2.0) | No |
+| 45 | `pnge:macrostrat` | Macrostrat Formation Stratigraphy | No |
+| 46 | `pnge:patentsview` | USPTO / PatentsView (DLE patent landscape) | No |
 
 ### Computational & Simulation Skills (35)
 
 #### Production & Completions Engineering (21)
 | Skill | Purpose |
 |-------|---------|
-| `pnge:pnge-mechanics` | Statics, axial/beam stress, Lamé thick-wall cylinders, Mohr's circle |
+| `pnge:pnge-mechanics` | Statics, axial/beam stress, Lame thick-wall cylinders, Mohr's circle |
 | `pnge:frac-design` | PKN/KGD fracture models, Nolte-Smith analysis, proppant transport |
 | `pnge:wellbore-stability` | Kirsch equations, mud weight window, breakout and fracture prediction |
 | `pnge:petrophysics` | Log interpretation: Vsh, porosity, Sw (Archie/Simandoux), brittleness index |
@@ -91,7 +119,7 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `pnge:physics-em` | Coulomb law, circuits, RC/RL/LC, Faraday induction, magnetic force | PHYS 112 |
 | `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, RK4 | MATH 261 |
 
-### Agents (6)
+### Agents (12)
 
 | Agent | Purpose |
 |-------|---------|
@@ -101,17 +129,29 @@ A Claude Code plugin for petroleum engineering research data access, built for W
 | `api-well-standards` | API 5CT/5C3 casing design, cementing standards, WV/PA regulatory requirements |
 | `pnge-geopolitics` | Energy geopolitics, supply chain risks, and global resource dynamics |
 | `pnge-gis-mapper` | Generate interactive Leaflet.js maps for spatial data visualization |
+| `regulatory-disposal-analyst` | Cross-state UIC disposal analysis, seismicity, MIT compliance |
+| `dle-patent-scout` | DLE patent landscape by technology class, assignee tracking, white space |
+| `water-chem-qaqc` | Unit harmonization, charge balance, censored values, formation normalization |
+| `tea-lca-analyst` | Techno-economic screening and life cycle analysis for DLE projects |
+| `lab-method-planner` | Sampling plans, ICP-OES/ICP-MS method selection, QA/QC design |
+| `research-synthesis-writer` | Citation-ready tables, SPE/ACS formatting, poster figure packages |
 
-### Slash Commands (6)
+### Slash Commands (12)
 
 | Command | Usage |
 |---------|-------|
-| `/prospect` | `/prospect Marcellus Shale WV` — run the Li/Mg prospector agent |
-| `/formation-profile` | `/formation-profile Utica OH` — geological + geochemical profile |
-| `/literature-review` | `/literature-review direct lithium extraction brines` — multi-source lit search |
-| `/well-economics` | `/well-economics Marcellus WV 2024` — quick-look well economics with Li/Mg uplift |
-| `/completions-design` | `/completions-design Marcellus Monongalia WV` — completions context and frac data |
-| `/sustainability-profile` | `/sustainability-profile Permian Basin TX` — ESG / water / emissions summary |
+| `/prospect` | `/prospect Marcellus Shale WV` -- run the Li/Mg prospector agent |
+| `/formation-profile` | `/formation-profile Utica OH` -- geological + geochemical profile |
+| `/literature-review` | `/literature-review direct lithium extraction brines` -- multi-source lit search |
+| `/well-economics` | `/well-economics Marcellus WV 2024` -- quick-look well economics with Li/Mg uplift |
+| `/completions-design` | `/completions-design Marcellus Monongalia WV` -- completions context and frac data |
+| `/sustainability-profile` | `/sustainability-profile Permian Basin TX` -- ESG / water / emissions summary |
+| `/regulatory-screen` | `/regulatory-screen Marcellus WV` -- cross-state regulatory and disposal screening |
+| `/water-chem-compare` | `/water-chem-compare Marcellus vs Smackover` -- compare brine chemistry |
+| `/disposal-screen` | `/disposal-screen Tyler County WV` -- disposal well capacity and seismicity risk |
+| `/patent-landscape` | `/patent-landscape sorbent DLE lithium` -- DLE patent landscape analysis |
+| `/tea-dle` | `/tea-dle Marcellus WV 150 mg/L Li` -- techno-economic DLE screening |
+| `/doctor` | `/doctor` -- plugin health check (API keys, endpoint reachability, skill status) |
 
 ## Install
 
@@ -135,7 +175,7 @@ Settings > Customize > Skills > Upload
 
 ### API Keys
 
-Only 4 of the 31 data skills require an API key (all free). Two more accept optional keys for higher rate limits. The remaining 25 data skills work with no authentication at all.
+Only 6 of the 46 data skills require an API key (all free). Three more accept optional keys for higher rate limits. The remaining 37 data skills work with no authentication at all.
 
 See [`docs/TOKENS.md`](docs/TOKENS.md) for detailed step-by-step signup instructions for each service.
 
@@ -157,9 +197,17 @@ echo "api_key=YOUR_KEY" > ~/.config/fred/credentials && chmod 600 ~/.config/fred
 # OpenEI (for DOE GDR geothermal) -- https://openei.org/services/api/signup/
 mkdir -p ~/.config/openei && chmod 700 ~/.config/openei
 echo "api_key=YOUR_KEY" > ~/.config/openei/credentials && chmod 600 ~/.config/openei/credentials
+
+# BEA -- https://apps.bea.gov/API/signup/
+mkdir -p ~/.config/bea && chmod 700 ~/.config/bea
+echo "api_key=YOUR_KEY" > ~/.config/bea/credentials && chmod 600 ~/.config/bea/credentials
+
+# Census -- https://api.census.gov/data/key_signup.html
+mkdir -p ~/.config/census && chmod 700 ~/.config/census
+echo "api_key=YOUR_KEY" > ~/.config/census/credentials && chmod 600 ~/.config/census/credentials
 ```
 
-Or set environment variables (`EIA_API_KEY`, `NETL_EDX_API_KEY`, `FRED_API_KEY`, `OPENEI_API_KEY`). Credential files take priority over environment variables.
+Or set environment variables (`EIA_API_KEY`, `NETL_EDX_API_KEY`, `FRED_API_KEY`, `OPENEI_API_KEY`, `BEA_API_KEY`, `CENSUS_API_KEY`). Credential files take priority over environment variables.
 
 ### Optional Keys (higher rate limits)
 
@@ -171,7 +219,15 @@ echo "api_key=YOUR_KEY" > ~/.config/epa/credentials && chmod 600 ~/.config/epa/c
 # UN Comtrade -- https://comtradeapi.un.org/ (500 req/day without key)
 mkdir -p ~/.config/comtrade && chmod 700 ~/.config/comtrade
 echo "api_key=YOUR_KEY" > ~/.config/comtrade/credentials && chmod 600 ~/.config/comtrade/credentials
+
+# BLS -- https://data.bls.gov/registrationEngine/ (works without key, key raises rate limit)
+mkdir -p ~/.config/bls && chmod 700 ~/.config/bls
+echo "api_key=YOUR_KEY" > ~/.config/bls/credentials && chmod 600 ~/.config/bls/credentials
 ```
+
+### Preflight Check
+
+Run `/doctor` after installation to verify API keys, endpoint reachability, and skill status.
 
 ### WVU-Specific
 
@@ -190,69 +246,56 @@ Check with your PNGE department for access to:
 /well-economics Marcellus Monongalia WV 2024
 /completions-design Marcellus Monongalia WV
 /sustainability-profile Permian Basin TX
+/regulatory-screen Smackover AR
+/water-chem-compare Marcellus vs Smackover
+/disposal-screen Tyler County WV
+/patent-landscape sorbent DLE lithium
+/tea-dle Marcellus WV 150 mg/L Li
+/doctor
 
 # --- Li/Mg Prospecting ---
 "What is the lithium concentration in Smackover brines?"
 "Evaluate DLE potential for Marcellus produced water in WV"
 "Compare Li concentrations across Smackover, Marcellus, and Bakken"
 
+# --- State Regulatory Data ---
+"Show Texas RRC production data for the Permian Basin"
+"Find injection wells in New Mexico Lea County"
+"What is the Bakken production trend from North Dakota DMR?"
+"Search Louisiana SONRIS for Smackover wells in Union Parish"
+"What DLE projects are active in the Arkansas Smackover?"
+
 # --- Completions & Well Engineering ---
 "What casing grade should I use for a 9,000 ft Marcellus well?"
 "Design a frac job for a Utica well with 3,000 ft lateral"
 "Estimate closure pressure and net pressure from this DFIT falloff"
-"Analyze this stage treatment CSV for ISIP and likely screenout behavior"
 "Run a nodal analysis for a 7,500 ft gas well with 900 psi WHP"
 "Diagnose sustained casing pressure on the A-annulus"
-"Review this MIT and noise log package for the most likely leak path"
-"What is the mud weight window for a Marcellus vertical well at 7,500 ft?"
-"Calculate burst pressure for 4.5 in P-110 casing at 8,000 psi"
 
-# --- Produced Water Treatment ---
-"Evaluate treatment options for Marcellus brine with 180,000 mg/L TDS"
-"Is DLE economically viable for a Marcellus water disposal operation?"
-"What are the scale risks for mixing Marcellus PW with sulfate-rich water?"
-"Will residual frac chemicals interfere with DLE sorbents or membranes?"
+# --- DLE Patent & Economics ---
+"What patents does Standard Lithium hold for sorbent DLE?"
+"Run a techno-economic screen for DLE from Marcellus brine at 150 mg/L Li"
+"Compare DLE technology classes: sorbent vs membrane vs electrochemical"
 
-# --- Engineering Calculations ---
-"Calculate the stress on a rod with 50 kips axial load and 2 in diameter"
-"What is the bending stress at midspan of a 20 ft beam with 10 kip load?"
-"Flash a gas at 1000 psia, 150°F using given component compositions"
-"What are the thermodynamic properties of CO2 at 2000 psia and 120°F?"
-"Estimate bubble point and Bo for a 42 API oil with 650 scf/STB gas"
-"Review this PVT report PDF and extract black-oil inputs"
-"Size a heat exchanger from U, A, and LMTD"
-"Estimate fatigue life from Paris law between two crack sizes"
+# --- Water Chemistry & Lab Planning ---
+"Compare Marcellus and Smackover brine chemistry side by side"
+"Design a sampling plan for produced water characterization"
+"Check charge balance on these water analyses"
 
-# --- Local File And Surveillance Workflows ---
-"Rank these wells from a SCADA export by likely optimization value"
-"Review this stage-by-stage frac spreadsheet for outlier stages"
-"Extract the usable PVT inputs from this lab report"
-"Compare annulus pressure tests and log evidence across this integrity package"
-
-# --- Tax-Delinquent Mineral Screening ---
-"Find delinquent mineral properties in Tyler County WV near active wells"
-"Screen Ohio mineral parcels in Belmont County for dormant mineral rights"
-"Show parcels near active unconventional wells in Greene County PA"
-
-# --- Data Access ---
-"Search NETL EDX for produced water treatment datasets"
-"Show me USGS mineral commodity data for lithium production 2020-2024"
-"Find PA DEP unconventional wells in Washington County with Marcellus permits"
-"What are the Subpart W methane emissions for WV oil and gas facilities?"
+# --- Research Output ---
+"Generate a citation table for DLE papers since 2020 in SPE format"
+"Create a poster figure package for Marcellus Li concentrations"
 
 # --- Environmental & Sustainability ---
 "Show earthquakes near Oklahoma injection wells since 2020"
 "What is the water stress index for the Permian Basin?"
 "What is the CO2 storage capacity in the Appalachian basin?"
+"How does U.S. produced water management compare to OSPAR standards?"
 
-# --- Literature & Research ---
-"Find DOE reports on direct lithium extraction from produced water"
-"Search OpenAlex for papers on Marcellus Shale brine geochemistry since 2020"
-"What does the USGS say about lithium in the Smackover Formation?"
-
-# --- Geopolitics & Markets ---
-"How do China's lithium refining dominance and DRC cobalt affect US supply chains?"
+# --- Economic Context ---
 "Plot WTI crude oil prices and Henry Hub gas prices for 2024"
+"What is the PPI trend for crude petroleum extraction?"
+"Show county-level income data for Appalachian energy counties"
 ```
 
 ## Development
@@ -264,6 +307,9 @@ claude --plugin-dir ./claude-pnge
 # Validate all skills
 claude plugin validate .
 
+# Preflight check
+/doctor
+
 # After changes, restart Claude Code to pick up updates
 ```
 
@@ -272,44 +318,65 @@ claude plugin validate .
 ```
 claude-pnge/
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (name: pnge, v0.6.0)
-├── skills/                      # 66 skills total
+│   └── plugin.json              # Plugin manifest (name: pnge, v0.8.0)
+├── skills/                      # 81 skills total
 │   │
-│   ├── -- Data Access (31) --
+│   ├── -- Federal Data (20) --
 │   ├── eia-data/                # EIA Open Data API v2
 │   ├── usgs-produced-waters/    # USGS Produced Waters Geochemical DB v3.0
 │   ├── usgs-minerals/           # USGS Mineral Commodity Summaries
+│   ├── usgs-pubs/               # USGS Publications Warehouse
+│   ├── usgs-earthquakes/        # USGS ComCat Earthquake Catalog
+│   ├── usgs-waterdata/          # USGS NWIS + Water Quality Portal
+│   ├── usgs-core-center/        # USGS Core Research Center
+│   ├── usgs-tnm/                # USGS The National Map (DEM, geologic maps)
 │   ├── netl-edx/                # DOE NETL Energy Data eXchange
 │   ├── netl-carbon-storage/     # NATCARB Atlas v5 CCS capacity
-│   ├── wvges-wells/             # WV Geological & Economic Survey
-│   ├── padep-wells/             # PA DEP Unconventional Well Registry
-│   ├── boem-offshore/           # BOEM Federal Offshore Data
-│   ├── fracfocus/               # FracFocus Chemical Disclosure
+│   ├── doe-osti/                # DOE OSTI Technical Reports
+│   ├── doe-geothermal/          # DOE GDR / OpenEI Geothermal
 │   ├── epa-enviro/              # EPA Envirofacts & ECHO
 │   ├── epa-ghg/                 # EPA GHGRP Facility Emissions
 │   ├── epa-ghgrp-subpartw/      # Subpart W Oilfield Methane
-│   ├── usgs-pubs/               # USGS Publications Warehouse
-│   ├── doe-osti/                # DOE OSTI Technical Reports
-│   ├── kggs-well-logs/          # KGS Wireline Logs (LAS 2.0)
-│   ├── macrostrat/              # Macrostrat Formation Stratigraphy
-│   ├── openalex/                # OpenAlex Open-Access Literature
-│   ├── usgs-earthquakes/        # USGS ComCat Earthquake Catalog
-│   ├── usgs-waterdata/          # USGS NWIS + Water Quality Portal
-│   ├── fred-prices/             # Federal Reserve FRED
-│   ├── worldbank-energy/        # World Bank Open Data
-│   ├── comtrade-minerals/       # UN Comtrade Trade Data
-│   ├── doe-geothermal/          # DOE GDR / OpenEI Geothermal
-│   ├── crossref-doi/            # CrossRef DOI/Citation API
-│   ├── opec-data/               # OPEC Production via EIA STEO
-│   ├── iea-open/                # IEA Free Datasets
+│   ├── epa-treatability/        # EPA Treatability Database
+│   ├── boem-offshore/           # BOEM Federal Offshore Data
+│   ├── blm-mineral-records/     # BLM Mineral & Land Records
+│   ├── fracfocus/               # FracFocus Chemical Disclosure
+│   ├── nasa-earthdata/          # NASA Earthdata CMR (Landsat, Sentinel)
+│   │
+│   ├── -- State Regulatory (11) --
+│   ├── wvges-wells/             # WV Geological & Economic Survey
+│   ├── padep-wells/             # PA DEP Unconventional Well Registry
 │   ├── odnr-wells/              # Ohio DNR Wells (Utica/Point Pleasant)
-│   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
+│   ├── tx-rrc/                  # Texas Railroad Commission
+│   ├── nm-ocd/                  # New Mexico Oil Conservation Division
+│   ├── nd-dmr/                  # North Dakota Dept of Mineral Resources
+│   ├── la-sonris/               # Louisiana SONRIS
+│   ├── ar-aogc/                 # Arkansas Oil and Gas Commission
 │   ├── wv-tax-minerals/         # WV Delinquent Mineral Properties
 │   ├── pa-tax-minerals/         # PA Mineral Parcels Near Active Wells
 │   ├── oh-tax-minerals/         # OH Mineral Parcels (OGRIP 200-series LUC)
 │   │
+│   ├── -- Global & Economic (12) --
+│   ├── fred-prices/             # Federal Reserve FRED
+│   ├── bls-data/                # Bureau of Labor Statistics
+│   ├── bea-data/                # Bureau of Economic Analysis
+│   ├── census-data/             # U.S. Census Bureau
+│   ├── worldbank-energy/        # World Bank Open Data
+│   ├── comtrade-minerals/       # UN Comtrade Trade Data
+│   ├── opec-data/               # OPEC Production via EIA STEO
+│   ├── iea-open/                # IEA Free Datasets
+│   ├── wri-aqueduct/            # WRI Aqueduct Water Risk
+│   ├── ospar-discharges/        # OSPAR Offshore Produced Water
+│   │
+│   ├── -- Literature & Patents (5) --
+│   ├── openalex/                # OpenAlex Open-Access Literature
+│   ├── crossref-doi/            # CrossRef DOI/Citation API
+│   ├── kggs-well-logs/          # KGS Wireline Logs (LAS 2.0)
+│   ├── macrostrat/              # Macrostrat Formation Stratigraphy
+│   ├── patentsview/             # USPTO / PatentsView DLE Patents
+│   │
 │   └── -- Computational (35) --
-│       ├── pnge-mechanics/      # Statics, Lamé cylinders, Mohr's circle
+│       ├── pnge-mechanics/      # Statics, Lame cylinders, Mohr's circle
 │       ├── frac-design/         # PKN/KGD fracture models, proppant transport
 │       ├── wellbore-stability/  # Kirsch equations, mud weight window
 │       ├── petrophysics/        # Log interpretation, Archie, brittleness
@@ -326,7 +393,7 @@ claude-pnge/
 │       ├── production-chemistry/ # Emulsions, squeeze jobs, cleanup
 │       ├── well-integrity-barriers/ # SCP, MIT, barrier diagnostics
 │       ├── petroleum-pvt/       # Bubble point, Rs, Bo, Bg, shrinkage
-│       ├── stage-treatment-analysis/ # Stage CSV parsing and stage diagnostics
+│       ├── stage-treatment-analysis/ # Stage CSV parsing and diagnostics
 │       ├── production-surveillance/ # SCADA/test-separator surveillance
 │       ├── pvt-report-review/   # PVT lab report extraction and QC
 │       ├── integrity-log-review/ # MIT/log package review
@@ -334,7 +401,7 @@ claude-pnge/
 │       ├── nist-webbook/        # NIST thermodynamic properties
 │       ├── tnav/                # Reservoir simulation emulation
 │       ├── pnge-visual-explainer/ # HTML visualization generator
-│       ├── fluid-mechanics/     # Reynolds, Darcy-Weisbach, Bernoulli (ChBE 311)
+│       ├── fluid-mechanics/     # Reynolds, Darcy-Weisbach (ChBE 311)
 │       ├── reaction-engineering/ # CSTR/PFR/batch, Arrhenius (ChBE 321)
 │       ├── thermo-eos/          # PR/SRK EOS, fugacity, VLE (ChBE 231)
 │       ├── heat-transfer/       # Conduction, convection, exchangers
@@ -345,72 +412,72 @@ claude-pnge/
 │       ├── physics-em/          # Circuits, E&M, induction (PHYS 112)
 │       └── diff-equations/      # ODEs, Laplace, RK4 (MATH 261)
 │
-├── agents/                      # 6 research and engineering agents
+├── agents/                      # 12 research and engineering agents
 │   ├── li-mg-prospector.md      # Li/Mg recovery assessment
 │   ├── pnge-tutor.md            # Socratic PNGE tutor
 │   ├── pnge-pw-treatment.md     # Produced water treatment assessment
 │   ├── api-well-standards.md    # API casing/cementing standards
 │   ├── pnge-geopolitics.md      # Energy geopolitics analysis
-│   └── pnge-gis-mapper.md       # Interactive map generation
+│   ├── pnge-gis-mapper.md       # Interactive map generation
+│   ├── regulatory-disposal-analyst.md  # Cross-state disposal/UIC analysis
+│   ├── dle-patent-scout.md      # DLE patent landscape analysis
+│   ├── water-chem-qaqc.md       # Water chemistry QA/QC
+│   ├── tea-lca-analyst.md       # Techno-economic / LCA screening
+│   ├── lab-method-planner.md    # Sampling plans and analytical methods
+│   └── research-synthesis-writer.md    # Citation tables, poster figures
 │
-├── commands/                    # 6 slash commands
+├── commands/                    # 12 slash commands
 │   ├── prospect.md
 │   ├── formation-profile.md
 │   ├── literature-review.md
 │   ├── well-economics.md
 │   ├── completions-design.md
-│   └── sustainability-profile.md
+│   ├── sustainability-profile.md
+│   ├── regulatory-screen.md
+│   ├── water-chem-compare.md
+│   ├── disposal-screen.md
+│   ├── patent-landscape.md
+│   ├── tea-dle.md
+│   └── doctor.md
 │
 └── docs/
-    └── TOKENS.md                # API key acquisition guide
+    ├── TOKENS.md                # API key acquisition guide
+    ├── DATA_SOURCES.md          # Data source reference
+    └── PACKAGING.md             # Plugin packaging guide
 ```
 
 ## Data Source Coverage
 
 ```
                     ┌──────────────────────────────────────────┐
-                    │          claude-pnge Plugin v0.7.0       │
-                    │   66 Skills · 6 Agents · 6 Commands      │
+                    │          claude-pnge Plugin v0.8.0       │
+                    │   81 Skills · 12 Agents · 12 Commands    │
                     └─────────────────┬────────────────────────┘
                                       │
         ┌─────────────────────────────┼──────────────────────────┐
         │                             │                          │
-   U.S. Federal                 Global Sources          Engineering Tools
-   ─────────────                ──────────────          ─────────────────
-   · EIA                        · World Bank             · Wellbore Stability
-   · USGS (5 skills)            · UN Comtrade            · Frac Design
-   · DOE NETL / OSTI / GDR     · IEA Open               · Mechanics/Statics
-   · EPA (3 skills)             · OPEC (via EIA)         · Mass/Energy Balance
-   · BOEM / BSEE               · CrossRef / OpenAlex    · NIST Thermodynamics
-   · FracFocus                  · FRED                   · tNavigator Sim
-   · WVGES / PA DEP / ODNR      · WRI Aqueduct           · Petrophysics
-   · Macrostrat                 · Comtrade               · Artificial Lift
-   · KGS Well Logs                                       · Flow Assurance
-                                                         · Tubing Design
-                                                         · Perf Design
-                                                         · Surface Facilities
-                                                         · RTA / Decline Curves
-                                                         · Well Test Analysis
-                                                         · Matrix Acidizing
-                                                         · Completion Diagnostics
-                                                         · Nodal Analysis
-                                                         · Production Chemistry
-                                                         · Well Integrity
-                                                         · Petroleum PVT
-                                                         · Stage Data Analysis
-                                                         · Production Surveillance
-                                                         · PVT Report Review
-                                                         · Integrity Log Review
-                                                         · Fluid Mechanics
-                                                         · Heat Transfer
-                                                         · Mass Transfer / Separations
-                                                         · Aqueous Chem / Electrochem
-                                                         · Fracture Mechanics
-                                                         · Reaction Engineering
-                                                         · Thermo EOS / VLE
-                                                         · Physics I & II
-                                                         · Diff Equations
-                                                         · 6 Agents · 6 Cmds
+   U.S. Federal                State Regulatory          Engineering Tools
+   ─────────────               ────────────────          ─────────────────
+   · EIA                       · WV (WVGES)              · Wellbore Stability
+   · USGS (7 skills)           · PA (DEP)                · Frac Design
+   · DOE NETL / OSTI / GDR    · OH (ODNR)               · Mechanics/Statics
+   · EPA (4 skills)            · TX (RRC)                · Mass/Energy Balance
+   · BOEM / BSEE              · NM (OCD)                · NIST Thermodynamics
+   · BLM                      · ND (DMR)                · tNavigator Sim
+   · FracFocus                 · LA (SONRIS)             · Petrophysics
+   · NASA Earthdata            · AR (AOGC)               · Artificial Lift
+                               · Tax minerals            · Flow Assurance
+   Global/Economic             │ (WV/PA/OH)              · Tubing Design
+   ──────────────              │                         · Perf Design
+   · World Bank                                          · Surface Facilities
+   · UN Comtrade             Research Tools              · RTA / Decline Curves
+   · IEA Open                ──────────────              · Well Test Analysis
+   · OPEC (via EIA)          · Patent Landscape          · Matrix Acidizing
+   · FRED                    · TEA/LCA                   · Completion Diagnostics
+   · BLS / BEA / Census      · Water Chem QA/QC          · Nodal Analysis
+   · WRI Aqueduct            · Lab Method Planner        · Production Chemistry
+   · OSPAR                   · Research Synthesis         · Well Integrity
+   · CrossRef / OpenAlex     · Regulatory Analysis        · PVT + 10 Tutoring
 ```
 
 ## License

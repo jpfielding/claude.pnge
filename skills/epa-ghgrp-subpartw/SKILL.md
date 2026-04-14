@@ -32,7 +32,7 @@ The EPA Envirofacts API is fully public. No API key is needed for this skill.
 
 ## API Structure
 
-**Base URL:** `https://enviro.epa.gov/enviro/efservice/`
+**Base URL:** `https://data.epa.gov/efservice/`
 
 The Envirofacts REST API follows a consistent pattern:
 ```
@@ -55,16 +55,16 @@ and reporting year.
 
 ```bash
 # All Subpart W facilities in West Virginia
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/JSON"
 
 # WV facilities for a specific reporting year
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/REPORTING_YEAR/2022/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/REPORTING_YEAR/2022/JSON"
 
 # Paginate: first 200 rows
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/rows/0:199/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/rows/0:199/JSON"
 
 # All Subpart W reporters for a single year (national)
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/REPORTING_YEAR/2022/rows/0:999/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/REPORTING_YEAR/2022/rows/0:999/JSON"
 ```
 
 Key fields in `PUB_FACTS_SUBPRT_GHG_W`:
@@ -91,11 +91,11 @@ ID before querying Subpart W detail.
 
 ```bash
 # Find facility IDs for WV oil/gas operators
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_FACILITY_GHG_EMITTER/STATE_CODE/WV/rows/0:199/JSON" \
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_FACILITY_GHG_EMITTER/STATE_CODE/WV/rows/0:199/JSON" \
   | jq '.[] | {facility_id: .FACILITY_ID, name: .FACILITY_NAME, subpart: .SUBPART_NAME}'
 
 # Find a specific facility by ID
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_FACILITY_GHG_EMITTER/FACILITY_ID/1000244/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_FACILITY_GHG_EMITTER/FACILITY_ID/1000244/JSON"
 ```
 
 ---
@@ -106,7 +106,7 @@ Facility-level information including address, coordinates, and NAICS code.
 
 ```bash
 # Get facility metadata by GHGRP ID
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_FACILITY/FACILITY_ID/1000244/JSON"
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_FACILITY/FACILITY_ID/1000244/JSON"
 ```
 
 Key fields:
@@ -154,7 +154,7 @@ Map the user's question:
 ```bash
 STATE="WV"
 YEAR="2022"
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/${STATE}/REPORTING_YEAR/${YEAR}/rows/0:499/JSON" \
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/${STATE}/REPORTING_YEAR/${YEAR}/rows/0:499/JSON" \
   | jq 'sort_by(.GHG_QUANTITY | tonumber) | reverse | .[0:20] | .[] | {
       name: .FACILITY_NAME,
       id: .FACILITY_ID,
@@ -171,7 +171,7 @@ A single facility-year appears in multiple rows (one per gas per emission
 source). Aggregate CH4 specifically:
 
 ```bash
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/REPORTING_YEAR/2022/GAS_NAME/Methane/rows/0:499/JSON" \
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/STATE_CODE/WV/REPORTING_YEAR/2022/GAS_NAME/Methane/rows/0:499/JSON" \
   | jq '
     group_by(.FACILITY_ID) |
     map({
@@ -188,7 +188,7 @@ The `EMISSION_SOURCE` field contains segment-level categories. Filter for
 one facility to see breakdown:
 
 ```bash
-curl -s "https://enviro.epa.gov/enviro/efservice/PUB_FACTS_SUBPRT_GHG_W/FACILITY_ID/1000244/REPORTING_YEAR/2022/JSON" \
+curl -s "https://data.epa.gov/efservice/PUB_FACTS_SUBPRT_GHG_W/FACILITY_ID/1000244/REPORTING_YEAR/2022/JSON" \
   | jq 'group_by(.EMISSION_SOURCE) | map({
       source: .[0].EMISSION_SOURCE,
       gas: .[0].GAS_NAME,

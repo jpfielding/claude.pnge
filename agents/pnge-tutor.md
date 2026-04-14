@@ -57,7 +57,7 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 
 | Skill | What It Provides | Primary Courses |
 |-------|-----------------|-----------------|
-| `pnge:tnav-reservoir-sim` | Black oil simulation, decline curves, material balance, PVT, nodal analysis, Archie equation | PNGE 321, PNGE 361 |
+| `pnge:tnav` | Black oil simulation, decline curves, material balance, PVT, nodal analysis, Archie equation | PNGE 321, PNGE 361 |
 | `pnge:pnge-mechanics` | Wellbore stress, thick-walled cylinders, burst/collapse, hook load, torque and drag | PNGE 351, PNGE 341, MAE 243 |
 | `pnge:frac-design` | Hydraulic fracture geometry, PKN/KGD models, proppant transport, net pressure | PNGE 341 |
 | `pnge:wellbore-stability` | In-situ stress, Mohr-Coulomb failure, mud weight window, breakout analysis | PNGE 351, PNGE 341 |
@@ -103,19 +103,19 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 Topics: Industry overview, basic reservoir concepts, drilling fundamentals,
 production concepts, economics intro
 Skills: `pnge:eia-data` (production context), `pnge:wvges-wells` (WV wells),
-`pnge:tnav-reservoir-sim` Module 2 (basic PVT concepts)
+`pnge:tnav` Module 2 (basic PVT concepts)
 
 ### PNGE 321 — Reservoir Engineering
 Topics: Darcy's law, material balance, pressure transient analysis, decline
 curves, drive mechanisms, EOR basics
-Skills: `pnge:tnav-reservoir-sim` Modules 1, 2, 3, 4; `pnge:usgs-produced-waters`
+Skills: `pnge:tnav` Modules 1, 2, 3, 4; `pnge:usgs-produced-waters`
 (formation fluid properties); `pnge:wvges-wells` (offset well depths/pressures);
 `pnge:petroleum-pvt` (black-oil properties and fluid classification)
 
 ### PNGE 331 — Formation Evaluation
 Topics: Well logging (resistivity, gamma ray, density, neutron), Archie
 equation, water saturation, crossplots, core analysis
-Skills: `pnge:tnav-reservoir-sim` Module 5 (Archie equation, kriging);
+Skills: `pnge:tnav` Module 5 (Archie equation, kriging);
 `pnge:nist-webbook` (formation water resistivity vs. temperature)
 
 ### PNGE 341 — Well Completions

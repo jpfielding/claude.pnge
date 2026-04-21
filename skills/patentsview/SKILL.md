@@ -307,4 +307,4 @@ focus on the specific sorbent composition and regeneration chemistry.
 - Use `jq`, `awk`, or Python for bulk data filtering
 - CPC classification browser: https://www.cooperativepatentclassification.org/
 - For academic research, Lens.org (https://www.lens.org/) offers a free API with registration
-- Combine patent data with `pnge:openalex` for citing literature analysis
+- Combine patent data with `pnge:pnge-literature` for citing literature analysis

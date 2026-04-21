@@ -83,7 +83,7 @@ lithium/brine research comes from cross-referencing AOGC well records with:
 | Standard Lithium SEC Filings | Reserve estimates, DLE performance, pilot results | SEC EDGAR |
 | ExxonMobil Lithium Announcements | Magnolia, AR project details | Company press releases |
 | Equinor Lithium Project | South AR Smackover lease data | Company announcements |
-| Academic Literature (Collins, 1976) | Foundational Smackover brine chemistry data | `usgs-pubs` or `doe-osti` skills |
+| Academic Literature (Collins, 1976) | Foundational Smackover brine chemistry data | `pnge-literature` skill (USGS Pubs + OSTI adapters) |
 | NETL EDX | DOE-funded research on Li from produced waters | `netl-edx` skill |
 
 ---
@@ -177,7 +177,7 @@ Due to AOGC's limited API infrastructure:
 1. For well/production data: Use browser access to AOGC or request data directly
 2. For brine chemistry: Use the `usgs-produced-waters` skill
 3. For DLE project details: Query SEC EDGAR or company websites
-4. For research: Use `usgs-pubs`, `doe-osti`, or `netl-edx` skills
+4. For research: Use `pnge-literature` (OpenAlex/CrossRef/USGS Pubs/OSTI) or `netl-edx` skills
 
 ### Step 3 — Parse and Integrate
 

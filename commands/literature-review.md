@@ -1,6 +1,6 @@
 ---
 name: literature-review
-description: Conduct a structured academic literature review on a petroleum engineering, geochemistry, or critical minerals topic using DOE OSTI, USGS Publications, OpenAlex, and CrossRef. Trigger: /literature-review direct lithium extraction produced water
+description: Conduct a structured academic literature review on a petroleum engineering, geochemistry, or critical minerals topic using the unified pnge-literature skill (OpenAlex, CrossRef, USGS Publications, DOE OSTI). Trigger: /literature-review direct lithium extraction produced water
 ---
 
 Conduct a structured literature review on: $ARGUMENTS
@@ -9,11 +9,15 @@ If no topic is provided, ask the user to specify one.
 
 Use the following skills to gather sources:
 
-1. **pnge:doe-osti** — DOE technical reports and national lab publications on the topic
-2. **pnge:usgs-pubs** — USGS professional papers, fact sheets, and data series
-3. **pnge:openalex** — peer-reviewed journal articles, theses, conference papers (open access)
-4. **pnge:netl-edx** — NETL datasets and research products related to the topic
-5. **pnge:crossref-doi** — resolve and verify DOIs; retrieve full citation metadata
+1. **pnge:pnge-literature** — unified academic search across OpenAlex
+   (peer-reviewed), CrossRef (DOI metadata), USGS Publications Warehouse
+   (Fact Sheets, Professional Papers, Open-File Reports), and DOE OSTI
+   (national lab technical reports). Auto-routes by query cues and
+   de-duplicates by DOI. Use `--source openalex|crossref|usgs-pw|doe-osti`
+   to force a single adapter.
+2. **pnge:netl-edx** — NETL datasets and research products related to the topic
+3. **pnge:datacite-doi** — research-data DOIs (`10.5066` USGS data releases,
+   `10.5281` Zenodo, Figshare) that CrossRef does not cover
 
 Structure the output as:
 

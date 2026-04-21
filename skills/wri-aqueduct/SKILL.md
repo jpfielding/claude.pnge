@@ -339,7 +339,7 @@ Pre-loaded context to interpret results against major producing regions:
   where reuse programs are active.
 - **Quality vs. quantity.** Aqueduct covers water quantity risk. For water
   quality context near O&G operations, use pnge:usgs-waterdata (streamflow
-  and water quality gauges) and pnge:epa-enviro (NPDES, UIC permits).
+  and water quality gauges) and pnge:epa-regulatory (NPDES, UIC permits).
 
 ---
 

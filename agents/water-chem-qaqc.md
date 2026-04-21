@@ -39,7 +39,7 @@ they propagate.
 | Skill | What It Provides |
 |-------|-----------------|
 | `pnge:usgs-produced-waters` | Primary brine geochemistry dataset (USGS PWGDB v3.0) |
-| `pnge:epa-enviro` | EPA water quality data for cross-reference |
+| `pnge:epa-regulatory` | EPA water quality data for cross-reference (Envirofacts/ECHO) |
 | `pnge:usgs-waterdata` | USGS surface/groundwater quality stations |
 | `pnge:netl-edx` | NEWTS produced water data from NETL |
 | `pnge:production-chemistry` | Field chemistry context (emulsions, scaling, sampling artifacts) |

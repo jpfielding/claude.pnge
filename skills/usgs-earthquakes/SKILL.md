@@ -329,7 +329,7 @@ Mississippian Lime horizontal wells. Disposal volume reductions mandated by
 the Oklahoma Corporation Commission have reduced event rates, but the region
 remains seismically active above pre-2009 baseline levels.
 
-*Cross-reference with `pnge:epa-enviro` (UIC Class II well locations) and
+*Cross-reference with `pnge:epa-regulatory` (UIC Class II well locations) and
 `pnge:eia-data` (disposal volumes) for injection-seismicity correlation.*
 
 **Data quality:** Events are analyst-reviewed. USGS ComCat detection
@@ -413,8 +413,8 @@ or full paginated download.
 
 ### Cross-References to Other Skills
 
-- **`pnge:epa-enviro`** — UIC Class II injection well locations and permits.
-  Query `UIC_WELL` table for disposal wells near earthquake clusters.
+- **`pnge:epa-regulatory`** — UIC Class II injection well locations and permits.
+  Query `UIC_WELL` table (via the UIC intent mode) for disposal wells near earthquake clusters.
 - **`pnge:eia-data`** — Disposal volume data. Route
   `petroleum/move/imp/data/` and state-level production data can provide
   injection volume context.

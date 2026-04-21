@@ -402,6 +402,6 @@ OSPAR monitoring methodologies provide:
           if row['Country'] == 'NO':
               print(row)
   ```
-- **Cross-reference with other skills:** Use `epa-enviro` for U.S. NPDES
+- **Cross-reference with other skills:** Use `epa-regulatory` for U.S. NPDES
   data, `boem-offshore` for U.S. OCS production data, and `fracfocus` for
   U.S. chemical disclosure data to build comparative analyses.

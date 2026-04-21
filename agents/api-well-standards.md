@@ -57,7 +57,7 @@ Marcellus and Utica wells in West Virginia and Pennsylvania.
 | `pnge:pnge-mechanics` | Thick-walled cylinder burst and collapse verification calculations |
 | `pnge:wvges-wells` | Offset well depths, formations, and casing programs in WV |
 | `pnge:usgs-produced-waters` | Formation fluid properties (density, corrosivity, H2S content) |
-| `pnge:epa-enviro` | UIC Class II (saltwater disposal) and Class VI (CO2) permit requirements |
+| `pnge:epa-regulatory` | ECHO compliance + Envirofacts; UIC Class II (SWD) and Class VI (CO2) well-level records via state regulator skills |
 
 ---
 

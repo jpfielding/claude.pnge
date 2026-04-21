@@ -12,8 +12,11 @@ Use the following skills to build the profile:
 1. **pnge:macrostrat** — stratigraphic column, age, lithology, thickness, depositional environment for the target formation
 2. **pnge:usgs-produced-waters** — brine geochemistry (Li, Mg, TDS, major ions) from the formation
 3. **pnge:wvges-wells** — well penetrations and depths in WV (if Appalachian target)
-4. **pnge:usgs-pubs** — USGS reports and geological surveys on the formation
-5. **pnge:doe-osti** — DOE research on the formation's reservoir and fluid properties
+4. **pnge:pnge-literature** — unified literature on the formation's
+   reservoir, geology, and fluid properties. Auto-routes across USGS
+   Publications Warehouse (geological surveys, Professional Papers),
+   DOE OSTI (reservoir and fluid research from national labs), OpenAlex
+   (peer-reviewed), and CrossRef (DOI metadata)
 
 Structure the output as:
 

@@ -12,7 +12,9 @@ Use the **water-chem-qaqc** agent and the following skills:
 
 1. **pnge:usgs-produced-waters** — brine geochemistry for each target formation/basin
 2. **pnge:macrostrat** — stratigraphic context (age, lithology, depositional environment)
-3. **pnge:usgs-pubs** — USGS reports characterizing each formation's water chemistry
+3. **pnge:pnge-literature** (`--source usgs-pw`) — USGS reports and
+   related peer-reviewed literature characterizing each formation's
+   water chemistry
 
 For each formation, the water-chem-qaqc agent should:
 - Harmonize units to mg/L (with SG correction if needed)

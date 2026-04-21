@@ -326,4 +326,4 @@ returned in the current page.
 4. **Induced vs. tectonic:** The API does not reliably distinguish induced from
    tectonic events. Use location, depth (< 10 km), and proximity to injection
    wells as indicators. Cross-reference with UIC Class II well locations from
-   the `pnge:epa-enviro` skill.
+   the `pnge:epa-regulatory` skill (UIC intent mode).

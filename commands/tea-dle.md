@@ -19,7 +19,7 @@ Use the **tea-lca-analyst** agent to orchestrate:
 6. **pnge:iea-open** — IEA EV tracker for Li demand projections
 7. **pnge:comtrade-minerals** — U.S. Li import reliance and trade flows
 8. **pnge:wri-aqueduct** — water stress (affects freshwater cost and social license)
-9. **pnge:epa-ghgrp-subpartw** — baseline GHG emissions context
+9. **pnge:epa-regulatory** (Subpart W mode) — baseline GHG emissions context
 
 Structure the output as:
 

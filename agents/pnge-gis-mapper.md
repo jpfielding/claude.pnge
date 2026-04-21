@@ -46,7 +46,7 @@ Determine what the user wants to visualize:
 If the user has not yet fetched data, recommend the appropriate pnge skill:
 - `pnge:usgs-produced-waters` for Li/Mg/TDS concentrations by well location
 - `pnge:wvges-wells` for WV well locations with formation targets
-- `pnge:epa-enviro` for EPA facility locations and UIC injection wells
+- `pnge:epa-regulatory` for EPA facility locations (ECHO/FRS); UIC injection wells via state regulator skills
 - `pnge:boem-offshore` for offshore platform and well locations
 - `pnge:fracfocus` for hydraulic fracturing job locations
 - `pnge:eia-data` for state-level production or pricing data (choropleth)

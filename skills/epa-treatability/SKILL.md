@@ -238,7 +238,7 @@ pilot data, SPE produced water treatment literature.
 | Contaminant not found in TDB | TDB covers 120+ contaminants but not all | Search by chemical name, CAS number, or related compound |
 | No data for specific treatment + contaminant pair | Not all combinations are in TDB | Note gap; supplement with peer-reviewed literature |
 | DLE technologies not in TDB | TDB focuses on drinking water, not DLE | Use the DLE reference table above; cite primary literature |
-| EPA Envirofacts API error | See `pnge:epa-enviro` skill for detailed troubleshooting | Check endpoint and parameters |
+| EPA Envirofacts API error | See `pnge:epa-regulatory` skill for detailed troubleshooting | Check endpoint and parameters |
 
 ---
 
@@ -282,7 +282,7 @@ pilot data, SPE produced water treatment literature.
 
 - Since there is no API, use the inline reference tables for programmatic responses
 - Direct users to https://tdb.epa.gov/ for detailed TDB lookups
-- For treatment facility data, use the `pnge:epa-enviro` skill (Envirofacts API)
+- For treatment facility data, use the `pnge:epa-regulatory` skill (Envirofacts + ECHO + GHGRP)
 - Combine with `pnge:usgs-produced-waters` for feed water characterization
-- For DLE technology details, cross-reference with `pnge:patentsview` and `pnge:openalex`
+- For DLE technology details, cross-reference with `pnge:patentsview` and `pnge:pnge-literature`
 - Key literature: "Produced Water Treatment" (SPE Monograph), Fakhru'l-Razi et al. (2009) review

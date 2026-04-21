@@ -74,8 +74,7 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 | `pnge:tubing-design` | Tubing force analysis, Lubinski buckling, seal assembly, velocity strings | PNGE 341, PNGE 351 |
 | `pnge:perforation-design` | Perforation skin, phasing, limited entry, underbalanced criteria | PNGE 341 |
 | `pnge:surface-facilities` | Separator sizing, TEG dehy, compression HP, backpressure effects | PNGE 361, ChBE 311 |
-| `pnge:usgs-pubs` | USGS technical reports on formations | Research, capstone |
-| `pnge:doe-osti` | DOE research reports for advanced topics | Research, capstone |
+| `pnge:pnge-literature` | Unified literature search — OpenAlex, CrossRef, USGS Publications Warehouse, DOE OSTI | Research, capstone |
 | `pnge:rta-production` | Arps decline curves, EUR estimation, flowing material balance, production forecasting | PNGE 321, PNGE 411 |
 | `pnge:well-test-analysis` | Ei solution, Horner plot, skin factor, Bourdet derivative, wellbore storage | PNGE 321, PNGE 361 |
 | `pnge:matrix-acidizing` | HCl carbonate design, HF sandstone design, Hawkins skin, wormhole Damkohler | PNGE 341, PNGE 361 |
@@ -91,9 +90,6 @@ Assume field units (psia, ft, STB, MMscf) unless the student specifies SI.
 | `pnge:mass-transfer-separations` | Diffusion, mass-transfer coefficients, HTU/NTU, absorption, stripping, distillation screening | ChBE separations |
 | `pnge:aqueous-chemistry-electrochem` | pH, buffers, alkalinity, hardness, Nernst, Faraday, water chemistry | ChBE / water treatment |
 | `pnge:materials-fracture-mechanics` | Fracture toughness, stress intensity, Paris law, fatigue, brittle-vs-ductile failure | MAE materials / integrity |
-| `pnge:physics-mechanics` | Kinematics, Newton laws, energy, momentum, rotation, SHM | PHYS 111, MAE 201 |
-| `pnge:physics-em` | Coulomb law, circuits, RC/RL, Faraday, magnetic force, LC oscillation | PHYS 112 |
-| `pnge:diff-equations` | 1st/2nd order ODEs, Laplace transforms, eigenvalue systems, Euler, RK4 | MATH 261 |
 
 ---
 
@@ -220,32 +216,6 @@ stoichiometry, Arrhenius temperature dependence, Damkohler number, Levenspiel
 plot, multiple reactors, adiabatic temperature rise, equilibrium conversion
 Skills: `pnge:reaction-engineering` (all reactor design modules);
 `pnge:thermo-eos` (thermodynamic equilibrium context)
-
-### PHYS 111 — Physics for Engineers I (Classical Mechanics)
-Topics: Kinematics (constant acceleration, projectile motion, circular),
-Newton's laws and force analysis, work-energy theorem, conservation of energy,
-momentum and collisions, rotational dynamics (torque, moment of inertia),
-simple harmonic motion (spring, pendulum)
-Skills: `pnge:physics-mechanics` (all modules);
-`pnge:pnge-mechanics` (applied mechanics in wellbore context)
-Free resources: Walter Lewin MIT 8.01 YouTube; OpenStax University Physics Vol 1
-
-### PHYS 112 — Physics for Engineers II (Electricity and Magnetism)
-Topics: Electrostatics (Coulomb, E field, potential), DC circuits (Ohm, KVL,
-KCL, power), capacitors and RC circuits, magnetic force (Lorentz), Biot-Savart
-for long wire, Faraday induction, RL circuits, LC oscillation frequency
-Skills: `pnge:physics-em` (all E&M modules)
-Free resources: Walter Lewin MIT 8.02 YouTube; OpenStax University Physics Vol 2
-
-### MATH 261 — Differential Equations
-Topics: First-order ODEs (separable, integrating factor), second-order linear
-constant-coefficient ODEs (characteristic equation, undetermined coefficients,
-variation of parameters), Laplace transforms (with tables and partial
-fractions), systems of ODEs (eigenvalue method, phase plane), numerical methods
-(Euler, Runge-Kutta RK4)
-Skills: `pnge:diff-equations` (all ODE modules)
-Free resources: Professor Leonard ODE YouTube; Paul's Online Math Notes
-(tutorial.math.lamar.edu); MIT OCW 18.03SC
 
 ---
 

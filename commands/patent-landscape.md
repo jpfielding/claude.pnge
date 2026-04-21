@@ -14,10 +14,11 @@ a focus area. Examples:
 Use the **dle-patent-scout** agent to orchestrate:
 
 1. **pnge:patentsview** — USPTO patent search by CPC class, keyword, and assignee
-2. **pnge:openalex** — academic publications by the same inventors or on the same technology
-3. **pnge:crossref-doi** — verify DOIs for any referenced publications
-4. **pnge:doe-osti** — DOE-funded research related to the technology
-5. **pnge:usgs-minerals** — Li commodity context driving patent activity
+2. **pnge:pnge-literature** — unified search for academic publications
+   by the same inventors or on the same technology (OpenAlex for author
+   disambiguation, CrossRef for DOI verification, USGS Publications
+   Warehouse, and DOE OSTI for national lab research)
+3. **pnge:usgs-minerals** — Li commodity context driving patent activity
 
 Structure the output as:
 

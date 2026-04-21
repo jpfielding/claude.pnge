@@ -1,8 +1,8 @@
 # CLAUDE.md — claude-pnge Plugin Build Plan
 
 This is a Claude Code plugin for petroleum engineering research data access.
-It bundles 10 data-access skills, 1 research agent, and 1 slash command into
-a single installable plugin for Claude Code.
+As of v0.9.0 it ships **76 skills (43 data access, 33 computational)**,
+**12 agents**, and **12 commands**.
 
 **Target user:** WVU PNGE undergraduate researcher focused on lithium/magnesium
 recovery from produced waters and oilfield brines.
@@ -11,65 +11,43 @@ recovery from produced waters and oilfield brines.
 Outputs should be precise and structured — balancing human readability with
 machine parseability. Include certainty levels and bias notes where relevant.
 
+> **Canonical references for current plugin state:**
+> - [`README.md`](README.md) — full skill/agent/command tree
+> - [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) — authoritative data-source reference
+> - [`docs/TOKENS.md`](docs/TOKENS.md) — credential acquisition guide
+> - [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) — manifest and keywords
+>
+> The sections below preserve historical build notes from the v0.1 skill bootstrap
+> for context. Several skills listed individually here (e.g., `epa-enviro`,
+> `epa-ghg`, `epa-ghgrp-subpartw`, `usgs-pubs`, `doe-osti`, `openalex`,
+> `crossref-doi`, `wv-tax-minerals`, `pa-tax-minerals`, `oh-tax-minerals`,
+> `opec-data`, `physics-mechanics`, `physics-em`, `diff-equations`) have since
+> been merged into consolidated skills or cut. See `docs/DATA_SOURCES.md` for the
+> canonical mapping (e.g., the EPA stack lives under `epa-regulatory`; the
+> four literature skills live under `pnge-literature`; the three tax-minerals
+> skills live under `appalachia-mineral-parcels`).
+
 ---
 
-## Project Structure
+## Project Structure (v0.9.0)
+
+See [`README.md`](README.md) "Project Structure" section for the full directory
+tree. Top-level layout:
 
 ```
 claude-pnge/
-├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (EXISTS — review and finalize)
-├── skills/                      # 10 data-access skills
-│   ├── eia-data/                # EXISTS and COMPLETE — copied from working skill
-│   │   ├── SKILL.md
-│   │   └── references/
-│   ├── usgs-produced-waters/    # BUILD — Priority 1
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       ├── schema.md        # Column definitions from actual CSV headers
-│   │       ├── formations.md    # Key formations table with Li/Mg ranges
-│   │       └── golang_client.go # Go example for CSV filtering
-│   ├── usgs-minerals/           # BUILD — Priority 1
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── commodities.md   # Li and Mg commodity data endpoints
-│   ├── netl-edx/                # BUILD — Priority 1
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── ckan_api.md      # CKAN action reference
-│   ├── wvges-wells/             # BUILD — Priority 2
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── arcgis_rest.md   # MapServer query patterns
-│   ├── boem-offshore/           # BUILD — Priority 2
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── endpoints.md     # Raw data download URLs
-│   ├── fracfocus/               # BUILD — Priority 2
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── api_reference.md
-│   ├── epa-enviro/              # BUILD — Priority 2
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── table_reference.md
-│   ├── usgs-pubs/               # BUILD — Priority 3
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       └── api_reference.md
-│   └── doe-osti/                # BUILD — Priority 3
-│       ├── SKILL.md
-│       └── references/
-│           └── api_reference.md
-├── agents/
-│   └── li-mg-prospector.md      # EXISTS — review and finalize
-├── commands/
-│   └── prospect.md              # EXISTS — review and finalize
-├── .env.example                 # EXISTS
-├── .gitignore                   # EXISTS
-├── README.md                    # EXISTS — update after all skills built
+├── .claude-plugin/plugin.json    # Manifest (name: pnge, v0.9.0)
+├── skills/                        # 76 skills (43 data access + 33 computational)
+├── agents/                        # 12 research and engineering agents
+├── commands/                      # 12 slash commands
+├── README.md                      # Canonical per-skill listing
+├── LICENSE                        # Apache-2.0
+├── .env.example
+├── .gitignore
 └── docs/
-    └── TOKENS.md                # BUILD — credential acquisition guide
+    ├── TOKENS.md                  # API key acquisition guide
+    ├── DATA_SOURCES.md            # Authoritative data-source reference
+    └── PACKAGING.md               # Distribution and packaging guide
 ```
 
 ---

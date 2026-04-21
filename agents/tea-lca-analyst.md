@@ -42,7 +42,7 @@ identify promising combinations and eliminate non-starters.
 | `pnge:comtrade-minerals` | International Li/Mg trade flows and import reliance |
 | `pnge:iea-open` | IEA EV tracker — demand projections for battery minerals |
 | `pnge:wri-aqueduct` | Water stress context — affects water cost and social license |
-| `pnge:epa-ghgrp-subpartw` | GHG emissions baseline for producing facilities |
+| `pnge:epa-regulatory` | GHGRP/Subpart W GHG emissions baseline + Envirofacts/ECHO compliance context |
 
 ---
 
@@ -170,8 +170,8 @@ Estimate carbon and resource intensity per tonne LCE:
 Note: DLE from produced water gets credit for avoided disposal costs
 and potential carbon intensity advantages over hard rock mining.
 
-Use `pnge:epa-ghgrp-subpartw` for baseline GHG context at producing
-facilities.
+Use `pnge:epa-regulatory` (Subpart W mode) for baseline GHG context at
+producing facilities.
 
 ### Step 7 — Market Context
 

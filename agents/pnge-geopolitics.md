@@ -135,12 +135,12 @@ combinations.
 | Sanctions impact on oil prices | `pnge:fred-prices`, `pnge:eia-data` | `pnge:worldbank-energy` | Sanctions timeline, enforcement patterns, market response lag, redirection of trade flows |
 | OPEC spare capacity and market stability | `pnge:eia-data`, `pnge:fred-prices` | `pnge:worldbank-energy` | Quota compliance history, Saudi swing role, US shale response elasticity |
 | Domestic lithium extraction viability | `pnge:usgs-minerals`, `pnge:usgs-produced-waters` | `pnge:comtrade-minerals`, `pnge:fred-prices` | IRA/DPA incentives, supply security premium, breakeven vs. import cost + geopolitical risk |
-| China critical mineral dominance risks | `pnge:comtrade-minerals`, `pnge:usgs-minerals` | `pnge:doe-osti`, `pnge:usgs-pubs` | Supply chain mapping, chokepoint analysis, diversification timelines, FEOC implications |
-| Energy transition policy impact on O&G | `pnge:eia-data`, `pnge:epa-ghg` | `pnge:fred-prices`, `pnge:worldbank-energy` | 45Q economics, methane fee exposure, CBAM competitiveness, transition timeline |
+| China critical mineral dominance risks | `pnge:comtrade-minerals`, `pnge:usgs-minerals` | `pnge:pnge-literature` | Supply chain mapping, chokepoint analysis, diversification timelines, FEOC implications |
+| Energy transition policy impact on O&G | `pnge:eia-data`, `pnge:epa-regulatory` | `pnge:fred-prices`, `pnge:worldbank-energy` | 45Q economics, methane fee exposure, CBAM competitiveness, transition timeline |
 | LNG geopolitics and European energy security | `pnge:eia-data`, `pnge:worldbank-energy` | `pnge:fred-prices` | Russia-Europe gas decoupling, US export capacity, Asian demand competition |
 | Lithium/magnesium trade war scenarios | `pnge:comtrade-minerals`, `pnge:usgs-minerals` | `pnge:fred-prices` | Export controls precedent (China rare earths, gallium/germanium), retaliatory measures, stockpiling calculus |
-| Produced water as strategic resource | `pnge:usgs-produced-waters`, `pnge:usgs-minerals` | `pnge:eia-data`, `pnge:doe-osti` | Water-energy nexus, dual-revenue model (disposal cost offset + mineral revenue), policy support |
-| Research landscape and technology readiness | `pnge:doe-osti`, `pnge:usgs-pubs` | `pnge:netl-edx` | DOE funding priorities, TRL progression, gap between lab-scale and commercial DLE |
+| Produced water as strategic resource | `pnge:usgs-produced-waters`, `pnge:usgs-minerals` | `pnge:eia-data`, `pnge:pnge-literature` | Water-energy nexus, dual-revenue model (disposal cost offset + mineral revenue), policy support |
+| Research landscape and technology readiness | `pnge:pnge-literature` | `pnge:netl-edx` | DOE funding priorities, TRL progression, gap between lab-scale and commercial DLE |
 
 ### Skill Invocation Guidelines
 
@@ -149,10 +149,11 @@ combinations.
    geopolitical assessments.
 2. **Lead with quantitative skills** (`fred-prices`, `eia-data`,
    `usgs-minerals`, `comtrade-minerals`) to establish the data baseline.
-3. **Add context skills** (`worldbank-energy`, `epa-ghg`) to frame the
+3. **Add context skills** (`worldbank-energy`, `epa-regulatory`) to frame the
    data in a global or regulatory context.
-4. **Finish with research skills** (`doe-osti`, `usgs-pubs`) when the
-   user needs academic or technical backing for the assessment.
+4. **Finish with research skills** (`pnge-literature` for unified
+   academic search across OpenAlex, CrossRef, USGS, and DOE OSTI) when
+   the user needs academic or technical backing for the assessment.
 5. **Use web search** when current events context is needed that the data
    skills cannot provide (e.g., this week's OPEC meeting outcome, a new
    sanctions package, a recent policy announcement). Always note when

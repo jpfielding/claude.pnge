@@ -39,15 +39,15 @@ calculations into structured treatment pathway recommendations.
 |-------|-----------------|
 | `pnge:usgs-produced-waters` | Brine chemistry: Li, Mg, TDS, Ba, Sr, Ca, Na, Cl, Fe, pH for all major U.S. formations |
 | `pnge:wvges-wells` | WV produced water volumes, well counts, disposal well locations |
-| `pnge:epa-enviro` | UIC Class II injection well permits and violations; NPDES permits |
+| `pnge:epa-regulatory` | ECHO compliance (CWA/RCRA/SDW/CAA), NPDES permits, TRI releases; UIC Class II well-level records via state regulator skills |
 | `pnge:wri-aqueduct` | Water stress context — reuse has higher value in stressed basins |
 | `pnge:fracfocus` | Completion chemical disclosures for target wells — potential brine contaminants |
 | `pnge:netl-edx` | NEWTS produced water database; NETL treatment R&D datasets; ClaiMM collection |
-| `pnge:doe-osti` | DOE technical reports on DLE performance, desalination, treatment technology |
+| `pnge:pnge-literature` | Unified literature search — DOE OSTI for DLE/desalination reports, USGS for formation brine chemistry, OpenAlex + CrossRef for peer-reviewed |
 | `pnge:usgs-minerals` | Li and Mg commodity pricing for revenue estimation |
 | `pnge:fred-prices` | Current Li carbonate and Mg spot prices |
 | `pnge:nist-webbook` | Thermodynamic properties for thermal treatment design (evaporation duty) |
-| `pnge:usgs-pubs` | USGS publications on formation brine chemistry and water management |
+| `pnge:datacite-doi` | Research-data DOIs (USGS `10.5066` data releases, OSTI datasets) |
 
 ---
 
@@ -180,12 +180,16 @@ reuse.
 
 ### Step 7 — Environmental and Regulatory Context
 
-Use `pnge:epa-enviro` to check:
-- Existing Class II injection well capacity and permit utilization in the area
-- Any UIC violations at nearby disposal wells (signal of operational stress)
+Use `pnge:epa-regulatory` (ECHO mode) to check:
 - NPDES permits for any surface water discharge options
-- Cross-reference with state agency data (WV DEP, PA DEP) for current reuse
-  rules and produced water beneficial reuse pilot programs
+- Compliance and enforcement flags on operators in the area
+- TRI chemical release records near target facilities
+
+For UIC Class II injection well capacity, permit utilization, and
+well-level violations, use the state regulator skill
+(`pnge:tx-rrc`, `pnge:nm-ocd`, `pnge:ok-occ`, `pnge:co-ecmc`,
+`pnge:nd-dmr`, `pnge:calgem`) or WVDEP/PADEP/ODNR for Appalachia. The
+Envirofacts `UIC_WELL` table is unavailable on the public API.
 
 **Appalachian disposal economics (2025 benchmark):**
 - WV Marcellus: $0.15-0.50/bbl Class II disposal (relatively available)
@@ -200,12 +204,13 @@ Study) produced water database for treatment data on the target formation.
 Search for "lithium produced water" and target formation name in the ClaiMM
 (Critical Minerals and Materials) collection.
 
-Use `pnge:doe-osti` for DOE technical reports on DLE performance at field
-scale. Key search terms: "direct lithium extraction produced water",
-"lithium brine concentration", target formation name.
-
-Use `pnge:usgs-pubs` for USGS reports on the target formation's water
-chemistry and produced water volumes.
+Use `pnge:pnge-literature` for a unified search across DOE OSTI,
+USGS Publications Warehouse, OpenAlex, and CrossRef — the adapter
+routes automatically by query cues. Key search terms: "direct lithium
+extraction produced water", "lithium brine concentration", target
+formation name. Use the `--source doe-osti` hint when you want only
+DOE/NETL technical reports, or `--source usgs-pw` when you want only
+USGS reports on the target formation's water chemistry and volumes.
 
 ### Step 9 — Synthesize Treatment Pathway Recommendation
 

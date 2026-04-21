@@ -1,8 +1,8 @@
 # API Token Acquisition Guide
 
 This guide covers every credential needed by the claude-pnge plugin.
-Four of the twenty-eight data skills require API keys. Two more accept optional
-keys for higher rate limits. The remaining twenty-two use public endpoints
+Six of the forty-three data skills require API keys. Three more accept optional
+keys for higher rate limits. The remaining thirty-four use public endpoints
 with no authentication.
 
 ---
@@ -58,7 +58,7 @@ Each skill resolves credentials in this order:
 
 ## 1. EIA Open Data API
 
-**Skill:** `eia-data`, `opec-data`
+**Skill:** `eia-data`
 **Cost:** Free, no limits on non-commercial use
 
 ### Get the key
@@ -82,9 +82,6 @@ chmod 600 ~/.config/eia/credentials
 ```bash
 export EIA_API_KEY="YOUR_EIA_KEY"
 ```
-
-**Note:** The `opec-data` skill also uses this key since it sources
-OPEC production data through the EIA STEO API.
 
 ---
 
@@ -201,9 +198,9 @@ export OPENEI_API_KEY="YOUR_OPENEI_KEY"
 
 ## 5. EPA api.data.gov (optional)
 
-**Skills:** `epa-enviro`, `epa-ghg`
+**Skill:** `epa-regulatory` (covers Envirofacts, ECHO, and all GHGRP subparts including Subpart W)
 **Cost:** Free, rate limited to 1000 requests/hour by default
-**Required:** No -- both skills work without a key as of early 2026
+**Required:** No -- the skill works without a key as of early 2026
 
 ### Get the key
 
@@ -268,32 +265,44 @@ export COMTRADE_API_KEY="YOUR_COMTRADE_KEY"
 
 ## Services With No Key Required
 
-Twenty-two of the twenty-eight data skills access public data with no authentication.
+Thirty-four of the forty-three data skills access public data with no authentication.
 
 | Service | Skill Name | Access Method | Notes |
 |---------|-----------|---------------|-------|
 | USGS Produced Waters DB | `usgs-produced-waters` | ScienceBase public download | CSV from ScienceBase item `65b6d616d34e46cd33b3690e` |
 | USGS Mineral Commodities | `usgs-minerals` | data.usgs.gov / ScienceBase | CSV/Excel per commodity per year |
+| USGS Earthquakes | `usgs-earthquakes` | earthquake.usgs.gov FDSN API | ComCat catalog, GeoJSON output |
+| USGS Water Data | `usgs-waterdata` | waterservices.usgs.gov + WQP | NWIS instantaneous/daily + Water Quality Portal |
+| USGS Core Research Center | `usgs-core-center` | ScienceBase + CRC web | Physical core and cuttings inventory |
+| USGS The National Map | `usgs-tnm` | apps.nationalmap.gov | DEM, hydrography, geologic maps |
+| EPA Regulatory Stack | `epa-regulatory` | data.epa.gov + ECHO | Envirofacts, ECHO, GHGRP (incl. Subpart W). Works without key (key optional for rate limits) |
+| EPA Treatability Database | `epa-treatability` | tdb.epa.gov | Water/wastewater treatment process performance |
+| EJScreen/CEJST/SVI | `ejscreen-cejst-svi` | EPA + CEQ + CDC/ATSDR | Environmental justice and vulnerability indicators |
+| BOEM Offshore Data | `boem-offshore` | data.boem.gov public downloads | Bulk delimited text + ArcGIS REST |
+| BLM Mineral Records | `blm-mineral-records` | blm-egis.maps.arcgis.com | Federal mineral ownership, lease status |
+| FracFocus | `fracfocus` | Public API + bulk CSV download | 200k+ disclosures, no auth |
+| NASA Earthdata CMR | `nasa-earthdata` | cmr.earthdata.nasa.gov | Landsat/Sentinel/MODIS discovery (login for download only) |
 | WVGES Well Data | `wvges-wells` | ArcGIS REST public MapServer | 153,000+ wells via WVDEP, no auth |
 | PA DEP Unconventional Wells | `padep-wells` | Socrata open data API | Marcellus/Utica permits, production, compliance |
 | Ohio DNR Wells | `odnr-wells` | ODNR public data portal | Utica/Point Pleasant well data |
-| BOEM Offshore Data | `boem-offshore` | data.boem.gov public downloads | Bulk delimited text + ArcGIS REST |
-| FracFocus | `fracfocus` | Public API + bulk CSV download | 200k+ disclosures, no auth |
-| EPA GHG Facility Emissions | `epa-ghg` | data.epa.gov/efservice | GHGRP facility-level emissions, all subparts |
-| EPA GHGRP Subpart W | `epa-ghgrp-subpartw` | data.epa.gov/efservice | Subpart W oilfield methane only |
-| USGS Publications | `usgs-pubs` | pubs.usgs.gov REST API | Covers all USGS report series |
-| DOE OSTI | `doe-osti` | osti.gov REST API | Public DOE-funded research records |
-| KGS Well Logs | `kggs-well-logs` | KGS public LAS repository | LAS 2.0 wireline logs, Kansas focus |
-| Macrostrat Stratigraphy | `macrostrat` | macrostrat.org REST API | Formation stratigraphy, lithology, age |
-| OpenAlex Literature | `openalex` | api.openalex.org | 250M+ open-access research works |
-| USGS Earthquakes | `usgs-earthquakes` | earthquake.usgs.gov FDSN API | ComCat catalog, GeoJSON output |
-| USGS Water Data | `usgs-waterdata` | waterservices.usgs.gov + WQP | NWIS instantaneous/daily + Water Quality Portal |
+| Texas Railroad Commission | `tx-rrc` | rrc.texas.gov | TX production, injection, permits |
+| New Mexico OCD | `nm-ocd` | emnrd.nm.gov/ocd | NM Permian well and injection data |
+| North Dakota DMR | `nd-dmr` | dmr.nd.gov/oilgas | Bakken well status, production |
+| Louisiana SONRIS | `la-sonris` | sonris.com | LA Smackover wells, production |
+| Arkansas AOGC | `ar-aogc` | aogc.state.ar.us | Arkansas Smackover DLE activity |
+| Oklahoma OCC | `ok-occ` | oklahoma.gov/occ | SWD disposal, induced-seismicity triggers |
+| California CalGEM | `calgem` | conservation.ca.gov/calgem | CA oil/gas wells, Salton Sea, San Joaquin |
+| Colorado ECMC | `co-ecmc` | ecmc.state.co.us | DJ Basin wells, permits, spills |
+| Appalachia Mineral Parcels | `appalachia-mineral-parcels` | State ArcGIS services | WV/PA/OH mineral parcel consolidation |
 | World Bank Energy | `worldbank-energy` | api.worldbank.org/v2 | 200+ energy indicators by country |
-| CrossRef DOI | `crossref-doi` | api.crossref.org | DOI resolution + citation metadata |
 | IEA Open Data | `iea-open` | api.iea.org (free subset) | EV tracker, energy prices, GHG, NZE, CCUS, SDG7 |
 | WRI Aqueduct | `wri-aqueduct` | api.wri.org/aqueduct | Water risk scores by basin and facility |
-| NETL Carbon Storage | `netl-carbon-storage` | NATCARB Atlas v5 | CCS capacity estimates, storage projects |
-| EPA Envirofacts | `epa-enviro` | data.epa.gov + ECHO | Works without key (key optional for rate limits) |
+| OSPAR Discharges | `ospar-discharges` | ospar.org | North Sea produced water discharge benchmarks |
+| PNGE Literature | `pnge-literature` | OpenAlex + CrossRef + USGS Pubs + OSTI | Federated literature search with DOI dedup |
+| DataCite DOI | `datacite-doi` | api.datacite.org | Dataset and data-release DOIs |
+| KGS Well Logs | `kggs-well-logs` | KGS public LAS repository | LAS 2.0 wireline logs, Kansas focus |
+| Macrostrat Stratigraphy | `macrostrat` | macrostrat.org REST API | Formation stratigraphy, lithology, age |
+| PatentsView | `patentsview` | patentsview.org | USPTO DLE patent landscape |
 
 No setup is needed for these skills. They work immediately after plugin
 installation.

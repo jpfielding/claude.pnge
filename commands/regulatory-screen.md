@@ -17,8 +17,7 @@ Use the **regulatory-disposal-analyst** agent to orchestrate:
 6. **pnge:nd-dmr** — ND disposal wells (Bakken context)
 7. **pnge:la-sonris** — LA saltwater disposal wells
 8. **pnge:ar-aogc** — AR disposal wells (Smackover context)
-9. **pnge:epa-enviro** — UIC Class II permits, violations, NPDES
-10. **pnge:epa-ghgrp-subpartw** — Subpart W methane emissions at nearby facilities
+9. **pnge:epa-regulatory** — ECHO compliance, Envirofacts (NPDES/TRI/FRS), GHGRP, and Subpart W methane emissions at nearby facilities. UIC Class II well-level records come from the state regulator skills above.
 11. **pnge:usgs-earthquakes** — seismicity catalog within 10 km of disposal wells
 12. **pnge:eia-data** — produced water volumes and production context
 

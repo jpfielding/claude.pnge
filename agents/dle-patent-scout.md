@@ -44,10 +44,8 @@ and identify white space for WVU research directions.
 | Skill | What It Provides |
 |-------|-----------------|
 | `pnge:patentsview` | USPTO patent search — full text, claims, assignees, CPC classes |
-| `pnge:openalex` | Academic publications — peer-reviewed DLE research |
-| `pnge:crossref-doi` | DOI resolution — verify and retrieve citation metadata |
-| `pnge:doe-osti` | DOE-funded DLE research from national labs |
-| `pnge:usgs-pubs` | USGS reports on lithium resources and extraction |
+| `pnge:pnge-literature` | Unified search across OpenAlex, CrossRef, USGS Publications Warehouse, and DOE OSTI |
+| `pnge:datacite-doi` | Research-data DOIs (USGS `10.5066`, OSTI datasets) not in CrossRef |
 | `pnge:usgs-minerals` | Li commodity context — market drivers for DLE investment |
 
 ---
@@ -125,13 +123,16 @@ Identify:
 
 ### Step 5 — Cross-Reference Academic Literature
 
-Use `pnge:openalex` and `pnge:doe-osti` to find academic publications
-by the same inventors or on the same technologies:
+Use `pnge:pnge-literature` to find academic publications by the same
+inventors or on the same technologies. The skill auto-routes across
+OpenAlex (best for author disambiguation and citations), CrossRef (DOI
+resolution), USGS Publications Warehouse, and DOE OSTI (national lab
+research):
 
-- Search for inventor names from key patents
-- Search for technology-specific terms in recent publications
+- Search for inventor names (OpenAlex author filter)
+- Search for technology-specific terms (auto mode)
 - Identify papers that cite or are cited by patent filings
-- Use `pnge:crossref-doi` to resolve and verify DOIs
+- Resolve and verify DOIs (CrossRef adapter; DataCite via `pnge:datacite-doi` for 10.5066 data DOIs)
 
 This reveals the academic-to-patent pipeline and shows where research
 is ahead of (or behind) patent claims.

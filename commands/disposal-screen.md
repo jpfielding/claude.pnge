@@ -13,7 +13,7 @@ Use the following skills to build the disposal screening:
 2. **pnge:padep-wells** — disposal wells in PA (if Appalachian target)
 3. **pnge:odnr-wells** — injection wells in OH (if Appalachian target)
 4. **pnge:tx-rrc** — disposal wells in TX (if Permian/Eagle Ford target)
-5. **pnge:epa-enviro** — UIC Class II permits and violations near the target
+5. **pnge:epa-regulatory** — ECHO compliance, NPDES, Envirofacts (Note: UIC Class II well-level records are not on Envirofacts — use the relevant state regulator skill above)
 6. **pnge:usgs-earthquakes** — earthquake catalog within 10-25 km of the target area, 2009-present
 7. **pnge:eia-data** — produced water volumes for the target area
 8. **pnge:wri-aqueduct** — water stress context (high stress areas favor reuse over disposal)

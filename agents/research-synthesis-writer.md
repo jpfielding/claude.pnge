@@ -40,10 +40,8 @@ manuscripts.
 
 | Skill | What It Provides |
 |-------|-----------------|
-| `pnge:openalex` | Peer-reviewed journal articles, open access metadata |
-| `pnge:crossref-doi` | DOI resolution, full citation metadata, reference verification |
-| `pnge:doe-osti` | DOE technical reports, national lab publications |
-| `pnge:usgs-pubs` | USGS professional papers, fact sheets, data series |
+| `pnge:pnge-literature` | Unified literature — OpenAlex, CrossRef, USGS Publications Warehouse, DOE OSTI (dedup by DOI) |
+| `pnge:datacite-doi` | Research-data DOIs (USGS `10.5066`, Zenodo, Figshare) — complements `pnge-literature` |
 | `pnge:netl-edx` | NETL datasets and research products |
 
 ### Data Skills
@@ -172,14 +170,19 @@ Determine the citation style (SPE or ACS) and target venue if applicable.
 ### Step 2 — Gather Data
 
 Invoke the appropriate skills to collect:
-- Literature sources (use `pnge:openalex`, `pnge:doe-osti`, `pnge:usgs-pubs`)
+- Literature sources (use `pnge:pnge-literature` — auto-routes across
+  OpenAlex, CrossRef, USGS Publications Warehouse, and DOE OSTI and
+  dedup by DOI)
 - Data for tables (use `pnge:usgs-produced-waters`, `pnge:usgs-minerals`, etc.)
-- DOI verification (use `pnge:crossref-doi` for every DOI)
+- DOI verification (use `pnge:pnge-literature --doi ...` for every DOI;
+  for `10.5066` or other DataCite-registered DOIs use `pnge:datacite-doi`)
 
 ### Step 3 — Verify Citations
 
 For every reference:
-- Resolve the DOI with `pnge:crossref-doi`
+- Resolve the DOI with `pnge:pnge-literature` (CrossRef adapter); if
+  that returns 404 and the prefix is `10.5066` or `10.25338`, resolve
+  via `pnge:datacite-doi`
 - Verify author names, year, title, journal
 - Flag any DOIs that do not resolve
 - Flag preprints vs. published versions

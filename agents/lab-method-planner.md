@@ -37,9 +37,9 @@ or specialized analyses.
 |-------|-----------------|
 | `pnge:usgs-produced-waters` | Expected concentration ranges by formation for method selection |
 | `pnge:production-chemistry` | Field chemistry context — emulsions, solids, sampling artifacts |
-| `pnge:epa-enviro` | EPA method references and regulatory reporting requirements |
+| `pnge:epa-regulatory` | EPA method references and regulatory reporting requirements (Envirofacts/ECHO) |
 | `pnge:nist-webbook` | Reference thermodynamic data for calibration standards |
-| `pnge:doe-osti` | DOE research on analytical methods for produced water |
+| `pnge:pnge-literature` | Literature search for analytical methods — auto-routes to DOE OSTI, USGS, OpenAlex, CrossRef |
 
 ---
 

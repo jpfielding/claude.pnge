@@ -172,7 +172,7 @@ breakdown tables.
 Map the user query to a data type:
 - "Storage capacity" → ScienceBase Atlas V data
 - "Active CCS project" → EDX project datasets or NATCARB facility list
-- "Class VI injection wells" → EPA UIC (see `epa-enviro` skill for UIC_WELL table)
+- "Class VI injection wells" → EPA UIC (see `epa-regulatory` skill, UIC intent mode — `UIC_WELL` table)
 - "Appalachian basin" → MRCSP partnership data (search "MRCSP" in ScienceBase)
 - "Saline aquifer" → Chapter 2 of Atlas V
 - "Depleted reservoir" → Chapter 3 of Atlas V
@@ -293,8 +293,8 @@ saline aquifer estimate represents ~1,600 years of current U.S. emissions.
 - **Capacity ≠ injectivity.** High estimated pore volume does not guarantee
   injectability — permeability, pressure, and brine chemistry matter.
 - **Class VI permitting** is handled by EPA (primary) or state programs
-  (Louisiana, North Dakota, Wyoming, Montana). Use `epa-enviro` skill for
-  UIC well locations.
+  (Louisiana, North Dakota, Wyoming, Montana). Use `epa-regulatory` skill
+  (UIC intent mode) for UIC well locations.
 - **MRCSP** (Midwest Regional Carbon Sequestration Partnership) covers the
   Appalachian basin. Their final reports are on ScienceBase and EDX.
 - Offshore saline aquifer capacity is not included in the Atlas V state totals.

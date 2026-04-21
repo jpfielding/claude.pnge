@@ -25,95 +25,36 @@ Validation rules enforced at packaging time:
 
 ---
 
-## Actual Repository Structure (v0.4.0)
+## Actual Repository Structure (v0.9.0)
+
+The authoritative skill tree lives in [`README.md`](../README.md) — see its
+"Project Structure" section for the full directory layout. Plugin currently
+ships **76 skills (43 data access, 33 computational)**, **12 agents**, and
+**12 commands**.
+
+Top-level layout:
 
 ```
 claude.pnge/
-├── README.md                    # Overview, install instructions, WVU-specific notes
+├── README.md                    # Overview, install, full skill tree
 ├── LICENSE                      # Apache-2.0
 ├── .env.example                 # Template for API keys (never commit real keys)
 ├── .gitignore
 │
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (name: pnge, v0.4.0)
+│   └── plugin.json              # Plugin manifest (name: pnge, v0.9.0)
 │
-├── skills/                      # 50 skills total
-│   │
-│   ├── -- Data Access (28) --
-│   ├── eia-data/                # EIA Open Data API v2
-│   ├── usgs-produced-waters/    # USGS Produced Waters Geochemical DB v3.0
-│   ├── usgs-minerals/           # USGS Mineral Commodity Summaries
-│   ├── netl-edx/                # DOE NETL Energy Data eXchange (CKAN)
-│   ├── netl-carbon-storage/     # NATCARB Atlas v5 CCS capacity
-│   ├── doe-geothermal/          # DOE GDR / OpenEI Geothermal
-│   ├── doe-osti/                # DOE OSTI Technical Reports
-│   ├── wvges-wells/             # WV Geological & Economic Survey
-│   ├── padep-wells/             # PA DEP Unconventional Well Registry (Socrata)
-│   ├── odnr-wells/              # Ohio DNR Oil and Gas Wells (Utica/Point Pleasant)
-│   ├── boem-offshore/           # BOEM Federal Offshore Data
-│   ├── fracfocus/               # FracFocus Chemical Disclosure
-│   ├── epa-enviro/              # EPA Envirofacts & ECHO
-│   ├── epa-ghg/                 # EPA GHGRP Facility Emissions
-│   ├── epa-ghgrp-subpartw/      # Subpart W Oilfield Methane
-│   ├── usgs-pubs/               # USGS Publications Warehouse
-│   ├── kggs-well-logs/          # KGS Wireline Log Repository (LAS 2.0)
-│   ├── macrostrat/              # Macrostrat Formation Stratigraphy
-│   ├── openalex/                # OpenAlex Open-Access Literature
-│   ├── usgs-earthquakes/        # USGS ComCat Earthquake Catalog
-│   ├── usgs-waterdata/          # USGS NWIS + Water Quality Portal
-│   ├── fred-prices/             # Federal Reserve FRED
-│   ├── worldbank-energy/        # World Bank Open Data
-│   ├── comtrade-minerals/       # UN Comtrade Trade Data
-│   ├── crossref-doi/            # CrossRef DOI/Citation API
-│   ├── opec-data/               # OPEC Production via EIA STEO
-│   ├── iea-open/                # IEA Free Datasets
-│   └── wri-aqueduct/            # WRI Aqueduct Water Risk
-│
-│   ├── -- Computational (22) --
-│   ├── pnge-mechanics/          # Statics, Lamé cylinders, Mohr's circle
-│   ├── frac-design/             # PKN/KGD fracture models, proppant transport
-│   ├── wellbore-stability/      # Kirsch equations, mud weight window
-│   ├── petrophysics/            # Log interpretation, Archie, brittleness
-│   ├── artificial-lift/         # Rod pump, ESP, gas lift, plunger lift
-│   ├── flow-assurance/          # Hydrates, CO2 corrosion, H2S, wax/scale
-│   ├── tubing-design/           # Lubinski buckling, seal assembly
-│   ├── perforation-design/      # Karakas-Tariq skin, limited entry
-│   ├── surface-facilities/      # Separator, TEG dehy, compression
-│   ├── rta-production/          # Arps DCA, EUR, Blasingame FMB
-│   ├── well-test-analysis/      # Horner, skin, Bourdet derivative
-│   ├── matrix-acidizing/        # HCl/HF design, Hawkins skin, Damkohler
-│   ├── mass-energy-balance/     # Material/energy balance, flash calc
-│   ├── nist-webbook/            # NIST thermodynamic properties
-│   ├── tnav/                    # Reservoir simulation emulation
-│   ├── pnge-visual-explainer/   # HTML visualization generator
-│   ├── fluid-mechanics/         # Reynolds, Darcy-Weisbach, Bernoulli (ChBE 311)
-│   ├── reaction-engineering/    # CSTR/PFR/batch, Arrhenius (ChBE 321)
-│   ├── thermo-eos/              # PR/SRK EOS, fugacity, VLE (ChBE 231)
-│   ├── physics-mechanics/       # Kinematics, Newton, SHM (PHYS 111)
-│   ├── physics-em/              # Circuits, E&M, induction (PHYS 112)
-│   └── diff-equations/          # ODEs, Laplace, RK4 (MATH 261)
-│
-├── agents/                      # 6 research and engineering agents
-│   ├── li-mg-prospector.md      # Li/Mg recovery assessment
-│   ├── pnge-tutor.md            # Socratic PNGE/ChBE tutor
-│   ├── pnge-pw-treatment.md     # Produced water treatment assessment
-│   ├── api-well-standards.md    # API casing/cementing standards
-│   ├── pnge-geopolitics.md      # Energy geopolitics analysis
-│   └── pnge-gis-mapper.md       # Interactive map generation
-│
-├── commands/                    # 6 slash commands
-│   ├── prospect.md
-│   ├── formation-profile.md
-│   ├── literature-review.md
-│   ├── well-economics.md
-│   ├── completions-design.md
-│   └── sustainability-profile.md
-│
+├── skills/                      # 76 skills (43 data access + 33 computational)
+├── agents/                      # 12 research and engineering agents
+├── commands/                    # 12 slash commands
 └── docs/
-    ├── TOKENS.md                # API key acquisition guide (this session)
-    ├── DATA_SOURCES.md          # Data sources reference (all 50 skills)
-    └── PACKAGING.md             # Distribution and packaging guide
+    ├── TOKENS.md                # API key acquisition guide
+    ├── DATA_SOURCES.md          # Authoritative data-source reference
+    └── PACKAGING.md             # Distribution and packaging guide (this file)
 ```
+
+For the full per-skill listing, see [`README.md`](../README.md) and
+[`docs/DATA_SOURCES.md`](DATA_SOURCES.md).
 
 ---
 

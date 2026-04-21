@@ -26,31 +26,24 @@ the target formation and the data available:
 | `pnge:fred-prices` | Real-time Li carbonate and commodity pricing |
 | `pnge:eia-data` | U.S. production volumes, water-cut context |
 | `pnge:wvges-wells` | WV well data (Marcellus, Utica targets) |
-| `pnge:wv-tax-minerals` | WV delinquent mineral parcels near active wells |
 | `pnge:padep-wells` | PA well data (Marcellus, Utica in Pennsylvania) |
-| `pnge:pa-tax-minerals` | PA mineral parcels near active Marcellus/Utica wells |
 | `pnge:odnr-wells` | OH well data (Utica, Point Pleasant targets) |
-| `pnge:oh-tax-minerals` | OH mineral parcels (200-series LUC) near active wells |
+| `pnge:appalachia-mineral-parcels` | WV/PA/OH tax-delinquent, dormant, or severed mineral parcels near active wells (unified adapter) |
 | `pnge:boem-offshore` | Offshore production data (GoM targets) |
 | `pnge:fracfocus` | Frac chemical disclosures for target wells |
-| `pnge:epa-enviro` | UIC permits, NPDES, environmental compliance |
-| `pnge:epa-ghg` | GHG emissions context for target facilities |
-| `pnge:epa-ghgrp-subpartw` | Oilfield methane emissions (Subpart W) |
+| `pnge:epa-regulatory` | Envirofacts (TRI/FRS/NPDES), ECHO compliance, GHGRP, and Subpart W oilfield methane |
 | `pnge:usgs-earthquakes` | Induced seismicity risk near disposal wells |
 | `pnge:usgs-waterdata` | Surface/groundwater quality baselines |
 | `pnge:wri-aqueduct` | Water stress index for operating areas |
 | `pnge:netl-edx` | DOE datasets (ClaiMM, NEWTS collections) |
 | `pnge:netl-carbon-storage` | CO2 storage capacity and CCS project data |
 | `pnge:doe-geothermal` | Geothermal co-production opportunities |
-| `pnge:usgs-pubs` | USGS reports on target formations |
-| `pnge:doe-osti` | DOE-funded research on Li extraction tech |
-| `pnge:openalex` | Peer-reviewed academic literature search |
-| `pnge:crossref-doi` | Citation metadata and DOI resolution |
+| `pnge:pnge-literature` | Unified literature — OpenAlex, CrossRef, USGS Publications Warehouse, DOE OSTI |
+| `pnge:datacite-doi` | Research-data DOIs (`10.5066` USGS data releases) |
 | `pnge:macrostrat` | Formation stratigraphy, age, and lithology |
 | `pnge:worldbank-energy` | Global energy context for Li demand drivers |
 | `pnge:comtrade-minerals` | International Li/Mg trade flows |
 | `pnge:iea-open` | IEA EV tracker (Li demand driver) |
-| `pnge:opec-data` | OPEC production context |
 
 ## Companion Agents
 
@@ -90,9 +83,11 @@ Estimate total annual produced water volume in the target area.
 
 ### Step 4 — Environmental & Seismicity Context
 
-Use `pnge:epa-enviro` to check UIC injection well permits and environmental
-compliance data. Use `pnge:epa-ghg` for GHG emissions from facilities in
-the area. Use `pnge:usgs-earthquakes` to assess induced seismicity risk
+Use `pnge:epa-regulatory` (ECHO mode) for environmental compliance, NPDES
+permits, and Subpart W methane emissions context; note that UIC Class II
+well-level records require state regulators (RRC, OCD, OCC, ECMC, NDIC,
+CalGEM) since the Envirofacts UIC_WELL table is unavailable. Use
+`pnge:usgs-earthquakes` to assess induced seismicity risk
 near injection/disposal wells. Use `pnge:usgs-waterdata` to establish
 surface/groundwater quality baselines near the target.
 
@@ -107,17 +102,18 @@ or affect brine chemistry post-treatment.
 Use `pnge:netl-edx` to search DOE NETL datasets, especially the ClaiMM
 critical minerals collection and NEWTS produced water data. Use
 `pnge:doe-geothermal` if geothermal co-production is relevant.
-Use `pnge:usgs-pubs` and `pnge:doe-osti` to find relevant research on
-the target formation or extraction technology. Use `pnge:crossref-doi`
-to resolve and verify citations.
+Use `pnge:pnge-literature` to find relevant research on the target
+formation or extraction technology — it auto-routes across OpenAlex,
+CrossRef, USGS Publications Warehouse, and DOE OSTI and de-duplicates
+by DOI. Use `pnge:datacite-doi` to resolve USGS data release DOIs
+(prefix `10.5066`).
 
 ### Step 7 — Market & Trade Context
 
 Use `pnge:comtrade-minerals` to analyze international Li/Mg trade flows
 and identify import dependencies. Use `pnge:worldbank-energy` and
 `pnge:iea-open` for global energy transition context that drives Li demand
-(EV adoption, battery storage). Use `pnge:opec-data` for production
-context if the target basin has significant oil/gas volumes.
+(EV adoption, battery storage).
 
 ### Step 8 — Synthesize
 

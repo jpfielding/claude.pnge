@@ -53,8 +53,7 @@ and cost structure across multiple states relevant to WVU PNGE research.
 
 | Skill | What It Provides |
 |-------|-----------------|
-| `pnge:epa-enviro` | UIC permits, violations, NPDES, facility registry |
-| `pnge:epa-ghgrp-subpartw` | Subpart W methane emissions from petroleum facilities |
+| `pnge:epa-regulatory` | ECHO compliance (CWA/RCRA/SDW/CAA), Envirofacts (TRI/FRS/NPDES), GHGRP + Subpart W methane. UIC well-level records via state regulators. |
 | `pnge:usgs-earthquakes` | Earthquake catalog — magnitude, depth, proximity to injection |
 | `pnge:well-integrity-barriers` | SCP triage, MIT interpretation, barrier review |
 | `pnge:wri-aqueduct` | Water stress context for reuse vs. disposal decisions |
@@ -64,8 +63,7 @@ and cost structure across multiple states relevant to WVU PNGE research.
 | Skill | What It Provides |
 |-------|-----------------|
 | `pnge:eia-data` | Produced water volumes, production context by state |
-| `pnge:usgs-pubs` | USGS reports on induced seismicity and injection |
-| `pnge:doe-osti` | DOE research on disposal and injection practices |
+| `pnge:pnge-literature` | Unified literature — USGS induced seismicity, DOE injection research, peer-reviewed |
 
 ---
 
@@ -87,8 +85,12 @@ wells near the target area:
 - Note permitted injection zones and depths
 - Calculate distance from target production wells
 
-Use `pnge:epa-enviro` (UIC_WELL table) to cross-reference federal UIC
-permit data and check for violations.
+Use `pnge:epa-regulatory` (ECHO mode) to cross-reference federal
+compliance and enforcement records. Note: the Envirofacts `UIC_WELL`
+table is unavailable — get UIC Class II well-level data from the
+appropriate state regulator skill (`pnge:tx-rrc`, `pnge:nm-ocd`,
+`pnge:ok-occ`, `pnge:co-ecmc`, `pnge:nd-dmr`, `pnge:calgem`, or
+`pnge:padep-wells` / `pnge:odnr-wells` / WVDEP OOG).
 
 ### Step 3 — Assess Injection Limits
 
@@ -133,12 +135,14 @@ Use `pnge:well-integrity-barriers` to assess:
 - Barrier envelope completeness
 - Annular pressure buildup trends
 
-Use `pnge:epa-enviro` to check for UIC violations at identified wells.
+Use `pnge:epa-regulatory` (ECHO mode) to check compliance and
+enforcement flags for identified facilities; pair with the state
+regulator skill for UIC well-level violation detail.
 
 ### Step 6 — GHG and Environmental Compliance
 
-Use `pnge:epa-ghgrp-subpartw` to check Subpart W methane emissions
-reporting for facilities in the target area. Disposal operations may
+Use `pnge:epa-regulatory` (Subpart W mode) to check Subpart W methane
+emissions reporting for facilities in the target area. Disposal operations may
 have associated emissions from tank batteries, truck loading, and
 wellhead venting.
 

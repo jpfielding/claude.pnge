@@ -10,9 +10,7 @@ If no operator, formation, or location is provided, ask the user to specify.
 Use the following skills to build the profile:
 
 1. **pnge:wri-aqueduct** — water stress index for the operating area
-2. **pnge:epa-ghg** — reported GHG emissions from facilities in the area (GHGRP)
-3. **pnge:epa-ghgrp-subpartw** — Subpart W oilfield methane emissions (equipment-level detail)
-4. **pnge:epa-enviro** — UIC well permits, NPDES discharges, TRI releases, compliance history
+2. **pnge:epa-regulatory** — ECHO compliance, Envirofacts (TRI/FRS/NPDES), GHGRP facility emissions, and Subpart W oilfield methane (all four modes in one skill). UIC well-level records come from state regulator skills.
 5. **pnge:usgs-earthquakes** — induced seismicity events near disposal wells in the area
 6. **pnge:usgs-produced-waters** — produced water volumes and Li/Mg concentrations (circular economy angle)
 

@@ -1,9 +1,12 @@
 # API Token Acquisition Guide
 
-This guide covers every credential needed by the claude-pnge plugin.
-Six of the forty-three data skills require API keys. Three more accept optional
-keys for higher rate limits. The remaining thirty-four use public endpoints
-with no authentication.
+This guide covers every credential needed by the claude-pnge marketplace
+(v1.0.0 — 8 plugins, 43 data-access skills). Six skills require API keys,
+three accept optional keys for higher rate limits, and the remaining 34
+skills use public endpoints with no authentication.
+
+Each section below notes the plugin that owns the skill(s) using that
+credential — install the plugin before the key is useful.
 
 ---
 
@@ -19,6 +22,23 @@ with no authentication.
 - [Services With No Key Required](#services-with-no-key-required)
 - [Verification](#verification)
 - [Troubleshooting](#troubleshooting)
+
+---
+
+## Credential-to-Plugin Map
+
+| Credential | Required? | Owning plugin | Skill(s) using it |
+|---|---|---|---|
+| EIA | yes | `pnge-core` | `eia-data` |
+| NETL EDX | yes | `pnge-federal-data` | `netl-edx`, `netl-carbon-storage` (optional header) |
+| FRED | yes | `pnge-economics` | `fred-prices` |
+| OpenEI / GDR | yes | `pnge-federal-data` | `doe-geothermal` |
+| BEA | yes | `pnge-economics` | `bea-data` |
+| Census | yes | `pnge-economics` | `census-data` |
+| EPA `api.data.gov` | optional | `pnge-federal-data` | `epa-regulatory`, `epa-treatability` |
+| BLS | optional | `pnge-economics` | `bls-data` |
+| UN Comtrade | optional | `pnge-economics` | `comtrade-minerals` |
+| NASA Earthdata | optional | `pnge-federal-data` | `nasa-earthdata` |
 
 ---
 

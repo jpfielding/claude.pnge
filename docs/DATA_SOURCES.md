@@ -1,10 +1,27 @@
-# PNGE Plugin — Data Sources Reference
+# claude-pnge — Data Sources Reference
 
-**Plugin version:** v0.9.0
-**Skills:** 76 (43 data access, 33 computational)
-**Agents:** 12
-**Commands:** 12
-**Date:** 2026-04-21
+**Marketplace version:** v1.0.0
+**Plugins:** 8 · **Skills:** 76 (43 data access, 33 computational) · **Agents:** 12 · **Commands:** 12
+**Date:** 2026-04-27
+
+Invoke each skill as `<plugin>:<skill>` — e.g., `pnge-core:eia-data`, `pnge-state-regulatory:tx-rrc`. See the plugin index below for the owning plugin of every skill.
+
+---
+
+## Plugin Index (which plugin owns each skill)
+
+| Plugin | Skills |
+|---|---|
+| `pnge-core` | eia-data, usgs-produced-waters, usgs-minerals, pnge-literature, datacite-doi, pnge-visual-explainer |
+| `pnge-federal-data` | usgs-earthquakes, usgs-waterdata, usgs-core-center, usgs-tnm, netl-edx, netl-carbon-storage, doe-geothermal, epa-regulatory, epa-treatability, boem-offshore, blm-mineral-records, fracfocus, nasa-earthdata, ejscreen-cejst-svi, wri-aqueduct |
+| `pnge-state-regulatory` | wvges-wells, padep-wells, odnr-wells, tx-rrc, nm-ocd, nd-dmr, la-sonris, ar-aogc, ok-occ, calgem, co-ecmc, appalachia-mineral-parcels, ospar-discharges |
+| `pnge-economics` | fred-prices, bls-data, bea-data, census-data, worldbank-energy, comtrade-minerals, iea-open |
+| `pnge-patents` | patentsview |
+| `pnge-well-engineering` | frac-design, wellbore-stability, petrophysics, perforation-design, completion-diagnostics, matrix-acidizing, stage-treatment-analysis, tubing-design, pnge-mechanics, artificial-lift, flow-assurance, surface-facilities, rta-production, well-test-analysis, nodal-analysis-multiphase, production-chemistry, well-integrity-barriers, petroleum-pvt, production-surveillance, pvt-report-review, integrity-log-review, kggs-well-logs, macrostrat |
+| `pnge-geochem-pw` | phreeqc-geochem, nist-webbook, mass-energy-balance, tnav |
+| `pnge-engineering-science` | fluid-mechanics, reaction-engineering, thermo-eos, heat-transfer, mass-transfer-separations, aqueous-chemistry-electrochem, materials-fracture-mechanics |
+
+Authoritative mapping lives in [`scripts/ownership.tsv`](../scripts/ownership.tsv).
 
 ---
 
@@ -136,6 +153,12 @@
 | No key required | 33 | All other data skills |
 
 See [`TOKENS.md`](TOKENS.md) for step-by-step key acquisition instructions.
+
+---
+
+## Changes in v1.0.0 (marketplace restructure)
+
+The monolithic `pnge` plugin was split into 8 themed plugins. No skills were added, removed, or renamed. `pnge-production` merged into `pnge-well-engineering`; `kggs-well-logs` and `macrostrat` moved from literature to well-engineering; `wri-aqueduct` moved to federal-data; `ospar-discharges` moved to state-regulatory. See [`CHANGELOG.md`](../CHANGELOG.md) for the full migration story.
 
 ---
 

@@ -1,8 +1,8 @@
-# CLAUDE.md — claude-pnge Plugin Build Plan
+# CLAUDE.md — claude-pnge Marketplace
 
-This is a Claude Code plugin for petroleum engineering research data access.
-As of v0.9.0 it ships **76 skills (43 data access, 33 computational)**,
-**12 agents**, and **12 commands**.
+This repo is a **Claude Code plugin marketplace** for petroleum-engineering
+research data. As of **v1.0.0** it ships **8 themed plugins** totaling
+**76 skills, 12 agents, and 12 commands**.
 
 **Target user:** WVU PNGE undergraduate researcher focused on lithium/magnesium
 recovery from produced waters and oilfield brines.
@@ -11,43 +11,56 @@ recovery from produced waters and oilfield brines.
 Outputs should be precise and structured — balancing human readability with
 machine parseability. Include certainty levels and bias notes where relevant.
 
-> **Canonical references for current plugin state:**
-> - [`README.md`](README.md) — full skill/agent/command tree
-> - [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) — authoritative data-source reference
-> - [`docs/TOKENS.md`](docs/TOKENS.md) — credential acquisition guide
-> - [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) — manifest and keywords
+> **Canonical references for current state:**
+> - [`README.md`](README.md) — marketplace overview + the 8 plugins
+> - [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) — per-skill data-source reference + plugin index
+> - [`docs/TOKENS.md`](docs/TOKENS.md) — credential acquisition guide (plugin-keyed)
+> - [`docs/PACKAGING.md`](docs/PACKAGING.md) — distribution and "Adding a New Skill" checklist
+> - [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) — marketplace catalog
+> - [`plugins/<name>/.claude-plugin/plugin.json`](plugins/) — per-plugin manifests
+> - [`scripts/ownership.tsv`](scripts/ownership.tsv) — authoritative skill → plugin map
 >
 > The sections below preserve historical build notes from the v0.1 skill bootstrap
-> for context. Several skills listed individually here (e.g., `epa-enviro`,
+> for context. Several skills listed individually (e.g., `epa-enviro`,
 > `epa-ghg`, `epa-ghgrp-subpartw`, `usgs-pubs`, `doe-osti`, `openalex`,
 > `crossref-doi`, `wv-tax-minerals`, `pa-tax-minerals`, `oh-tax-minerals`,
 > `opec-data`, `physics-mechanics`, `physics-em`, `diff-equations`) have since
 > been merged into consolidated skills or cut. See `docs/DATA_SOURCES.md` for the
-> canonical mapping (e.g., the EPA stack lives under `epa-regulatory`; the
-> four literature skills live under `pnge-literature`; the three tax-minerals
-> skills live under `appalachia-mineral-parcels`).
+> canonical mapping.
+
+## The 8 Plugins (v1.0.0)
+
+| Plugin | Skills / Agents / Commands |
+|---|---|
+| `pnge-core` | 6 / 1 / 4 — EIA, USGS PW/minerals, literature, DataCite, viz, `/doctor` |
+| `pnge-federal-data` | 15 / 2 / 1 — USGS, NETL, EPA stack, BOEM, BLM, FracFocus, NASA, EJ, WRI |
+| `pnge-state-regulatory` | 13 / 1 / 2 — WV/PA/OH/TX/NM/ND/LA/AR/OK/CA/CO + mineral parcels + OSPAR |
+| `pnge-economics` | 7 / 2 / 2 — FRED, BLS, BEA, Census, World Bank, Comtrade, IEA |
+| `pnge-patents` | 1 / 1 / 1 — PatentsView DLE landscape |
+| `pnge-well-engineering` | 23 / 1 / 1 — completions + production + KGS + Macrostrat |
+| `pnge-geochem-pw` | 4 / 3 / 1 — PHREEQC, NIST, balance, tNav |
+| `pnge-engineering-science` | 7 / 1 / 0 — ChBE/MAE tutoring |
 
 ---
 
-## Project Structure (v0.9.0)
+## Project Structure (v1.0.0)
 
-See [`README.md`](README.md) "Project Structure" section for the full directory
-tree. Top-level layout:
+See [`README.md`](README.md) "Repository layout" for details. Top-level:
 
 ```
 claude-pnge/
-├── .claude-plugin/plugin.json    # Manifest (name: pnge, v0.9.0)
-├── skills/                        # 76 skills (43 data access + 33 computational)
-├── agents/                        # 12 research and engineering agents
-├── commands/                      # 12 slash commands
-├── README.md                      # Canonical per-skill listing
-├── LICENSE                        # Apache-2.0
+├── .claude-plugin/marketplace.json    # Marketplace catalog (claude-pnge v1.0.0)
+├── plugins/                            # 8 sub-plugins, each with its own plugin.json
+├── scripts/                            # ownership.tsv + migration helpers
+├── README.md
+├── CHANGELOG.md
+├── LICENSE
 ├── .env.example
 ├── .gitignore
 └── docs/
-    ├── TOKENS.md                  # API key acquisition guide
-    ├── DATA_SOURCES.md            # Authoritative data-source reference
-    └── PACKAGING.md               # Distribution and packaging guide
+    ├── TOKENS.md                      # API key acquisition guide
+    ├── DATA_SOURCES.md                # Per-skill data-source reference + plugin index
+    └── PACKAGING.md                   # Distribution, validation, adding-a-skill checklist
 ```
 
 ---

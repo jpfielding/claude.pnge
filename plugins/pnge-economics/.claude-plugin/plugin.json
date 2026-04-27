@@ -1,0 +1,24 @@
+{
+  "name": "pnge-economics",
+  "version": "1.0.0",
+  "description": "Economic and trade datasets for TEA/LCA and energy geopolitics: Federal Reserve FRED prices, BLS producer price indices, BEA regional income, U.S. Census ACS demographics, World Bank Open Data, UN Comtrade critical-minerals trade flows, and IEA free datasets. Includes pnge-geopolitics and tea-lca-analyst agents and /well-economics, /tea-dle commands.",
+  "author": { "name": "WVU PNGE Research" },
+  "repository": "https://github.com/jpfielding/claude.pnge",
+  "license": "Apache-2.0",
+  "keywords": [
+    "energy-data",
+    "fred",
+    "bls",
+    "producer-price-index",
+    "bea",
+    "census",
+    "techno-economic-analysis",
+    "tea",
+    "lca",
+    "geopolitics",
+    "supply-chain",
+    "lithium",
+    "magnesium",
+    "critical-minerals"
+  ]
+}

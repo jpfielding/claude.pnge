@@ -1,0 +1,23 @@
+{
+  "name": "pnge-core",
+  "version": "1.0.0",
+  "description": "Core PNGE research workflow: Li/Mg prospector agent, EIA energy data, USGS produced waters + mineral commodity summaries, federated literature search (OpenAlex/CrossRef/USGS Pubs/OSTI) with DataCite dataset DOIs, shared HTML visualizer, and the /doctor preflight command. Install this first.",
+  "author": { "name": "WVU PNGE Research" },
+  "repository": "https://github.com/jpfielding/claude.pnge",
+  "license": "Apache-2.0",
+  "keywords": [
+    "petroleum-engineering",
+    "lithium",
+    "magnesium",
+    "produced-water",
+    "direct-lithium-extraction",
+    "dle",
+    "eia",
+    "usgs",
+    "pnge-literature",
+    "datacite",
+    "doi",
+    "open-access",
+    "wvu"
+  ]
+}

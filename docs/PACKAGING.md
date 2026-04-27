@@ -25,61 +25,78 @@ Validation rules enforced at packaging time:
 
 ---
 
-## Actual Repository Structure (v0.9.0)
+## Actual Repository Structure (v1.0.0 — marketplace)
 
-The authoritative skill tree lives in [`README.md`](../README.md) — see its
-"Project Structure" section for the full directory layout. Plugin currently
-ships **76 skills (43 data access, 33 computational)**, **12 agents**, and
-**12 commands**.
+The authoritative layout and per-plugin skill listing live in
+[`README.md`](../README.md) and [`docs/DATA_SOURCES.md`](DATA_SOURCES.md).
+The repository is a **Claude Code marketplace** (not a single plugin) shipping
+**8 themed plugins** totaling 76 skills / 12 agents / 12 commands.
 
 Top-level layout:
 
 ```
 claude.pnge/
-├── README.md                    # Overview, install, full skill tree
-├── LICENSE                      # Apache-2.0
-├── .env.example                 # Template for API keys (never commit real keys)
+├── README.md                       # Marketplace overview + install recipes
+├── CHANGELOG.md                    # v0.9 → v1.0 breaking change + migration
+├── LICENSE                         # Apache-2.0
+├── .env.example                    # Template for API keys (never commit real keys)
 ├── .gitignore
 │
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest (name: pnge, v0.9.0)
+│   └── marketplace.json            # Marketplace catalog (claude-pnge, v1.0.0)
 │
-├── skills/                      # 76 skills (43 data access + 33 computational)
-├── agents/                      # 12 research and engineering agents
-├── commands/                    # 12 slash commands
+├── plugins/                        # One directory per sub-plugin
+│   ├── pnge-core/
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── skills/ agents/ commands/
+│   ├── pnge-federal-data/
+│   ├── pnge-state-regulatory/
+│   ├── pnge-economics/
+│   ├── pnge-patents/
+│   ├── pnge-well-engineering/
+│   ├── pnge-geochem-pw/
+│   └── pnge-engineering-science/
+│
+├── scripts/
+│   ├── ownership.tsv               # Authoritative skill/agent/command → plugin map
+│   ├── ownership.sh                # Read-only helpers over ownership.tsv
+│   ├── rewrite-namespaces.sh       # One-shot migration sweep (can be rerun)
+│   ├── verify-namespaces.sh        # Positive + negative namespace check
+│   ├── annotate-companions.sh      # Append companion-plugin tables to agents
+│   └── move-files.sh               # One-shot git mv helper (historical)
+│
 └── docs/
-    ├── TOKENS.md                # API key acquisition guide
-    ├── DATA_SOURCES.md          # Authoritative data-source reference
-    └── PACKAGING.md             # Distribution and packaging guide (this file)
+    ├── TOKENS.md                   # API key acquisition guide (plugin-keyed)
+    ├── DATA_SOURCES.md             # Per-skill data-source reference + plugin index
+    └── PACKAGING.md                # This file
 ```
-
-For the full per-skill listing, see [`README.md`](../README.md) and
-[`docs/DATA_SOURCES.md`](DATA_SOURCES.md).
 
 ---
 
 ## Distribution Channels
 
-### 1. GitHub Repository (Primary — Team/Academic)
+### 1. Claude Code Marketplace (Primary)
 
-**Audience:** WVU PNGE lab, collaborators, open-source community
-**Method:** Public or private GitHub repo
+**Audience:** Claude Code users.
+**Method:** `claude plugin marketplace add` + per-plugin `claude plugin install`.
 
 ```bash
-# Consumer installs to Claude Code (personal)
-git clone https://github.com/{user}/pnge-research-skills.git
-cp -r pnge-research-skills/skills/* ~/.claude/skills/
+# Add the marketplace once
+claude plugin marketplace add jpfielding/claude.pnge
+# or for local development against a checkout:
+claude plugin marketplace add ./claude.pnge
 
-# Or project-level (shared via repo)
-cd my-research-project
-cp -r ../pnge-research-skills/skills/* .claude/skills/
-git add .claude/skills/
-git commit -m "Add PNGE research data skills"
+# Install only the plugins you need
+claude plugin install pnge-core@claude-pnge
+claude plugin install pnge-state-regulatory@claude-pnge
+# ... etc.
 ```
 
-**Pros:** Version controlled, PRs for contributions, issues for bugs,
-         CI can run evals on every change, works for Claude Code natively.
-**Cons:** Manual install steps; Claude.ai users need to re-upload .skill files.
+Common subset recipes live in [`CHANGELOG.md`](../CHANGELOG.md) and
+[`README.md`](../README.md).
+
+**Pros:** Discoverable, per-plugin install, versioned by plugin.
+**Cons:** Requires `claude plugin` CLI; not for Claude.ai consumers.
 
 ### 2. `.skill` ZIP Files (Claude.ai Upload)
 
@@ -87,14 +104,12 @@ git commit -m "Add PNGE research data skills"
 **Method:** Upload through Settings > Customize > Skills
 
 ```bash
-# Build all .skill files
-make package-all
-# => dist/usgs-produced-waters.skill
-# => dist/eia-data.skill
-# => ...
-
-# Or build one
-python -m scripts.package_skill skills/usgs-produced-waters dist/
+# Build all .skill files (across all 8 plugins)
+mkdir -p dist
+for d in plugins/*/skills/*/; do
+  name=$(basename "$d")
+  ( cd "$(dirname "$d")" && zip -r - "$name" ) > "dist/${name}.skill"
+done
 ```
 
 Then upload each `.skill` file in Claude.ai Settings.
@@ -102,28 +117,10 @@ Then upload each `.skill` file in Claude.ai Settings.
 **Pros:** Works in Claude.ai web/mobile/desktop, no CLI needed.
 **Cons:** Individual per-user; no centralized management on free/Pro plans.
 
-### 3. Claude Code Plugin (Marketplace)
+### 3. Claude API Workspace (Programmatic)
 
-**Audience:** Broader Claude Code user base
-**Method:** Bundle skills into a plugin for the marketplace
-
-```
-pnge-research-plugin/
-├── plugin.json              # Plugin manifest
-├── skills/
-│   ├── usgs-produced-waters/
-│   ├── usgs-minerals/
-│   └── ...
-└── README.md
-```
-
-**Pros:** Discoverable in marketplace, one-command install.
-**Cons:** Requires plugin packaging spec compliance; newer ecosystem.
-
-### 4. Claude API Workspace (Programmatic)
-
-**Audience:** Developers building on the Claude API
-**Method:** Upload via `/v1/skills` endpoints
+**Audience:** Developers building on the Claude API.
+**Method:** Upload individual `.skill` files via `/v1/skills` endpoints.
 
 ```bash
 # Upload a skill to your API workspace
@@ -134,7 +131,7 @@ curl -X POST https://api.anthropic.com/v1/skills \
 ```
 
 **Pros:** Workspace-wide, all members get access.
-**Cons:** Requires API access; separate from Claude.ai skills.
+**Cons:** Requires API access; separate from the Claude Code marketplace.
 
 ---
 
@@ -160,50 +157,17 @@ Each skill's SKILL.md references the shared pattern with service-specific detail
 
 ---
 
-## Makefile Targets
+## Validating the Marketplace
 
-```makefile
-SKILLS_DIR := skills
-DIST_DIR := dist
-SKILL_CREATOR := /mnt/skills/examples/skill-creator
+```bash
+# Validate every sub-plugin's manifest (no `claude plugin marketplace validate` exists)
+for p in plugins/*/; do claude plugin validate "$p" || exit 1; done
 
-.PHONY: validate-all package-all test clean
-
-validate-all:
-	@for skill in $(SKILLS_DIR)/*/; do \
-		echo "Validating $$skill..."; \
-		python $(SKILL_CREATOR)/scripts/quick_validate.py $$skill; \
-	done
-
-package-all: validate-all
-	@mkdir -p $(DIST_DIR)
-	@for skill in $(SKILLS_DIR)/*/; do \
-		python $(SKILL_CREATOR)/scripts/package_skill.py $$skill $(DIST_DIR); \
-	done
-
-test:
-	@echo "Running evals..."
-	# Integrate with skill-creator eval runner
-
-clean:
-	rm -rf $(DIST_DIR)
+# Confirm the namespace sweep is clean (no legacy pnge: refs, every ref on-owner)
+bash scripts/verify-namespaces.sh
 ```
 
 ---
-
-## Installing the Plugin
-
-```bash
-# Install directly from GitHub into Claude Code
-claude plugin install pnge@jpfielding/claude.pnge
-
-# Or clone and point Claude Code at the local directory
-git clone https://github.com/jpfielding/claude.pnge.git
-claude --plugin-dir ./claude.pnge
-
-# Validate all skill frontmatter
-claude plugin validate .
-```
 
 ## Packaging Individual Skills for Claude.ai
 
@@ -212,25 +176,28 @@ Settings > Customize > Skills in Claude.ai:
 
 ```bash
 # Package one skill
-cd claude.pnge
-zip -r dist/eia-data.skill skills/eia-data/
+zip -r dist/eia-data.skill -j - plugins/pnge-core/skills/eia-data/ > /dev/null
 
-# Package all skills
+# Package all skills across the marketplace
 mkdir -p dist
-for d in skills/*/; do
+for d in plugins/*/skills/*/; do
   name=$(basename "$d")
-  zip -r "dist/${name}.skill" "$d"
+  parent=$(dirname "$d")
+  ( cd "$parent" && zip -r - "$name" ) > "dist/${name}.skill"
 done
 ```
 
 ## Adding a New Skill
 
-1. Create `skills/<name>/SKILL.md` with valid YAML frontmatter:
+1. **Choose the owning plugin** (one of the 8). If the new skill doesn't fit any existing plugin's charter, propose a new sub-plugin rather than a junk-drawer add.
+2. **Register the ownership first** — add a `skill` row to `scripts/ownership.tsv`, then run `bash scripts/ownership.sh selftest` to verify counts. Skill names must be globally unique across the marketplace (the ownership map and namespace scripts rely on uniqueness).
+3. Create `plugins/<owner>/skills/<name>/SKILL.md` with valid YAML frontmatter:
    - `name`: kebab-case, ≤64 chars
    - `description`: ≤1024 chars, no `<` or `>`, include trigger phrases
-2. Add reference files under `skills/<name>/references/` for anything
-   over ~30 lines of detail (schema docs, Go client examples, API tables)
-3. Follow the credential resolution pattern in `docs/TOKENS.md`
-4. Run `claude plugin validate .` to check frontmatter
-5. Update `README.md` skill count and tables
-6. Update `docs/DATA_SOURCES.md` with the new skill entry
+4. Add reference files under `plugins/<owner>/skills/<name>/references/` for anything over ~30 lines of detail (schema docs, Go client examples, API tables).
+5. Follow the credential resolution pattern in `docs/TOKENS.md`.
+6. If the skill needs a credential, update the credential map in `docs/TOKENS.md`.
+7. Update `docs/DATA_SOURCES.md` (the plugin index + the per-category table).
+8. Bump `plugins/<owner>/.claude-plugin/plugin.json` `version` — otherwise installed users won't refresh.
+9. If the skill is referenced by cross-plugin agents, rerun `bash scripts/annotate-companions.sh` (idempotent).
+10. Validate: `claude plugin validate plugins/<owner>`.

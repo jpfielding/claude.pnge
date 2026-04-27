@@ -1,0 +1,24 @@
+{
+  "name": "pnge-geochem-pw",
+  "version": "1.0.0",
+  "description": "Produced-water geochemistry and treatment: PHREEQC brine speciation and mineral-scaling prediction, NIST thermodynamic properties, material/energy balance (Rachford-Rice flash), tNavigator-style reservoir-fluid tooling. Includes water-chem-qaqc, lab-method-planner, and pnge-pw-treatment agents plus /water-chem-compare command for side-by-side brine chemistry comparisons.",
+  "author": { "name": "WVU PNGE Research" },
+  "repository": "https://github.com/jpfielding/claude.pnge",
+  "license": "Apache-2.0",
+  "keywords": [
+    "produced-water",
+    "geochemistry",
+    "speciation-modeling",
+    "phreeqc",
+    "water-chemistry-qaqc",
+    "sampling-plan",
+    "icp-oes",
+    "mass-balance",
+    "flash-calculation",
+    "nist",
+    "thermodynamics",
+    "reservoir-simulation",
+    "water-treatment",
+    "dle"
+  ]
+}

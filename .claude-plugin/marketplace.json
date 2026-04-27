@@ -1,0 +1,74 @@
+{
+  "name": "claude-pnge",
+  "owner": { "name": "WVU PNGE Research" },
+  "metadata": {
+    "description": "Petroleum and chemical engineering skills for WVU PNGE undergraduates — 76 skills, 12 agents, and 12 commands split across 8 themed plugins. Covers Li/Mg recovery from produced waters, state oil-and-gas regulators, federal data agencies, literature and patent landscapes, completions and production engineering, water geochemistry and treatment, and ChBE engineering-science tutoring.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "pnge-core",
+      "source": "./plugins/pnge-core",
+      "version": "1.0.0",
+      "description": "Flagship Li/Mg prospector agent, EIA + USGS produced waters/minerals, federated literature + DataCite DOI search, shared HTML visualizer, /doctor preflight. Install this first.",
+      "category": "core",
+      "tags": ["lithium", "magnesium", "produced-water", "eia", "usgs", "literature"]
+    },
+    {
+      "name": "pnge-federal-data",
+      "source": "./plugins/pnge-federal-data",
+      "version": "1.0.0",
+      "description": "Non-regulatory federal datasets: USGS (earthquakes, water, core center, National Map), NETL EDX + NATCARB, DOE geothermal, EPA Envirofacts/ECHO/GHGRP + Treatability, BOEM, BLM, FracFocus, NASA Earthdata, EJScreen/CEJST/SVI, WRI Aqueduct.",
+      "category": "data",
+      "tags": ["usgs", "netl", "epa", "boem", "blm", "fracfocus", "nasa", "environmental-justice", "carbon-storage"]
+    },
+    {
+      "name": "pnge-state-regulatory",
+      "source": "./plugins/pnge-state-regulatory",
+      "version": "1.0.0",
+      "description": "State O&G regulators and cross-border discharge compliance: WV/PA/OH Appalachia stack, TX/NM/ND/LA/AR/OK/CA/CO commissions, Appalachian mineral parcels, and OSPAR offshore discharge standards. Adds regulatory-disposal-analyst agent + /regulatory-screen, /disposal-screen.",
+      "category": "data",
+      "tags": ["texas-rrc", "new-mexico-ocd", "bakken", "smackover", "marcellus", "utica", "calgem", "ecmc", "uic-class-ii", "induced-seismicity", "mineral-rights"]
+    },
+    {
+      "name": "pnge-economics",
+      "source": "./plugins/pnge-economics",
+      "version": "1.0.0",
+      "description": "Economic and trade data for TEA/LCA and energy geopolitics: FRED, BLS, BEA, Census, World Bank, UN Comtrade, IEA. Includes pnge-geopolitics and tea-lca-analyst agents + /well-economics, /tea-dle.",
+      "category": "data",
+      "tags": ["fred", "bls", "bea", "census", "worldbank", "comtrade", "iea", "techno-economic-analysis", "lca"]
+    },
+    {
+      "name": "pnge-patents",
+      "source": "./plugins/pnge-patents",
+      "version": "1.0.0",
+      "description": "USPTO / PatentsView DLE patent landscape: sorbent, membrane, electrochemical, solvent-extraction. Includes dle-patent-scout agent + /patent-landscape.",
+      "category": "research",
+      "tags": ["patents", "patentsview", "direct-lithium-extraction", "dle", "patent-landscape"]
+    },
+    {
+      "name": "pnge-well-engineering",
+      "source": "./plugins/pnge-well-engineering",
+      "version": "1.0.0",
+      "description": "Completions + production wellwork as one workflow: frac design, wellbore stability, petrophysics, DFIT/minifrac, matrix acidizing, tubing/artificial lift/flow assurance, nodal analysis, RTA/DCA, well-test analysis, production chemistry, well-integrity, PVT, stage surveillance + KGS well-logs and Macrostrat stratigraphy references. Includes api-well-standards agent + /completions-design.",
+      "category": "engineering",
+      "tags": ["completions", "frac-design", "petrophysics", "artificial-lift", "flow-assurance", "nodal-analysis", "well-testing", "production-engineering", "pvt", "well-integrity"]
+    },
+    {
+      "name": "pnge-geochem-pw",
+      "source": "./plugins/pnge-geochem-pw",
+      "version": "1.0.0",
+      "description": "Produced-water geochemistry and treatment: PHREEQC speciation + scaling, NIST thermodynamics, material/energy balance + Rachford-Rice flash, tNavigator-style reservoir-fluid tools. Includes water-chem-qaqc, lab-method-planner, and pnge-pw-treatment agents + /water-chem-compare.",
+      "category": "engineering",
+      "tags": ["produced-water", "geochemistry", "phreeqc", "speciation-modeling", "water-chemistry-qaqc", "icp-oes", "thermodynamics", "water-treatment"]
+    },
+    {
+      "name": "pnge-engineering-science",
+      "source": "./plugins/pnge-engineering-science",
+      "version": "1.0.0",
+      "description": "ChBE and MAE engineering-science tutoring mapped to WVU courses: fluid mechanics (311), reaction engineering (321), thermodynamics + EOS (231), heat transfer, mass transfer/separations, aqueous chemistry + electrochemistry, materials/fracture mechanics. Includes pnge-tutor agent.",
+      "category": "education",
+      "tags": ["chemical-engineering", "fluid-mechanics", "reaction-engineering", "thermodynamics", "heat-transfer", "mass-transfer", "electrochemistry", "fracture-mechanics", "tutoring"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "pnge-patents",
+  "version": "1.0.0",
+  "description": "USPTO / PatentsView patent landscape analysis focused on direct lithium extraction (DLE) technologies: sorbent, membrane, electrochemical, solvent-extraction. Includes dle-patent-scout agent and /patent-landscape command for assignee tracking, technology-class breakdowns, and white-space analysis.",
+  "author": { "name": "WVU PNGE Research" },
+  "repository": "https://github.com/jpfielding/claude.pnge",
+  "license": "Apache-2.0",
+  "keywords": [
+    "patents",
+    "patentsview",
+    "uspto",
+    "dle-patents",
+    "direct-lithium-extraction",
+    "dle",
+    "patent-landscape",
+    "lithium"
+  ]
+}
